@@ -7,8 +7,8 @@ export const CartNavItem = async () => {
 	const checkoutId = Checkout.getIdFromCookies();
 	const checkout = checkoutId ? await Checkout.find(checkoutId) : null;
 
-	const lineCount = checkout ? checkout.lines.reduce((result, line) => result + line.quantity, 0) : 0;
-
+	// const lineCount = checkout ? checkout.lines.reduce((result, line) => result + line.quantity, 0) : 0;
+	const lineCount = 0
 	return (
 		<Link href="/cart" className="relative flex items-center" data-testid="CartNavItem">
 			<ShoppingBagIcon className="h-6 w-6 shrink-0" aria-hidden="true" />

@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Interface for image data
 interface ImageData {
-  src: StaticImageData;
+  src: string;
 }
 
 // Image data array

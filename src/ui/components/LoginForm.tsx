@@ -1,4 +1,3 @@
-// import { getServerAuthClient } from "@/app/config";
 
 export async function LoginForm() {
 	return (

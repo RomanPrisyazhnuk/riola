@@ -1,7 +1,7 @@
-import { type UserDetailsFragment } from "@/gql/graphql";
+import { User } from "@/entities/user";
 
 type Props = {
-	user: UserDetailsFragment;
+	user: User;
 };
 
 export const UserInfo = ({ user }: Props) => {

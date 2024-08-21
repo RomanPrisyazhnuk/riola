@@ -34,7 +34,7 @@ export async function Footer() {
 							<div key={item.id}>
 								<h3 className="text-sm font-semibold text-neutral-900">{item.name}</h3>
 								<ul className="mt-4 space-y-4 [&>li]:text-neutral-500">
-									{item.children?.map((child) => {
+									{/* {item.map((child) => {
 										if (child.category) {
 											return (
 												<li key={child.id} className="text-sm">
@@ -70,7 +70,7 @@ export async function Footer() {
 											);
 										}
 										return null;
-									})}
+									})} */}
 								</ul>
 							</div>
 						);
