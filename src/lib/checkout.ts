@@ -27,7 +27,7 @@ export async function find(checkoutId: string) {
 		// 	  })
 		// 	: { checkout: null };
 
-		return 'asdasdasf';
+		return {lines: []};
 	} catch {
 		// we ignore invalid ID or checkout not found
 	}

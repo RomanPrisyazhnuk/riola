@@ -1,4 +1,4 @@
-import { getServerAuthClient } from "@/app/config";
+// import { getServerAuthClient } from "@/app/config";
 
 export async function LoginForm() {
 	return (
@@ -12,15 +12,15 @@ export async function LoginForm() {
 					const password = formData.get("password")?.toString();
 
 					if (!email || !password) {
-						throw new Error("Email and password are required");
+						throw new Error("Необходимо ввести email и парол");
 					}
 
-					const { data } = await getServerAuthClient().signIn({ email, password }, { cache: "no-store" });
+					// const { data } = await getServerAuthClient().signIn({ email, password }, { cache: "no-store" });
 
-					if (data.tokenCreate.errors.length > 0) {
-						// setErrors(data.tokenCreate.errors.map((error) => error.message));
-						// setFormValues(DefaultValues);
-					}
+					// if (data.tokenCreate.errors.length > 0) {
+					// 	setErrors(data.tokenCreate.errors.map((error) => error.message));
+					// 	setFormValues(DefaultValues);
+					// }
 				}}
 			>
 				<div className="mb-2">
@@ -36,7 +36,7 @@ export async function LoginForm() {
 				</div>
 				<div className="mb-4">
 					<label className="sr-only" htmlFor="password">
-						Password
+						Пароль
 					</label>
 					<input
 						type="password"
@@ -52,7 +52,7 @@ export async function LoginForm() {
 					className="rounded bg-neutral-800 px-4 py-2 text-neutral-200 hover:bg-neutral-700"
 					type="submit"
 				>
-					Log In
+					Войти
 				</button>
 			</form>
 			<div></div>

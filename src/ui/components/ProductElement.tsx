@@ -1,4 +1,4 @@
-import { LinkWithChannel } from "../atoms/LinkWithChannel";
+import Link from "next/link";
 import { ProductImageWrapper } from "@/ui/atoms/ProductImageWrapper";
 
 import { formatMoneyRange } from "@/lib/utils";
@@ -10,13 +10,13 @@ export function ProductElement({
 }: { product: any } & { loading: "eager" | "lazy"; priority?: boolean }) {
 	return (
 		<li data-testid="ProductElement">
-			<LinkWithChannel href={`/products/${product.slug}`} key={product.id}>
+			<Link href={`/products/${product.slug}`} key={product.id}>
 				<div>
-					{product?.thumbnail?.url && (
+					{product?.image && (
 						<ProductImageWrapper
 							loading={loading}
-							src={product.thumbnail.url}
-							alt={product.thumbnail.alt ?? ""}
+							src={product.image}
+							alt={product.title}
 							width={512}
 							height={512}
 							sizes={"512px"}
@@ -25,7 +25,7 @@ export function ProductElement({
 					)}
 					<div className="mt-2 flex justify-between">
 						<div>
-							<h3 className="mt-1 text-sm font-semibold text-neutral-900">{product.name}</h3>
+							<h3 className="mt-1 text-sm font-semibold text-neutral-900">{product.title}</h3>
 							<p className="mt-1 text-sm text-neutral-500" data-testid="ProductElement_Category">
 								{product.category?.name}
 							</p>
@@ -38,7 +38,7 @@ export function ProductElement({
 						</p>
 					</div>
 				</div>
-			</LinkWithChannel>
+			</Link>
 		</li>
 	);
 }

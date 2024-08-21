@@ -1,17 +1,27 @@
 // import Link from "next/link";
 // import Image from "next/image";
-import { LinkWithChannel } from "../atoms/LinkWithChannel";
+import Link from "next/link";
 import { ChannelSelect } from "./ChannelSelect";
 
 export async function Footer() {
 	const footerLinks = {menu: {items: [
-		{id: 5, name: 'sadasd', category: 'sacasc', }
+		{id: 5, name: 'блок меню 1', category: 'sacasc', },
+		{id: 5, name: 'блок меню 2', category: 'sacasc', },
+		{id: 5, name: 'блок меню 3', category: 'sacasc', },
+		{id: 5, name: 'блок меню 4', category: 'sacasc', }
 	]}};
 	const channels = [{
         id: 'string',
         name: 'string',
         slug: 'string',
         currencyCode: 'USD'
+    },
+
+	{
+        id: 'string',
+        name: 'string',
+        slug: 'string',
+        currencyCode: 'RUB'
     }]
 	const currentYear = new Date().getFullYear();
 
@@ -28,34 +38,34 @@ export async function Footer() {
 										if (child.category) {
 											return (
 												<li key={child.id} className="text-sm">
-													<LinkWithChannel href={`/categories/${child.category.slug}`}>
+													<Link href={`/categories/${child.category.slug}`}>
 														{child.category.name}
-													</LinkWithChannel>
+													</Link>
 												</li>
 											);
 										}
 										if (child.collection) {
 											return (
 												<li key={child.id} className="text-sm">
-													<LinkWithChannel href={`/collections/${child.collection.slug}`}>
+													<Link href={`/collections/${child.collection.slug}`}>
 														{child.collection.name}
-													</LinkWithChannel>
+													</Link>
 												</li>
 											);
 										}
 										if (child.page) {
 											return (
 												<li key={child.id} className="text-sm">
-													<LinkWithChannel href={`/pages/${child.page.slug}`}>
+													<Link href={`/pages/${child.page.slug}`}>
 														{child.page.title}
-													</LinkWithChannel>
+													</Link>
 												</li>
 											);
 										}
 										if (child.url) {
 											return (
 												<li key={child.id} className="text-sm">
-													<LinkWithChannel href={child.url}>{child.name}</LinkWithChannel>
+													<Link href={child.url}>{child.name}</Link>
 												</li>
 											);
 										}
@@ -70,7 +80,7 @@ export async function Footer() {
 				{channels && (
 					<div className="mb-4 text-neutral-500">
 						<label>
-							<span className="text-sm">Change currency:</span> <ChannelSelect channels={channels} />
+							<span className="text-sm">Сменить валюту:</span> <ChannelSelect channels={channels} />
 						</label>
 					</div>
 				)}

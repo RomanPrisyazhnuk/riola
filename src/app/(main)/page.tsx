@@ -1,22 +1,37 @@
+import { mockExcursions } from "@/entities/excursion";
+import ImageSlider from "@/ui/atoms/ImageSlider";
+import { SearchBar } from "@/ui/components/nav/components/SearchBar";
 import { ProductList } from "@/ui/components/ProductList";
 
 export const metadata = {
-	title: "ACME Storefront, powered by Saleor & Next.js",
-	description:
-		"Storefront Next.js Example for building performant e-commerce experiences with Saleor - the composable, headless commerce platform for global brands.",
+	title: "",
+	description: "",
 };
 
-export default async function Page({ params }: { params: { channel: string } }) {
+export default async function Page() {
 	const data = {collection: {products: {edges: []}}};
 	if (!data.collection?.products) {
 		return null;
 	}
 
-	const products = data.collection?.products.edges.map(({ node: product }) => product);
+	const products = mockExcursions
 
 	return (
 		<section className="mx-auto max-w-7xl p-8 pb-16">
-			<h2 className="sr-only">Product list</h2>
+			<div className="relative w-full mt-4 " >
+				<div className="absolute z-10 flex flex-col justify-center justify-center items-center h-full w-full gap-y-7">
+					<h1 className="md:text-2xl left-6 top-20 z-10 rounded-xl mx-1 bg-[#111927] text-white p-2 group">
+						Поиск и бронирование экскурсий
+					</h1>
+					<div className=" right-1/2 bottom-1/2 my-15 w-1/2 flex ">
+						<SearchBar />
+					</div>
+				</div>
+			
+			  <ImageSlider />
+			</div>
+			
+			<h2> Популярные экскурсии </h2>
 			<ProductList products={products} />
 		</section>
 	);

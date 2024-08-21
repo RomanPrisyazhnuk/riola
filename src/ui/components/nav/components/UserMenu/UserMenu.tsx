@@ -6,7 +6,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { UserInfo } from "./components/UserInfo";
 import { UserAvatar } from "./components/UserAvatar";
 import { logout } from "@/app/actions";
-import { LinkWithChannel } from "@/ui/atoms/LinkWithChannel";
+import Link from "next/link";
 import { User } from "@/entities/user";
 
 type Props = {
@@ -17,7 +17,7 @@ export function UserMenu({ user }: Props) {
 	return (
 		<Menu as="div" className="relative">
 			<Menu.Button className="relative flex rounded-full bg-neutral-200 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-800">
-				<span className="sr-only">Open user menu</span>
+				<span className="sr-only">Открыть меню</span>
 				<UserAvatar user={user} />
 			</Menu.Button>
 			<Transition
@@ -34,15 +34,15 @@ export function UserMenu({ user }: Props) {
 					<div className="flex flex-col px-1 py-1">
 						<Menu.Item>
 							{({ active }) => (
-								<LinkWithChannel
+								<Link
 									href="/orders"
 									className={clsx(
 										active && "bg-neutral-100",
 										"block px-4 py-2 text-sm font-medium text-neutral-500 hover:text-neutral-700",
 									)}
 								>
-									My orders
-								</LinkWithChannel>
+									Мои заказы
+								</Link>
 							)}
 						</Menu.Item>
 					</div>
@@ -57,7 +57,7 @@ export function UserMenu({ user }: Props) {
 											"block px-4 py-2 text-start text-sm font-medium text-neutral-500 hover:text-neutral-700",
 										)}
 									>
-										Log Out
+										Выйти
 									</button>
 								</form>
 							)}
