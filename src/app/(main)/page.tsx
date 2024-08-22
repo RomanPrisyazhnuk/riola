@@ -41,7 +41,7 @@ export default async function Page() {
         <div className="absolute z-10 flex flex-col justify-center items-center h-full w-full gap-y-7">
           <div className="rounded mx-2 bg-black/50">
 			<h1 className="md:text-2xl left-6 top-20 z-10  text-white  p-2 group font-bold text-center">
-			Поиск и бронирование экскурсий и транферов
+			Поиск и бронирование экскурсий и трансферов
 			</h1>
 		  </div>
 		
