@@ -36,7 +36,7 @@ export default async function Page() {
   }
 
   return (
-    <section className="mx-auto max-w-7xl pb-16">
+    <section className="mx-auto max-w-7xl">
       <div className="relative w-full ">
         <div className="absolute z-10 flex flex-col justify-center items-center h-full w-full gap-y-7">
           <div className="rounded mx-2 bg-black/50">

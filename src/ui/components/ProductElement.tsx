@@ -43,7 +43,7 @@ export function ProductElement({
         <span className="text-xs text-gray-400">/возраст 3-9</span>
       </div>
 
-      <div className="flex items-center space-x-2 text-gray-500">
+      <div className="flex items-center justify-between space-x-2 text-gray-500">
         <div className="flex items-center space-x-1">
           <Clock size={16} />
           <span>10 ч.</span>
