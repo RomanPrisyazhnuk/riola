@@ -1,5 +1,5 @@
 export interface Price{
-    amount: number
+    amount: string
     desctiption:string
 }
        

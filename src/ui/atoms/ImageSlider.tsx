@@ -64,9 +64,9 @@ export default function ImageSlider(): JSX.Element {
   };
 
   return (
-    <div className="relative w-full mt-4">
+    <div className="relative w-full">
       <div
-        className="relative h-[360px] group "
+        className="relative h-[300px] group "
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
       >
@@ -75,11 +75,11 @@ export default function ImageSlider(): JSX.Element {
           alt={`Slider Image ${currentIndex + 1}`}
           layout="fill"
           objectFit="cover"
-          className="rounded-xl transition-all duration-500 ease-in-out cursor-pointer"
+          className="rounded transition-all duration-400 ease-in-out cursor-pointer"
         />
       </div>
     
-      <button
+      {/* <button
         className="absolute left-6 top-1/2 transform h-[40px] rounded-xl hover:bg-[#1a222f] mx-1 -mt-[10px] -translate-y-1/2 bg-[#111927] text-white p-2 group"
         onClick={prevSlide}
       >
@@ -90,7 +90,7 @@ export default function ImageSlider(): JSX.Element {
         onClick={nextSlide}
       >
         <ChevronRight className="text-gray-400 group-hover:text-white" />
-      </button>
+      </button> */}
       <div className="flex justify-center mt-4">
         {images.map((_, index) => (
           <div
