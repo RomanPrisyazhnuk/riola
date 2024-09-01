@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const Logo = () => {
 	return (
-		<div className="flex items-center font-bold">
+		<div className="flex items-center font-bold min-w-[114px] sm:min-w-[154px]">
 			<Link aria-label="homepage" href="/">
 			<Image
 				src={'/riolatravel-gol2-92-270-90.webp'}

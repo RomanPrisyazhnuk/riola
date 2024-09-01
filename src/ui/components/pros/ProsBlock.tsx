@@ -25,7 +25,7 @@ const ProsBlock: FC = () => {
                     className="absolute right-0 top-0" 
 			    />                  
                 {prosContent.map((item)=>(
-                <div className='flex flex-col md:flex-row items-center gap-3 z-30'>
+                <div key={item.text} className='flex flex-col md:flex-row items-center gap-3 z-30'>
                 <Image
                     src={item.image}
                     alt={item.text}
@@ -33,7 +33,7 @@ const ProsBlock: FC = () => {
                     height={56}
                     className="h-full object-contain object-center"
 			    /> 
-                <p className='max-w-60 text-center'>{item.text}</p>
+                <p className='max-w-60 text-center text-textColor'>{item.text}</p>
                </div>
                ))}
               

@@ -11,7 +11,7 @@ export function ProductElement({
 	priority,
 }: { product: Excursion } & { loading: "eager" | "lazy"; priority?: boolean }) {
 	return (
-		<li data-testid="ProductElement" className="p-2 relative">
+		<li data-testid="ProductElement" className="relative rounded-lg overflow-hidden bg-cyan-100/50 p-6">
 			<Link href={`/products/${product.slug}`} key={product.id}>
 				<div>
 					{product?.image && (
@@ -25,17 +25,17 @@ export function ProductElement({
 							priority={priority}
 						/>
 					)}
-					<div className="absolute top-5 right-5">
+					<div className="absolute top-10 right-10">
 						<Rating rating={product.rating}/> 
 					</div>
 					<div className="mt-2 flex justify-between">
 						<div className="w-full flex justify-between">
-							<h3 className="mt-1 text-sm font-semibold text-neutral-900">{product.name}</h3>
+							<h3 className="mt-1 text-sm font-semibold text-textColor">{product.name}</h3>
 
 						</div>
 						
 					</div>
-					<div className="flex flex-col space-y-2 text-sm text-gray-700">
+	<div className="flex flex-col space-y-2 text-sm text-gray-700">
       <div className="flex items-center space-x-2">
         <span className="text-lg font-bold text-teal-500">$64</span>
         <span className="text-xs text-gray-400">/взр.</span>

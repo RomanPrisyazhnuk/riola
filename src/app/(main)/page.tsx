@@ -1,6 +1,7 @@
 import { mockExcursions } from "@/entities/excursion";
 import { mockPlaces } from "@/entities/place";
 import ImageSlider from "@/ui/atoms/ImageSlider";
+import BonusBlock from "@/ui/components/bonus/BonusBlock";
 import { Places } from "@/ui/components/Places";
 import { ProductList } from "@/ui/components/ProductList";
 import ProsBlock from "@/ui/components/pros/ProsBlock";
@@ -48,10 +49,12 @@ export default async function Page() {
       <div className="my-6">
         <ProsBlock />
       </div>
-      
       <Places places={mockPlaces} />
-      <h2 className="p-2 text-center">Популярные</h2>
+      <h2 className="p-3 text-center text-textColor">Популярные</h2>
       <ProductList products={products} />
+      <div className="my-6">
+        <BonusBlock />
+      </div>
     </section>
   );
 }

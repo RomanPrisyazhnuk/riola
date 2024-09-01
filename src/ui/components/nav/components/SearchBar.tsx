@@ -13,7 +13,7 @@ export const SearchBar = () => {
 	return (
 		<form
 			action={onSubmit}
-			className="group relative my-2 flex w-full items-center justify-items-center text-sm "
+			className="group relative my-2 flex w-full items-center justify-items-center text-sm hidden md:block"
 		>
 			<label className="w-full">
 				<span className="sr-only">Поиск и бронирование экскурсий и трансферов</span>

@@ -9,13 +9,13 @@ const footerMenuItems = [
 
 const FooterMenu: FC = () => {
     return (
-        <div className='flex justify-center items-center gap-[16px]'>
+        <div className='flex flex-col sm:flex-row justify-center items-center gap-[16px]'>
                
-				           {footerMenuItems.map((item) => (
+                {footerMenuItems.map((item) => (
                 <Link
                     key={item.name}
                     href={item.link}
-                    className=""
+                    className="text-textColor"
                 > 
                    {item.name}
                </Link>
