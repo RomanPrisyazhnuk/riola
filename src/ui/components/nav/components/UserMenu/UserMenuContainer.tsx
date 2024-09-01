@@ -9,9 +9,10 @@ export async function UserMenuContainer() {
 		return <UserMenu user={mockUser} />;
 	} else {
 		return (
-			<Link href="/login" className="h-6 w-6 flex-shrink-0">
-				<UserIcon className="h-6 w-6 shrink-0" aria-hidden="true" />
-				<span className="sr-only">Войти</span>
+			<Link href="/login" className="">
+				<button className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400">
+					Войти
+				</button>
 			</Link>
 		);
 	}

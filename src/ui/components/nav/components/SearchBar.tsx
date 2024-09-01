@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { SearchIcon } from "lucide-react";
+import Image from "next/image";
 
 export const SearchBar = () => {
 	async function onSubmit(formData: FormData) {
@@ -16,11 +16,11 @@ export const SearchBar = () => {
 			className="group relative my-2 flex w-full items-center justify-items-center text-sm "
 		>
 			<label className="w-full">
-				<span className="sr-only">Найти экскурсию или трансфер</span>
+				<span className="sr-only">Поиск и бронирование экскурсий и трансферов</span>
 				<input
 					type="text"
 					name="search"
-					placeholder="Найти..."
+					placeholder="Поиск и бронирование экскурсий и трансферов"
 					autoComplete="on"
 					required
 					className="h-10 w-full rounded-md border border-neutral-300 bg-transparent bg-white px-4 py-2 pr-10 text-sm text-black placeholder:text-neutral-500 focus:border-black focus:ring-black"
@@ -32,7 +32,13 @@ export const SearchBar = () => {
 					className="z-10 inline-flex aspect-square w-10 items-center justify-center text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 group-invalid:pointer-events-none group-invalid:opacity-80"
 				>
 					<span className="sr-only">Поиск</span>
-					<SearchIcon aria-hidden className="h-5 w-5" />
+					<Image
+						src={'/icons/search.svg'}
+						alt={'Search'}
+						width={24}
+						height={24}
+						className="h-5 w-5"
+					/>
 				</button>
 			</div>
 			{/* <button type="submit" className="right-2 h-12 items-center rounded-md bg-neutral-900 px-6 py-3 text-base font-medium leading-6 text-white shadow hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-70 hover:disabled:bg-neutral-700 aria-disabled:cursor-not-allowed aria-disabled:opacity-70 hover:aria-disabled:bg-neutral-700">Поиск</button> */}

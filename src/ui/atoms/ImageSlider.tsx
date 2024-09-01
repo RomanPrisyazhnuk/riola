@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { StaticImageData } from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+// import { StaticImageData } from "next/image";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Interface for image data
 interface ImageData {
@@ -15,7 +15,7 @@ const images: ImageData[] = [
     src: '/beach.webp',
   },
   {
-    src: '/forest.webp',
+    src: '/banner1.png',
   },
 ];
 
@@ -27,11 +27,11 @@ export default function ImageSlider(): JSX.Element {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   // Function to show the previous slide
-  const prevSlide = (): void => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
-  };
+  // const prevSlide = (): void => {
+  //   setCurrentIndex(
+  //     (prevIndex) => (prevIndex - 1 + images.length) % images.length
+  //   );
+  // };
 
   // Function to show the next slide
   const nextSlide = (): void => {
@@ -66,7 +66,7 @@ export default function ImageSlider(): JSX.Element {
   return (
     <div className="relative w-full">
       <div
-        className="relative h-[300px] group "
+        className="relative h-[560px] group "
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
       >
@@ -75,7 +75,7 @@ export default function ImageSlider(): JSX.Element {
           alt={`Slider Image ${currentIndex + 1}`}
           layout="fill"
           objectFit="cover"
-          className="rounded transition-all duration-400 ease-in-out cursor-pointer"
+          className="rounded-lg transition-all duration-400 ease-in-out cursor-pointer"
         />
       </div>
     
@@ -91,7 +91,7 @@ export default function ImageSlider(): JSX.Element {
       >
         <ChevronRight className="text-gray-400 group-hover:text-white" />
       </button> */}
-      <div className="flex justify-center mt-4">
+      {/* <div className="flex justify-center mt-4">
         {images.map((_, index) => (
           <div
             key={index}
@@ -102,7 +102,7 @@ export default function ImageSlider(): JSX.Element {
             } transition-all duration-500 ease-in-out`}
           ></div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

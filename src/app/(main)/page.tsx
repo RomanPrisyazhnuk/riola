@@ -1,9 +1,9 @@
 import { mockExcursions } from "@/entities/excursion";
 import { mockPlaces } from "@/entities/place";
 import ImageSlider from "@/ui/atoms/ImageSlider";
-import { SearchBar } from "@/ui/components/nav/components/SearchBar";
 import { Places } from "@/ui/components/Places";
 import { ProductList } from "@/ui/components/ProductList";
+import ProsBlock from "@/ui/components/pros/ProsBlock";
 import { apiRoutes } from "../api/config";
 
 export const metadata = {
@@ -38,28 +38,17 @@ export default async function Page() {
   return (
     <section className="mx-auto max-w-7xl">
       <div className="relative w-full ">
-        <div className="absolute z-10 flex flex-col justify-center items-center h-full w-full gap-y-7">
-          <div className="rounded mx-2 bg-black/50">
-			<h1 className="md:text-2xl left-6 top-20 z-10  text-white  p-2 group font-bold text-center">
-			Поиск и бронирование экскурсий и трансферов
-			</h1>
-		  </div>
-		
-		  {/* <div className="flex justify-center gap-2">
-			<button className="h-12 items-center rounded-md bg-orange-500 px-6 py-3 text-base font-medium leading-6 text-white shadow hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-70 hover:disabled:bg-neutral-700 aria-disabled:cursor-not-allowed aria-disabled:opacity-70">
-				Экскурсии
-			</button>
-			<button className="h-12 items-center rounded-md bg-stone-300 px-6 py-3 text-base font-medium leading-6 text-white shadow hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-70 hover:disabled:bg-neutral-700 aria-disabled:cursor-not-allowed aria-disabled:opacity-70">
-				Трансферы
-			</button>
-
-		  </div> */}
-          <div className="right-1/2 bottom-1/2 w-2/3 flex ">
-            <SearchBar />
-          </div>
+        <div className="absolute z-10 flex flex-col w-full gap-y-7  p-6">
+          <h1 className="sm:text-6xl left-6 top-20 z-10  text-white  p-2 group font-bold max-w-4xl">
+            Бронируй лучшие экскурсии и транcферы
+          </h1>
         </div>
         <ImageSlider />
       </div>
+      <div className="my-6">
+        <ProsBlock />
+      </div>
+      
       <Places places={mockPlaces} />
       <h2 className="p-2 text-center">Популярные</h2>
       <ProductList products={products} />
