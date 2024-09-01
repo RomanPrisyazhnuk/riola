@@ -40,7 +40,7 @@ export default async function Page() {
     <section className="mx-auto max-w-7xl">
       <div className="relative w-full ">
         <div className="absolute z-10 flex flex-col w-full gap-y-7  p-6">
-          <h1 className="sm:text-6xl left-6 top-20 z-10  text-white  p-2 group font-bold max-w-4xl">
+          <h1 className="text-[32px] sm:text-6xl left-6 top-20 z-10  text-white  p-2 group font-bold max-w-4xl">
             Бронируй лучшие экскурсии и транcферы
           </h1>
         </div>
