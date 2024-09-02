@@ -5,6 +5,7 @@ import BonusBlock from "@/ui/components/bonus/BonusBlock";
 import { Places } from "@/ui/components/Places";
 import { ProductList } from "@/ui/components/ProductList";
 import ProsBlock from "@/ui/components/pros/ProsBlock";
+import SearchTabs from "@/ui/components/SearchTabs";
 import { apiRoutes } from "../api/config";
 
 export const metadata = {
@@ -44,6 +45,10 @@ export default async function Page() {
             Бронируй лучшие экскурсии и транcферы
           </h1>
         </div>
+        <div className="absolute z-10 h-full w-full flex items-center justify-center">
+          <SearchTabs />
+        </div>
+
         <ImageSlider />
       </div>
       <div className="my-6">
