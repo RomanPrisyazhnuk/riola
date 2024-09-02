@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@headlessui/react": "1.7.18",
+    "@nextui-org/react": "^2.4.6",
     "@tailwindcss/container-queries": "0.1.1",
     "clsx": "2.1.0",
+    "framer-motion": "^11.3.31",
     "lucide-react": "0.358.0",
     "next": "14.2.5",
     "react": "^18",

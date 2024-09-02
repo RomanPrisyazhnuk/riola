@@ -2,10 +2,11 @@ import TypographyPlugin from "@tailwindcss/typography";
 import FormPlugin from "@tailwindcss/forms";
 import ContainerQueriesPlugin from "@tailwindcss/container-queries";
 import { type Config } from "tailwindcss";
+const {nextui} = require("@nextui-org/react");
 
 const config: Config = {
-	content: ["./src/**/*.{ts,tsx}"],
-	plugins: [TypographyPlugin, FormPlugin, ContainerQueriesPlugin],
+	content: ["./src/**/*.{ts,tsx}", "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"],
+	plugins: [TypographyPlugin, FormPlugin, ContainerQueriesPlugin, nextui()],
 	theme: {
 	
 		borderRadius: {
