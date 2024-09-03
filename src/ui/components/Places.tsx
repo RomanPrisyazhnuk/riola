@@ -23,6 +23,8 @@ export const Places = ({ places }: { places: Place[] }) => {
                 />
                  <div className="absolute inset-0 bg-black opacity-50 "></div>
                 <p className="absolute left-6 top-6 text-white">{place.title}</p>
+                {/* <button className="absolute border-2 rounded-md right-10 bottom-14 px-4 py-2 text-white">Смотреть</button> */}
+
                 <p className="absolute right-6 bottom-6 text-white">{`${place.excursionsCount} экскурсий`}</p>
                 </Link>
             </div>

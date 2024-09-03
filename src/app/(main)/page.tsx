@@ -38,28 +38,27 @@ export default async function Page() {
   }
 
   return (
-    <section className="mx-auto max-w-7xl">
-      <div className="relative w-full ">
-        <div className="absolute z-10 flex flex-col w-full gap-y-7  p-6">
-          <h1 className="text-[32px] sm:text-6xl left-6 top-20 z-10  text-white  p-2 group font-bold max-w-4xl">
+    <div className="mx-auto max-w-7xl">
+      <section className="relative w-full ">
+        <div className="absolute z-10 flex flex-col w-full h-full  p-3 md:p-12">
+          <h1 className="text-[28px] sm:text-[32px] md:text-6xl left-6 top-25 z-10  text-white  p-2 group font-bold max-w-4xl">
             Бронируй лучшие экскурсии и транcферы
           </h1>
-        </div>
-        <div className="absolute z-10 h-full w-full flex items-center justify-center">
+          <div className="h-full w-full flex items-end justify-center">
           <SearchTabs />
         </div>
-
+        </div>
         <ImageSlider />
-      </div>
-      <div className="my-6">
+      </section>
+      <section className="my-6">
         <ProsBlock />
-      </div>
+      </section>
       <Places places={mockPlaces} />
       <h2 className="p-3 text-center text-textColor">Популярные</h2>
       <ProductList products={products} />
-      <div className="my-6">
+      <section className="my-6">
         <BonusBlock />
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
