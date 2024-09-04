@@ -53,11 +53,18 @@ export default async function Page() {
         <ImageSlider />
       </section>
       <section className="my-6">
-        <ProsBlock />
+        <h2 className="text-textColor text-[24px] font-semibold pb-2">
+          Выберите направление
+        </h2>
+        <Places places={mockPlaces} />
       </section>
-      <Places places={mockPlaces} />
-      <h2 className="p-3 text-center text-textColor">Популярные</h2>
-      <ProductList products={products} />
+      <ProsBlock />
+      <section className="my-6">
+        <h2 className="text-textColor text-[24px] font-semibold pb-2">
+          Популярные направления
+        </h2>
+        <ProductList products={products} />
+      </section>
       <section className="my-6">
         <BonusBlock />
       </section>

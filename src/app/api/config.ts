@@ -2,5 +2,6 @@ export const apiRoutes = {
   baseUrl: "https://api.riolatravel.com",
   public: "public",
   excursions: "excursions/search",
-  transferRoutes: 'transfers/routes'
+  excursionLocations: "excursions/locations",
+  transferRoutes: "transfers/routes",
 };

@@ -1,9 +1,11 @@
+import { Image } from "./image";
+
 export interface Place {
   id: string;
   slug: string;
   title: string;
   desctiption: string;
-  image: string;
+  image: Image;
   excursionsCount: number;
 }
 
@@ -12,7 +14,7 @@ export const mockPlace1: Place = {
   slug: "pataiya",
   title: "Паттайя",
   desctiption: "Паттайя",
-  image: "/pataiya.webp",
+  image: { thumb: "/pataiya.webp", large: "/pataiya.webp" },
   excursionsCount: 32,
 };
 
@@ -21,7 +23,7 @@ export const mockPlace2 = {
   slug: "vietnam",
   title: "Вьетнам",
   desctiption: "Паттайя",
-  image: "/vietnam.webp",
+  image: { thumb: "/vietnam.webp", large: "/vietnam.webp" },
   excursionsCount: 15,
 };
 
@@ -30,7 +32,7 @@ export const mockPlace3 = {
   slug: "phuket",
   title: "Пхукет",
   desctiption: "Паттайя",
-  image: "/phuket.webp",
+  image: { thumb: "/phuket.webp", large: "/phuket.webp" },
   excursionsCount: 34,
 };
 
@@ -39,7 +41,7 @@ export const mockPlace4 = {
   slug: "stambul",
   title: "Стамбул",
   desctiption: "Паттайя",
-  image: "/stambul.webp",
+  image: { thumb: "/stambul.webp", large: "/stambul.webp" },
   excursionsCount: 70,
 };
 
@@ -48,7 +50,7 @@ export const mockPlace5 = {
   slug: "banghoc",
   title: "Бангкок",
   desctiption: "Паттайя",
-  image: "/banghoc.webp",
+  image: { thumb: "/banghoc.webp", large: "/banghoc.webp" },
   excursionsCount: 50,
 };
 
@@ -57,7 +59,7 @@ export const mockPlace6 = {
   slug: "kapadokia",
   title: "Каппадокия",
   desctiption: "Паттайя",
-  image: "/kapadokia.webp",
+  image: { thumb: "/kapadokia.webp", large: "/kapadokia.webp" },
   excursionsCount: 21,
 };
 export const mockPlaces: Place[] = [

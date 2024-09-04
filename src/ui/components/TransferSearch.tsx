@@ -57,13 +57,13 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
     const fetchLocations = async () => {
       try {
         const response = await fetch(
-          `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.transferRoutes}`
+          `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.transferRoutes}`,
         );
         if (!response.ok) {
           throw new Error("Ошибка при загрузке данных");
         }
         const data = await response.json();
-        if(data?.data){
+        if (data?.data) {
           setLocations(data.data);
         }
         // console.log(data);

@@ -34,8 +34,8 @@ export const mockExcursion1 = {
 };
 export const mockExcursion2 = {
   id: "1",
-  name: "Симиланские острова на 1 день",
-  slug: "phi-phi-5-ilands",
+  name: "Симиланские острова",
+  slug: "semilands",
   image: { thumb: "/min-520-820-90.webp", large: "/min-520-820-90.webp" },
   orderedCount: "80k",
   price: [
@@ -49,6 +49,12 @@ export const mockExcursion2 = {
 };
 
 export const mockExcursions = [
+  mockExcursion1,
+  mockExcursion2,
+  mockExcursion1,
+  mockExcursion2,
+  mockExcursion1,
+  mockExcursion2,
   mockExcursion1,
   mockExcursion2,
   mockExcursion1,
