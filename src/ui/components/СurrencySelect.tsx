@@ -1,40 +1,29 @@
 "use client";
-
 import { useState } from "react";
-import Image from "next/image";
-
+import { Select, SelectItem } from "@nextui-org/react";
+import { selectArrow } from "../atoms/selectArrow";
 const currencies = ["USD", "BAT", "RUB"];
 
 export const СurrencySelect = () => {
   const [activeCurrency, setActiveCurrency] = useState("USD");
 
   return (
-    <div className="relative inline-block">
-      <select
-        className="appearance-none  w-fit bg-transparent px-4 py-2 pr-8 text-sm text-gray-700 focus:outline-none border-none"
-        onChange={(e) => {
-          const newCurrency = e.currentTarget.value;
-          setActiveCurrency(newCurrency);
-          console.log(newCurrency);
+    <div className="w-[82px] relative inline-block">
+      <Select
+        placeholder="Выберите место"
+        variant="bordered"
+        defaultSelectedKeys={[currencies[0]]}
+        //@ts-ignore
+        onSelectionChange={(item: { currentKey: string }) => {
+          // onSelectFromChange(item.currentKey);
         }}
-        value={activeCurrency}
+        className=""
+        selectorIcon={selectArrow}
       >
-        {currencies.map((currency) => (
-          <option key={currency} value={currency}>
-            {currency}
-          </option>
+        {currencies.map((item) => (
+          <SelectItem key={item}>{item}</SelectItem>
         ))}
-      </select>
-      {/* Кастомная стрелочка */}
-      <div className="absolute inset-y-0 right-3 flex  pointer-events-none">
-        <Image
-          src={"/icons/arrow.svg"}
-          alt={"Arrow"}
-          width={16}
-          height={16}
-          className="h-full object-contain object-center"
-        />
-      </div>
+      </Select>
     </div>
   );
 };

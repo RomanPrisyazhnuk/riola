@@ -6,7 +6,7 @@ import { СurrencySelect } from "../СurrencySelect";
 export const Nav = () => {
   return (
     <nav
-      className="flex items-center gap-4 lg:gap-6 min-w-fit"
+      className="flex items-center gap-2 lg:gap-6 min-w-fit"
       aria-label="Main navigation"
     >
       <СurrencySelect />

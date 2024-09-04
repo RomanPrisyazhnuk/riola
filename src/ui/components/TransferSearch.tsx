@@ -15,6 +15,7 @@ import {
   TransferLocation,
 } from "@/entities/transferLocation";
 import { apiRoutes } from "@/app/api/config";
+import { selectArrow } from "../atoms/selectArrow";
 
 interface TransferSearchProps {}
 export const locationsforSelect = [
@@ -96,21 +97,13 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
     return `${adults} взр, ${children} дет`;
   };
 
-  const selectArrow = (
-    <Image
-      src={"/icons/arrow.svg"}
-      alt={"Arrow"}
-      width={16}
-      height={16}
-      className="h-full object-contain object-center"
-    />
-  );
   return (
     <div className="flex flex-col md:flex-row gap-6 w-full justify-between">
       <Select
         label="Откуда"
         placeholder="Выберите место"
         labelPlacement="outside"
+        variant="bordered"
         //@ts-ignore
         onSelectionChange={(item: { currentKey: string }) => {
           onSelectFromChange(item.currentKey);
@@ -133,6 +126,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
       </Select>
       <Select
         label="Куда"
+        variant="bordered"
         placeholder="Выберите место"
         labelPlacement="outside"
         isDisabled={!selectedLocationFrom}
@@ -156,7 +150,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
         <label className="text-small">Пассажиры</label>
         <Dropdown closeOnSelect={false} disableAnimation>
           <DropdownTrigger>
-            <Button className="w-full bg-default-100 mt-1">
+            <Button className="w-full bg-white border-2 border-grey-200 mt-1">
               <div className="flex items-center w-full">
                 <Image
                   src={"/icons/group.svg"}

@@ -25,6 +25,7 @@ const MainSearch: FC<MainSearchProps> = ({}) => {
     <div className="flex flex-col md:flex-row gap-6 w-full justify-between">
       <Select
         label="Что есть рядом"
+        variant="bordered"
         placeholder="Выберите место"
         labelPlacement="outside"
         className=""
