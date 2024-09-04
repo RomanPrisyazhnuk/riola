@@ -1,5 +1,4 @@
-export interface Price{
-    amount: string
-    desctiption:string
+export interface Price {
+  amount: string;
+  desctiption: string;
 }
-       

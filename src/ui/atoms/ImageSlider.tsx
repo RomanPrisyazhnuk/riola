@@ -12,10 +12,10 @@ interface ImageData {
 // Image data array
 const images: ImageData[] = [
   {
-    src: '/beach.webp',
+    src: "/beach.webp",
   },
   {
-    src: '/banner1.png',
+    src: "/banner1.png",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function ImageSlider(): JSX.Element {
           className="rounded-lg transition-all duration-400 ease-in-out cursor-pointer"
         />
       </div>
-    
+
       {/* <button
         className="absolute left-6 top-1/2 transform h-[40px] rounded-xl hover:bg-[#1a222f] mx-1 -mt-[10px] -translate-y-1/2 bg-[#111927] text-white p-2 group"
         onClick={prevSlide}

@@ -2,7 +2,8 @@ export const metadata = {
   title: "Политика конфиденциальности",
   description: "Политика конфиденциальности caйта",
 };
-const dataHtmlString = {__html :`<div id="widget-1430" data-row="1011" data-priority="0" class="col-18 col-sm-18 col-md-18 col-lg-18 col-xl-18">
+const dataHtmlString = {
+  __html: `<div id="widget-1430" data-row="1011" data-priority="0" class="col-18 col-sm-18 col-md-18 col-lg-18 col-xl-18">
 <p class="MsoNormal" style="text-align:justify"><br></p><h1 style="text-align: center;"><span lang="ru">Политика
 конфиденциальности</span></h1><p class="MsoNormal" style="text-align:justify"><span lang="ru">&nbsp;</span></p><p class="MsoNormal" style="text-align:justify"><span lang="ru">Настоящая Политика
 конфиденциальности персональных данных (далее – Политика конфиденциальности)
@@ -152,13 +153,16 @@ cookies может повлечь невозможность доступа к �
 </p><p class="MsoNormal" style="text-align:justify"><span lang="ru">9.2. Новая Политика
 конфиденциальности вступает в силу с момента ее размещения на сайте, если иное
 не предусмотрено новой редакцией Политики конфиденциальности.<o:p></o:p></span></p>
-</div>`}
+</div>`,
+};
 
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 export default function PrivacyPolicyPage() {
-
   return (
-    <section className="mx-auto max-w-7xl" dangerouslySetInnerHTML={dataHtmlString} />
+    <section
+      className="mx-auto max-w-7xl"
+      dangerouslySetInnerHTML={dataHtmlString}
+    />
   );
 }

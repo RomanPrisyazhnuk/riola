@@ -3,33 +3,29 @@ import "./globals.css";
 import { type ReactNode } from "react";
 import { type Metadata } from "next";
 import { DraftModeNotification } from "@/ui/components/DraftModeNotification";
-import {NextUIProvider} from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Saleor Storefront example",
-	description: "Starter pack for building performant e-commerce experiences with Saleor.",
-	metadataBase: process.env.NEXT_PUBLIC_STOREFRONT_URL
-		? new URL(process.env.NEXT_PUBLIC_STOREFRONT_URL)
-		: undefined,
+  title: "Saleor Storefront example",
+  description:
+    "Starter pack for building performant e-commerce experiences with Saleor.",
+  metadataBase: process.env.NEXT_PUBLIC_STOREFRONT_URL
+    ? new URL(process.env.NEXT_PUBLIC_STOREFRONT_URL)
+    : undefined,
 };
 
 export default function RootLayout(props: { children: ReactNode }) {
-	const { children } = props;
+  const { children } = props;
 
-	return (
-		<html lang="en" className="min-h-dvh">
-    
+  return (
+    <html lang="en" className="min-h-dvh">
+      <body className={`${inter.className} min-h-dvh`}>
+        <NextUIProvider>{children}</NextUIProvider>
 
-			<body className={`${inter.className} min-h-dvh`}>
-			<NextUIProvider>
-				{children}
-				</NextUIProvider>
-
-				<DraftModeNotification />
-			</body>
-
-		</html>
-	);
+        <DraftModeNotification />
+      </body>
+    </html>
+  );
 }

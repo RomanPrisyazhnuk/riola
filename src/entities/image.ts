@@ -1,4 +1,4 @@
-export interface Image{
-    thumb: string
-    large: string
+export interface Image {
+  thumb: string;
+  large: string;
 }

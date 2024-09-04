@@ -1,14 +1,11 @@
 // import Link from "next/link";
 import { NavLink } from "./NavLink";
 
-
 export const NavLinks = async ({ channel }: { channel: string }) => {
-
-
-	return (
-		<>
-			<NavLink href="/products">All</NavLink>
-			{/* {navLinks.menu?.items?.map((item) => {
+  return (
+    <>
+      <NavLink href="/products">All</NavLink>
+      {/* {navLinks.menu?.items?.map((item) => {
 				if (item.category) {
 					return (
 						<NavLink key={item.id} href={`/categories/${item.category.slug}`}>
@@ -39,6 +36,6 @@ export const NavLinks = async ({ channel }: { channel: string }) => {
 				}
 				return null;
 			})} */}
-		</>
-	);
+    </>
+  );
 };

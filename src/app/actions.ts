@@ -1,6 +1,6 @@
 "use server";
 
 export async function logout() {
-	"use server";
-	// getServerAuthClient().signOut();
+  "use server";
+  // getServerAuthClient().signOut();
 }

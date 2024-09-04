@@ -17,22 +17,24 @@ export default async function Page() {
   let products;
 
   try {
-    const res = await fetch(`${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}`, {
-      cache: 'force-cache',
-    });
-	
-    if (!res.ok) {
-      throw new Error('Failed to fetch products');
-    }
-    
-    const respData = await res.json();
-	console.log('products');
-	// products = respData.data
-	console.log(products);
-	products = mockExcursions;
+    const res = await fetch(
+      `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}`,
+      {
+        cache: "force-cache",
+      },
+    );
 
+    if (!res.ok) {
+      throw new Error("Failed to fetch products");
+    }
+
+    const respData = await res.json();
+    console.log("products");
+    // products = respData.data
+    console.log(products);
+    products = mockExcursions;
   } catch (error) {
-	console.log(error);
+    console.log(error);
 
     products = mockExcursions;
   }
@@ -45,8 +47,8 @@ export default async function Page() {
             Бронируй лучшие экскурсии и транcферы
           </h1>
           <div className="h-full w-full flex items-end justify-center">
-          <SearchTabs />
-        </div>
+            <SearchTabs />
+          </div>
         </div>
         <ImageSlider />
       </section>

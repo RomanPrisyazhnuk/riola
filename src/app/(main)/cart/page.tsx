@@ -6,41 +6,43 @@ import { formatMoney, getHrefForVariant } from "@/lib/utils";
 import Link from "next/link";
 
 export const metadata = {
-	title: "Shopping Cart · Saleor Storefront example",
+  title: "Shopping Cart · Saleor Storefront example",
 };
 
 export default async function Page() {
-	const checkoutId = Checkout.getIdFromCookies();
+  const checkoutId = Checkout.getIdFromCookies();
 
-	const checkout = await Checkout.find(checkoutId);
+  const checkout = await Checkout.find(checkoutId);
 
-	if (!checkout || checkout.lines?.length < 1) {
-		return (
-			<section className="mx-auto max-w-7xl p-8">
-				<h1 className="mt-8 text-3xl font-bold text-neutral-900">Ваша корзина пуста</h1>
-				<p className="my-12 text-sm text-neutral-500">
-					Вы пока ничего не добавили в корзину.
-				</p>
-				<Link
-					href="/products"
-					className="inline-block max-w-full rounded border border-transparent bg-neutral-900 px-6 py-3 text-center font-medium text-neutral-50 hover:bg-neutral-800 aria-disabled:cursor-not-allowed aria-disabled:bg-neutral-500 sm:px-16"
-				>
-					Посмотреть наши предложения
-				</Link>
-			</section>
-		);
-	}
+  if (!checkout || checkout.lines?.length < 1) {
+    return (
+      <section className="mx-auto max-w-7xl p-8">
+        <h1 className="mt-8 text-3xl font-bold text-neutral-900">
+          Ваша корзина пуста
+        </h1>
+        <p className="my-12 text-sm text-neutral-500">
+          Вы пока ничего не добавили в корзину.
+        </p>
+        <Link
+          href="/products"
+          className="inline-block max-w-full rounded border border-transparent bg-neutral-900 px-6 py-3 text-center font-medium text-neutral-50 hover:bg-neutral-800 aria-disabled:cursor-not-allowed aria-disabled:bg-neutral-500 sm:px-16"
+        >
+          Посмотреть наши предложения
+        </Link>
+      </section>
+    );
+  }
 
-	return (
-		<section className="mx-auto max-w-7xl p-8">
-			<h1 className="mt-8 text-3xl font-bold text-neutral-900">Ваша корзина</h1>
-			<form className="mt-12">
-				<ul
-					data-testid="CartProductList"
-					role="list"
-					className="divide-y divide-neutral-200 border-b border-t border-neutral-200"
-				>
-					{/* {checkout.lines.map((item) => (
+  return (
+    <section className="mx-auto max-w-7xl p-8">
+      <h1 className="mt-8 text-3xl font-bold text-neutral-900">Ваша корзина</h1>
+      <form className="mt-12">
+        <ul
+          data-testid="CartProductList"
+          role="list"
+          className="divide-y divide-neutral-200 border-b border-t border-neutral-200"
+        >
+          {/* {checkout.lines.map((item) => (
 						<li key={item.id} className="flex py-4">
 							<div className="aspect-square h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border bg-neutral-50 sm:h-32 sm:w-32">
 								{item.variant?.product?.thumbnail?.url && (
@@ -80,30 +82,32 @@ export default async function Page() {
 							</div>
 						</li>
 					))} */}
-				</ul>
+        </ul>
 
-				<div className="mt-12">
-					<div className="rounded border bg-neutral-50 px-4 py-2">
-						<div className="flex items-center justify-between gap-2 py-2">
-							<div>
-								<p className="font-semibold text-neutral-900">Your Total</p>
-								<p className="mt-1 text-sm text-neutral-500">Shipping will be calculated in the next step</p>
-							</div>
-							<div className="font-medium text-neutral-900">
-								100$
-								{/* {formatMoney(checkout.totalPrice.gross.amount, checkout.totalPrice.gross.currency)} */}
-							</div>
-						</div>
-					</div>
-					<div className="mt-10 text-center">
-						<CheckoutLink
-							checkoutId={checkoutId}
-							disabled={!checkout.lines.length}
-							className="w-full sm:w-1/3"
-						/>
-					</div>
-				</div>
-			</form>
-		</section>
-	);
+        <div className="mt-12">
+          <div className="rounded border bg-neutral-50 px-4 py-2">
+            <div className="flex items-center justify-between gap-2 py-2">
+              <div>
+                <p className="font-semibold text-neutral-900">Your Total</p>
+                <p className="mt-1 text-sm text-neutral-500">
+                  Shipping will be calculated in the next step
+                </p>
+              </div>
+              <div className="font-medium text-neutral-900">
+                100$
+                {/* {formatMoney(checkout.totalPrice.gross.amount, checkout.totalPrice.gross.currency)} */}
+              </div>
+            </div>
+          </div>
+          <div className="mt-10 text-center">
+            <CheckoutLink
+              checkoutId={checkoutId}
+              disabled={!checkout.lines.length}
+              className="w-full sm:w-1/3"
+            />
+          </div>
+        </div>
+      </form>
+    </section>
+  );
 }
