@@ -35,7 +35,7 @@ export default function SubscribeBlock() {
       return;
     }
 
-    setError(null); // Очистить ошибку перед отправкой запроса
+    setError(null);
     try {
       const response = await fetch(
         `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.subscribe}`,
