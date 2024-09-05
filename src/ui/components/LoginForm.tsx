@@ -33,11 +33,10 @@ export function LoginForm() {
   return (
     <div className="mx-auto mt-16 w-full max-w-lg p-3 shadow-md shadow-cyan-100 rounded-md">
       <form onSubmit={handleSubmit} className="flex flex-col">
-      <Input
+        <Input
           type="email"
           variant="bordered"
           label="Email"
-          placeholder="you@example.com"
           labelPlacement="outside"
         />
         <Spacer y={1.5} />
@@ -45,7 +44,6 @@ export function LoginForm() {
           type="password"
           variant="bordered"
           label="Пароль"
-          placeholder="you@example.com"
           labelPlacement="outside"
         />
         <Spacer y={1.5} />
@@ -59,9 +57,7 @@ export function LoginForm() {
       {errors.length > 0 && (
         <div className="mt-4">
           {errors.map((error, index) => (
-            <span key={index}>
-              {error}
-            </span>
+            <span key={index}>{error}</span>
           ))}
         </div>
       )}

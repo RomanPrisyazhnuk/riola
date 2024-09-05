@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout(props: { children: ReactNode }) {
   return (
-    <div className="flex min-h-[calc(100dvh-64px)] flex-col p-3">
+    <div className="flex min-h-[calc(100dvh-64px)] flex-col px-3">
       <Header />
       <main className="flex-1">{props.children}</main>
       <Footer />
