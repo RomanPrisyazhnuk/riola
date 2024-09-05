@@ -73,7 +73,7 @@ export default function SubscribeBlock() {
               alt={"Close"}
               width={28}
               height={28}
-              className="absolute top-0 right-0 object-contain object-center"
+              className="absolute top-0 right-0 md:right-[12px] object-contain object-center"
               onClick={() => setIsVisible(false)}
             />
           </div>
