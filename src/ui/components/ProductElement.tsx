@@ -16,7 +16,7 @@ export function ProductElement({
       <Link
         href={`/${product.location.slug}/${product.slug}`}
         key={product.id}
-        className="relative"
+        className="relative flex flex-col h-full"
       >
         <ProductImageWrapper
           loading={loading}
@@ -47,7 +47,8 @@ export function ProductElement({
           />
           <span className="text-[14px] text-textColor">{`${product.rating}/5`}</span>
         </div>
-        <div className="flex flex-col p-2 w-full justify-between">
+        <div className="flex flex-col p-2 w-full h-full justify-between">
+          <div>
           <p className="text-textColor font-semibold text-[20px]">
             {product.name}
           </p>
@@ -61,7 +62,9 @@ export function ProductElement({
             />
             <p className="text-textColor text-[16px]">{`${product.location.name}${product.location.parent ? `, ${product.location.parent.name}` : ""}`}</p>
           </div>
-          <div className="flex gap-2 items-center self-end font-semibold">
+          </div>
+          
+          <div className="flex gap-2 items-center self-end justify-self-end	font-semibold">
             {product.prices && product.prices[0] && (
               <s className="text-textColor text-[16px]">{`От: $${product.prices[0].old_amount}`}</s>
             )}

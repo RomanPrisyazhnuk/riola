@@ -24,7 +24,6 @@ export default function SearchBlock() {
       }
 
       const respData = await res.json();
-      console.log(respData);
 
       setProducts(respData.data);
     } catch (err) {
