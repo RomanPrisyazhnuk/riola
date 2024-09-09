@@ -1,4 +1,3 @@
-import { mockExcursions } from "@/entities/excursion";
 import { mockPlaces } from "@/entities/place";
 import ImageSlider from "@/ui/atoms/ImageSlider";
 import BonusBlock from "@/ui/components/bonus/BonusBlock";
@@ -14,29 +13,24 @@ export const metadata = {
 };
 
 export default async function Page() {
-  let products;
+  let popularExcursions;
 
   try {
     const res = await fetch(
-      `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}`,
+      `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}?paginate=0&popular=1&limit=8`,
       {
         cache: "force-cache",
       },
     );
 
     if (!res.ok) {
-      throw new Error("Failed to fetch products");
+      throw new Error("Failed to fetch");
     }
 
     const respData = await res.json();
-    console.log("products");
-    // products = respData.data
-    console.log(products);
-    products = mockExcursions;
+    popularExcursions = respData.data;
   } catch (error) {
     console.log(error);
-
-    products = mockExcursions;
   }
 
   return (
@@ -47,7 +41,7 @@ export default async function Page() {
             Бронируй лучшие экскурсии и транcферы
           </h1>
           <div className="h-full w-full flex items-end justify-center">
-            <SearchTabs />
+            <SearchTabs popularExcursions={popularExcursions} />
           </div>
         </div>
         <ImageSlider />
@@ -61,9 +55,9 @@ export default async function Page() {
       <ProsBlock />
       <section className="my-6">
         <h2 className="text-textColor text-[24px] font-semibold pb-2">
-          Популярные направления
+          Популярные
         </h2>
-        <ProductList products={products} />
+        <ProductList products={popularExcursions} />
       </section>
       <section className="my-6">
         <BonusBlock />

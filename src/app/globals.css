@@ -9,3 +9,7 @@ body {
 input {
   border: none;
 }
+
+.bordered-input {
+  border: 2px red;
+}

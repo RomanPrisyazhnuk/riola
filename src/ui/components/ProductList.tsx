@@ -1,6 +1,11 @@
+import { Excursion } from "@/entities/excursion";
 import { ProductElement } from "./ProductElement";
 
-export const ProductList = ({ products }: { products: readonly any[] }) => {
+export const ProductList = ({
+  products,
+}: {
+  products: readonly Excursion[];
+}) => {
   return (
     <ul
       role="list"
@@ -9,7 +14,7 @@ export const ProductList = ({ products }: { products: readonly any[] }) => {
     >
       {products.map((product, index) => (
         <ProductElement
-          key={product.id}
+          key={product.id + product.name}
           product={product}
           priority={index < 2}
           loading={index < 3 ? "eager" : "lazy"}

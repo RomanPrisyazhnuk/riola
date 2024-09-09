@@ -1,5 +1,4 @@
-import { mockExcursions } from "@/entities/excursion";
-import { ProductList } from "@/ui/components/ProductList";
+import SearchBlock from "@/ui/components/SearchBlock";
 
 export const metadata = {
   title: "",
@@ -12,11 +11,9 @@ export default async function PlacePage() {
     return null;
   }
 
-  const products = mockExcursions;
-
   return (
     <section className="mx-auto max-w-7xl pb-16">
-      <ProductList products={products} />
+      <SearchBlock />
     </section>
   );
 }

@@ -25,7 +25,7 @@ export const SearchBar = () => {
           placeholder="Поиск и бронирование экскурсий и трансферов"
           autoComplete="on"
           required
-          className="h-10 w-full rounded-md border border-neutral-300 bg-transparent bg-white px-4 py-2 pr-10 text-sm text-black placeholder:text-neutral-500 focus:border-black focus:ring-black"
+          className="h-10 w-full rounded-md bordered-input border-2 bg-white px-4 py-2 pr-10 text-sm text-black placeholder:text-neutral-500 focus:border-black focus:ring-black"
         />
       </label>
       <div className="absolute inset-y-0 right-0">

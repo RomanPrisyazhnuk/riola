@@ -1,13 +1,16 @@
 "use client";
+import { Excursion } from "@/entities/excursion";
 import type { FC } from "react";
 import { useState } from "react";
 import MainSearch from "./MainSearch";
 import TransferSearch from "./TransferSearch";
 
-interface SearchTabsProps {}
+interface SearchTabsProps {
+  popularExcursions: Excursion[];
+}
 
-const SearchTabs: FC<SearchTabsProps> = ({}) => {
-  const [activeTab, setActiveTab] = useState("transfer");
+const SearchTabs: FC<SearchTabsProps> = ({ popularExcursions }) => {
+  const [activeTab, setActiveTab] = useState("excursions");
 
   return (
     <div className="w-full">
@@ -35,8 +38,8 @@ const SearchTabs: FC<SearchTabsProps> = ({}) => {
         )}
 
         {activeTab === "excursions" && (
-          <div className="pt-[4px]">
-            <MainSearch />
+          <div className="">
+            <MainSearch popularExcursions={popularExcursions} />
           </div>
         )}
       </div>

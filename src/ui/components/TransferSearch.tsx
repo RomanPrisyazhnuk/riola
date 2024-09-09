@@ -10,10 +10,7 @@ import {
   Button,
 } from "@nextui-org/react";
 import Image from "next/image";
-import {
-  mockTransferLocations,
-  TransferLocation,
-} from "@/entities/transferLocation";
+import { mockLocationObjs, LocationObj } from "@/entities/location";
 import { apiRoutes } from "@/app/api/config";
 import { selectArrow } from "../atoms/selectArrow";
 
@@ -30,22 +27,20 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(1);
 
-  const [locations, setLocations] = useState<TransferLocation[]>([]);
+  const [locations, setLocations] = useState<LocationObj[]>([]);
   const [locationFromOptions, setlocationFromOptions] = useState<
     { key: string; label: string }[]
   >([]);
   const [selectedLocationFrom, setSelectedLocationFrom] =
-    useState<TransferLocation | null>(null);
+    useState<LocationObj | null>(null);
   const [locationToOptions, setlocationToOptions] = useState<
     { key: string; label: string }[]
   >([]);
   const [selectedLocationTo, setSelectedLocationTo] =
-    useState<TransferLocation | null>(null);
+    useState<LocationObj | null>(null);
 
-  const prepareTransferLocationsOptions = (
-    transferLocations: TransferLocation[],
-  ) => {
-    return transferLocations.map((item) => {
+  const prepareLocationObjsOptions = (LocationObjs: LocationObj[]) => {
+    return LocationObjs.map((item) => {
       const option = { key: "", label: "" };
       option.key = item.slug;
       option.label = item.name;
@@ -68,7 +63,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
           setLocations(data.data);
         }
         // console.log(data);
-        // setLocations(mockTransferLocations);
+        // setLocations(mockLocationObjs);
       } catch (error) {
         console.log(error);
       }
@@ -78,7 +73,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
   }, []);
 
   useEffect(() => {
-    setlocationFromOptions(prepareTransferLocationsOptions(locations));
+    setlocationFromOptions(prepareLocationObjsOptions(locations));
   }, [locations]);
 
   const onSelectFromChange = (selectedItemSlug: string) => {
@@ -88,7 +83,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
     if (location) {
       setSelectedLocationFrom(location);
       if (location.routes) {
-        setlocationToOptions(prepareTransferLocationsOptions(location.routes));
+        setlocationToOptions(prepareLocationObjsOptions(location.routes));
       }
     }
   };

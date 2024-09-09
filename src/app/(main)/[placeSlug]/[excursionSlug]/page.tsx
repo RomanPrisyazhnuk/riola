@@ -6,7 +6,11 @@ export const metadata = {
   description: "",
 };
 
-export default async function PlacePage() {
+export default async function ExcursionPage({
+  params,
+}: {
+  params: { placeSlug: string; excursionSlug: string };
+}) {
   const data = { collection: { products: { edges: [] } } };
   if (!data.collection?.products) {
     return null;
@@ -16,7 +20,9 @@ export default async function PlacePage() {
 
   return (
     <section className="mx-auto max-w-7xl pb-16">
-      <ProductList products={products} />
+      <div className="mt-6 mx-auto">
+        {`Тут будет информация о экскурсии со слагом ${params.excursionSlug}`}
+      </div>
     </section>
   );
 }

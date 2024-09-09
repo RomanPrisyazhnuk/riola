@@ -1,20 +1,20 @@
-export interface TransferCountry {
+export interface Country {
   id: number;
   name: string;
   slug: string;
   type: string | null;
 }
 
-export interface TransferLocation {
+export interface LocationObj {
   id: number;
   name: string;
   slug: string;
   type?: string | null;
-  parent: TransferCountry;
-  routes?: TransferLocation[];
+  parent: Country;
+  routes?: LocationObj[];
 }
 
-export const mockTransferLocations: TransferLocation[] = [
+export const mockLocationObjs: LocationObj[] = [
   {
     id: 4274,
     name: "\u0411\u0435\u043b\u0435\u043a",
