@@ -40,14 +40,16 @@ const MainSearch: FC<popularExcursions> = ({ popularExcursions }) => {
     }
   }, [searchQuery]);
   console.log("results", results);
-  
-  const imageRoute = <Image
-  src={"/icons/routing.svg"}
-  alt={"Search"}
-  width={24}
-  height={24}
-  className="h-5 w-5"
-/>
+
+  const imageRoute = (
+    <Image
+      src={"/icons/routing.svg"}
+      alt={"Search"}
+      width={24}
+      height={24}
+      className="h-5 w-5"
+    />
+  );
   const imageSearch = !isDropdownVisible ? (
     <Image
       src={"/icons/search.svg"}
@@ -69,7 +71,7 @@ const MainSearch: FC<popularExcursions> = ({ popularExcursions }) => {
         setResults(popularExcursions);
       }}
     />
-  )
+  );
 
   return (
     <div className="relative">
@@ -160,7 +162,6 @@ const MainSearch: FC<popularExcursions> = ({ popularExcursions }) => {
           </div>
         </div>
       )}
-
     </div>
   );
 };
