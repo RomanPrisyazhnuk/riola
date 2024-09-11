@@ -1,7 +1,8 @@
 import type { FC } from "react";
 import Image from "next/image";
-import { UserMenuContainer } from "../nav/components/UserMenu/UserMenuContainer";
+import AuthButton from "../auth/AuthButton";
 import StoreProvider from "@/ui/atoms/StoreProvider";
+import { PanelTypes } from "@/store/slices/panelSlice";
 
 const BonusBlock: FC = () => {
   return (
@@ -22,14 +23,23 @@ const BonusBlock: FC = () => {
       />
       <div className="relative z-30 p-6 mt-[300px] sm:mt-0">
         <p className="text-[32px] sm:text-[48px] font-bold text-textColor">
-          Войди и сэкономь{" "}
+          КАК СЭКОНОМИТЬ В ОТПУСКЕ
         </p>
+        <div className="flex gap-2">
+          <p className="text-[26px] sm:text-[32px] font-bold text-red-500">
+            до 1000$
+          </p>
+          <p className="text-[20px] sm:text-[24px] text-textColor font-semibold rotate-[-10deg]">
+            {` 100 000₽`}
+          </p>
+        </div>
+
         <p className="text-[20px] sm:text-[24px] text-textColor max-w-[578px] mb-6">
-          Вы можете сэкономить от 10% на любую экскурсию, когда зарегистрируете
-          аккаунт
+          Зарегистрируйтесь и получите гайд:  “43 приложения для экономии в
+          отпуске”
         </p>
         <StoreProvider>
-          <UserMenuContainer />
+          <AuthButton type={PanelTypes.Register} buttonChild={"Забрать"} />
         </StoreProvider>
       </div>
     </section>

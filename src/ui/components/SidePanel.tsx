@@ -1,5 +1,4 @@
 "use client";
-
 import { getPanelData, PanelTypes } from "@/store/slices/panelSlice";
 import { useSelector } from "react-redux";
 import AuthForm from "./auth/AuthForm";
@@ -8,20 +7,21 @@ export default function SidePanel() {
   const panelData = useSelector(getPanelData);
 
   const panelLayout = () => {
-    if(!panelData) return null;
+    if (!panelData) return null;
     switch (panelData.type) {
-      case PanelTypes.Auth: {
-        return <AuthForm />;
+      case PanelTypes.Login:
+      case PanelTypes.Register: {
+        return <AuthForm activeTab={panelData.type} />;
       }
       case PanelTypes.Cart: {
-        return <AuthForm />;
+        return null;
       }
       default: {
         return null;
       }
     }
   };
-  
+
   if (panelData) {
     return (
       <div className="fixed right-0 bottom-0 bg-white h-fit sm:h-full w-full sm:w-[356px] z-50">

@@ -3,7 +3,8 @@ import { RootState } from "../store";
 
 // Определение типов панелей с использованием перечисления
 export enum PanelTypes {
-  Auth = "auth",
+  Login = "login",
+  Register = "registration",
   Cart = "cart",
 }
 
@@ -33,6 +34,7 @@ const panelSlice = createSlice({
 });
 
 // Селекторы
-export const getPanelData = (state: RootState): PanelData | null => state.panel.panelData;
+export const getPanelData = (state: RootState): PanelData | null =>
+  state.panel.panelData;
 export const { openPanel, closePanel } = panelSlice.actions;
 export default panelSlice.reducer;

@@ -1,8 +1,9 @@
 import { Suspense } from "react";
-import { UserMenuContainer } from "./components/UserMenu/UserMenuContainer";
+import AuthButton from "../auth/AuthButton";
 import { CartNavItem } from "./components/CartNavItem";
 import { СurrencySelect } from "../СurrencySelect";
 import StoreProvider from "@/ui/atoms/StoreProvider";
+import { PanelTypes } from "@/store/slices/panelSlice";
 
 export const Nav = () => {
   return (
@@ -13,7 +14,7 @@ export const Nav = () => {
       <СurrencySelect />
       <Suspense fallback={<div className="w-8" />}>
         <StoreProvider>
-          <UserMenuContainer />
+          <AuthButton type={PanelTypes.Login} buttonChild={"Войти"} />
         </StoreProvider>
       </Suspense>
       <Suspense fallback={<div className="w-6" />}>
