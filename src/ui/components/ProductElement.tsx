@@ -49,21 +49,21 @@ export function ProductElement({
         </div>
         <div className="flex flex-col p-2 w-full h-full justify-between">
           <div>
-          <p className="text-textColor font-semibold text-[20px]">
-            {product.name}
-          </p>
-          <div className="flex items-center">
-            <Image
-              src={"/icons/location.svg"}
-              alt={"layers"}
-              width={20}
-              height={20}
-              className="h-full object-contain object-center"
-            />
-            <p className="text-textColor text-[16px]">{`${product.location.name}${product.location.parent ? `, ${product.location.parent.name}` : ""}`}</p>
+            <p className="text-textColor font-semibold text-[20px]">
+              {product.name}
+            </p>
+            <div className="flex items-center">
+              <Image
+                src={"/icons/location.svg"}
+                alt={"layers"}
+                width={20}
+                height={20}
+                className="h-full object-contain object-center"
+              />
+              <p className="text-textColor text-[16px]">{`${product.location.name}${product.location.parent ? `, ${product.location.parent.name}` : ""}`}</p>
+            </div>
           </div>
-          </div>
-          
+
           <div className="flex gap-2 items-center self-end justify-self-end	font-semibold">
             {product.prices && product.prices[0] && (
               <s className="text-textColor text-[16px]">{`От: $${product.prices[0].old_amount}`}</s>

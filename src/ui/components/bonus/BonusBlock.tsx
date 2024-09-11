@@ -1,12 +1,8 @@
 import type { FC } from "react";
 import Image from "next/image";
 import { UserMenuContainer } from "../nav/components/UserMenu/UserMenuContainer";
+import StoreProvider from "@/ui/atoms/StoreProvider";
 
-const prosContent = [
-  { image: "/icons/add.svg", text: "Бесплатная отмена и изменения заказа" },
-  { image: "/icons/card.svg", text: "Оплата на сайте или наличными на месте" },
-  { image: "/icons/clock.svg", text: "Поддержка на русском 24/7" },
-];
 const BonusBlock: FC = () => {
   return (
     <section className="relative rounded-lg  min-h-[344px] gap-6  overflow-hidden flex-wrap mt-6">
@@ -32,7 +28,9 @@ const BonusBlock: FC = () => {
           Вы можете сэкономить от 10% на любую экскурсию, когда зарегистрируете
           аккаунт
         </p>
-        <UserMenuContainer />
+        <StoreProvider>
+          <UserMenuContainer />
+        </StoreProvider>
       </div>
     </section>
   );

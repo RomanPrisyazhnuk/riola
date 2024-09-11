@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { UserMenuContainer } from "./components/UserMenu/UserMenuContainer";
 import { CartNavItem } from "./components/CartNavItem";
 import { СurrencySelect } from "../СurrencySelect";
+import StoreProvider from "@/ui/atoms/StoreProvider";
 
 export const Nav = () => {
   return (
@@ -11,7 +12,9 @@ export const Nav = () => {
     >
       <СurrencySelect />
       <Suspense fallback={<div className="w-8" />}>
-        <UserMenuContainer />
+        <StoreProvider>
+          <UserMenuContainer />
+        </StoreProvider>
       </Suspense>
       <Suspense fallback={<div className="w-6" />}>
         <CartNavItem />

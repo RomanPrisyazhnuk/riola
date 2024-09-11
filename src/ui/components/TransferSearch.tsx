@@ -10,7 +10,7 @@ import {
   Button,
 } from "@nextui-org/react";
 import Image from "next/image";
-import { mockLocationObjs, LocationObj } from "@/entities/location";
+import { LocationObj } from "@/entities/location";
 import { apiRoutes } from "@/app/api/config";
 import { selectArrow } from "../atoms/selectArrow";
 

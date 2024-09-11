@@ -37,8 +37,8 @@ export default async function Page() {
     <div className="mx-auto max-w-7xl">
       <section className="relative w-full ">
         <div className="absolute z-10 flex flex-col w-full h-full  p-3 md:p-12">
-          <h1 className="text-[28px] sm:text-[32px] md:text-6xl left-6 top-25 z-10  text-white  p-2 group font-bold max-w-4xl">
-            Бронируй лучшие экскурсии и транcферы
+          <h1 className="text-[28px] sm:text-[32px] md:text-[48px] left-6 top-25 z-10  text-white  p-2 group font-bold max-w-4xl">
+            Откройте Азию с RIOLA – ваш отдых с комфортом и выгодой!
           </h1>
           <div className="h-full w-full flex items-end justify-center">
             <SearchTabs popularExcursions={popularExcursions} />
