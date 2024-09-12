@@ -1,5 +1,5 @@
 import { Logo } from "./Logo";
-import { SearchBar } from "./nav/components/SearchBar";
+import MainSearch from "./MainSearch";
 import { Nav } from "./nav/Nav";
 import SubscribeBlock from "./SubscribeBlock";
 
@@ -9,7 +9,12 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-1 py-2 ">
         <div className="flex justify-between gap-2 md:gap-8 min-h-[52px]">
           <Logo />
-          <SearchBar />
+          <div       className="group relative my-2 flex w-full items-center justify-items-center text-sm hidden md:block"
+>
+<MainSearch withounLabel={true} placeholder="Поиск и бронирование экскурсий и трансферов"/>
+
+          </div>
+
           <Nav />
         </div>
       </div>

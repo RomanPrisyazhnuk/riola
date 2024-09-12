@@ -8,18 +8,19 @@ import { apiRoutes } from "@/app/api/config";
 import { useRouter } from "next/navigation";
 
 interface popularExcursions {
-  popularExcursions: Excursion[];
+  withounLabel?: boolean
+  placeholder?: string
 }
-const MainSearch: FC<popularExcursions> = ({ popularExcursions }) => {
+const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder}) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [results, setResults] = useState<Excursion[]>(popularExcursions);
+  const [results, setResults] = useState<Excursion[]>([]);
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const router = useRouter();
 
   const fetchData = async (query: string | null) => {
     try {
       const res = await fetch(
-        `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}${query ? `?search_term=${query}&paginate=0&limit=12` : ""}`,
+        `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}${query ? `?search_term=${query}&paginate=0&limit=12` : "?paginate=0&limit=12"}`,
       );
       if (!res.ok) {
         throw new Error("Failed to fetch products");
@@ -36,9 +37,10 @@ const MainSearch: FC<popularExcursions> = ({ popularExcursions }) => {
       fetchData(searchQuery);
       setDropdownVisible(true);
     } else {
-      setResults(popularExcursions);
+      fetchData('');
     }
   }, [searchQuery]);
+
   console.log("results", results);
 
   const imageRoute = (
@@ -68,23 +70,23 @@ const MainSearch: FC<popularExcursions> = ({ popularExcursions }) => {
       onClick={() => {
         setDropdownVisible(false);
         setSearchQuery("");
-        setResults(popularExcursions);
+        fetchData('');
       }}
     />
   );
 
   return (
     <div className="relative">
-      <label className="text-small text-textColor">Что есть рядом</label>
+      {!withounLabel && <label className="text-small text-textColor">Что есть рядом</label>}
 
       <Input
         type="text"
         variant="bordered"
-        placeholder="Поиск экскурсий"
+        placeholder={placeholder || "Поиск экскурсий"}
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         onFocus={() => setDropdownVisible(true)}
-        className="hidden md:block mt-[4px]"
+        className={`hidden md:block ${!withounLabel && "mt-[4px]"}`}
         endContent={imageSearch}
         startContent={imageRoute}
       />
@@ -118,8 +120,7 @@ const MainSearch: FC<popularExcursions> = ({ popularExcursions }) => {
                   alt={item.name || "image"}
                   width={60}
                   height={60}
-                  objectFit="cover"
-                  className="rounded-md"
+                  className="rounded-md max-w-[60px] max-h-[60px]"
                 />
                 <div className="ml-4 flex flex-col w-full justify-between">
                   <h5 className="font-semibold text-textColor">{item.name}</h5>

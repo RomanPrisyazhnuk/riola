@@ -14,7 +14,7 @@ const ProsBlock: FC = () => {
         alt={"bg"}
         width={740}
         height={63}
-        className="absolute left-0 top-0 z-20 max-w-[350px] sm:max-w-[403px] md:max-w-[805px]"
+        className="absolute left-0 top-0 max-w-[350px] sm:max-w-[403px] md:max-w-[805px]"
       />
       <Image
         src={"/prosBg2.png"}
@@ -26,7 +26,7 @@ const ProsBlock: FC = () => {
       {prosContent.map((item) => (
         <div
           key={item.text}
-          className="flex flex-col md:flex-row items-center gap-3 z-30"
+          className="flex flex-col md:flex-row items-center gap-3 relative"
         >
           <Image
             src={item.image}
