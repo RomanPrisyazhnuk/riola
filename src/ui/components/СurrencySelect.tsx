@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
-import { selectArrow } from "../atoms/selectArrow";
+import { SelectArrow } from "../atoms/SelectArrow";
 const currencies = ["USD", "BAT", "RUB"];
 
 export const СurrencySelect = () => {
@@ -18,7 +18,7 @@ export const СurrencySelect = () => {
           // onSelectFromChange(item.currentKey);
         }}
         className=""
-        selectorIcon={selectArrow}
+        selectorIcon={SelectArrow}
       >
         {currencies.map((item) => (
           <SelectItem key={item}>{item}</SelectItem>

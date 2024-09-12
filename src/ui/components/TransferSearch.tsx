@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import { LocationObj } from "@/entities/location";
 import { apiRoutes } from "@/app/api/config";
-import { selectArrow } from "../atoms/selectArrow";
+import { SelectArrow } from "../atoms/SelectArrow";
 
 interface TransferSearchProps {}
 export const locationsforSelect = [
@@ -113,7 +113,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
             className="h-full object-contain object-center"
           />
         }
-        selectorIcon={selectArrow}
+        selectorIcon={SelectArrow}
       >
         {locationFromOptions.map((item) => (
           <SelectItem key={item.key}>{item.label}</SelectItem>
@@ -135,7 +135,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
             className="h-full object-contain object-center"
           />
         }
-        selectorIcon={selectArrow}
+        selectorIcon={SelectArrow}
       >
         {locationToOptions.map((item) => (
           <SelectItem key={item.key}>{item.label}</SelectItem>

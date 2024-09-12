@@ -2,6 +2,7 @@
 import { getPanelData, PanelTypes } from "@/store/slices/panelSlice";
 import { useSelector } from "react-redux";
 import AuthForm from "./auth/AuthForm";
+import Cart from "./cart/Cart";
 
 export default function SidePanel() {
   const panelData = useSelector(getPanelData);
@@ -14,7 +15,7 @@ export default function SidePanel() {
         return <AuthForm activeTab={panelData.type} />;
       }
       case PanelTypes.Cart: {
-        return null;
+        return <Cart />;
       }
       default: {
         return null;

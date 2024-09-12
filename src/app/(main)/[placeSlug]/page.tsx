@@ -19,6 +19,7 @@ export default async function PlacePage({
       `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}${`?search_term=${params.placeSlug}&paginate=0&limit=30`}`,
       {
         cache: "force-cache",
+        next: { revalidate: 180 },
       },
     );
     if (!res.ok) {

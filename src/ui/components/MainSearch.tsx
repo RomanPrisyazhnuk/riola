@@ -109,7 +109,7 @@ const MainSearch: FC<popularExcursions> = ({ popularExcursions }) => {
 
             {results.map((item) => (
               <Link
-                href={`/${item.location.slug}/${item.slug}`}
+                href={`/${item.location?.slug || "excursion"}/${item.slug}`}
                 key={item.id}
                 className="mb-4 flex shadow-md rounded-md shadow-cyan-100 hover:bg-cyan-100 p-4"
               >
@@ -124,7 +124,7 @@ const MainSearch: FC<popularExcursions> = ({ popularExcursions }) => {
                 <div className="ml-4 flex flex-col w-full justify-between">
                   <h5 className="font-semibold text-textColor">{item.name}</h5>
                   <p className="text-sm text-gray-500">
-                    {`${item.location?.name ? item.location.name : ""}${item.location.parent ? `, ${item.location.parent.name}` : ""}`}
+                    {`${item.location?.name ? item.location.name : "!!!"}${item.location?.parent ? `, ${item.location.parent.name}` : ""}`}
                   </p>
                   <p className="text-sm font-bold self-end ">
                     {`От: ${item.prices && item.prices[0] ? "$" + item.prices[0].amount : "!!!"}`}

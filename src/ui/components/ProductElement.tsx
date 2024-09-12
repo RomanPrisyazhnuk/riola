@@ -8,13 +8,15 @@ export function ProductElement({
   loading,
   priority,
 }: { product: Excursion } & { loading: "eager" | "lazy"; priority?: boolean }) {
+  console.log(product);
+
   return (
     <li
       data-testid="ProductElement"
       className="relative rounded-md overflow-hidden shadow-md shadow-cyan-100"
     >
       <Link
-        href={`/${product.location.slug}/${product.slug}`}
+        href={`/${product.location?.slug ? product.location.slug : "excursion"}/${product.slug}`}
         key={product.id}
         className="relative flex flex-col h-full"
       >
@@ -60,7 +62,7 @@ export function ProductElement({
                 height={20}
                 className="h-full object-contain object-center"
               />
-              <p className="text-textColor text-[16px]">{`${product.location.name}${product.location.parent ? `, ${product.location.parent.name}` : ""}`}</p>
+              <p className="text-textColor text-[16px]">{`${product.location?.name || "!!!"}${product.location?.parent ? `, ${product.location.parent.name}` : ""}`}</p>
             </div>
           </div>
 

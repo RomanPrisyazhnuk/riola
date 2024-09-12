@@ -8,7 +8,7 @@ export function Footer() {
 
   return (
     <footer>
-      <div className="flex flex-col justify-center items-center pb-12">
+      <div className="flex flex-col justify-center items-center pb-[150px]">
         <div className="flex justify-center w-full border-b border-b-cyan-100/50 p-3">
           <Logo />
         </div>

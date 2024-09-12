@@ -20,6 +20,7 @@ export default async function Page() {
       `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}?paginate=0&popular=1&limit=8`,
       {
         cache: "force-cache",
+        next: { revalidate: 180 },
       },
     );
 

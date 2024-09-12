@@ -12,14 +12,16 @@ export const Nav = () => {
       aria-label="Main navigation"
     >
       <СurrencySelect />
-      <Suspense fallback={<div className="w-8" />}>
+      <div className="hidden sm:flex items-center  gap-4 ">
         <StoreProvider>
-          <AuthButton type={PanelTypes.Login} buttonChild={"Войти"} />
+          <Suspense fallback={<div className="w-8" />}>
+            <AuthButton type={PanelTypes.Login} buttonChild={"Войти"} />
+          </Suspense>
+          <Suspense fallback={<div className="w-6" />}>
+            <CartNavItem />
+          </Suspense>
         </StoreProvider>
-      </Suspense>
-      <Suspense fallback={<div className="w-6" />}>
-        <CartNavItem />
-      </Suspense>
+      </div>
     </nav>
   );
 };

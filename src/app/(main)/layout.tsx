@@ -3,6 +3,7 @@ import { Footer } from "@/ui/components/Footer";
 import { Header } from "@/ui/components/Header";
 import SidePanel from "@/ui/components/SidePanel";
 import StoreProvider from "@/ui/atoms/StoreProvider";
+import MobileNavigation from "@/ui/components/MobileNavigation";
 
 export const metadata = {
   title: "Saleor Storefront example",
@@ -18,6 +19,7 @@ export default function RootLayout(props: { children: ReactNode }) {
       <Footer />
       <StoreProvider>
         <SidePanel />
+        <MobileNavigation />
       </StoreProvider>
     </div>
   );

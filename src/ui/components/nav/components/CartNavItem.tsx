@@ -1,16 +1,20 @@
+"use client";
 import Image from "next/image";
 import clsx from "clsx";
-import * as Checkout from "@/lib/checkout";
-import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { openPanel, PanelTypes } from "@/store/slices/panelSlice";
 
-export const CartNavItem = async () => {
-  const checkoutId = Checkout.getIdFromCookies();
-  const checkout = checkoutId ? await Checkout.find(checkoutId) : null;
+export const CartNavItem = () => {
+  const dispatch = useDispatch();
 
   // const lineCount = checkout ? checkout.lines.reduce((result, line) => result + line.quantity, 0) : 0;
   const lineCount = 0;
   return (
-    <Link href="/cart" className="min-w-fit" data-testid="CartNavItem">
+    <div
+      className="min-w-fit cursor-pointer"
+      data-testid="CartNavItem"
+      onClick={() => dispatch(openPanel({ type: PanelTypes.Cart }))}
+    >
       <Image
         src="/icons/bag.svg"
         width={24}
@@ -33,6 +37,6 @@ export const CartNavItem = async () => {
       ) : (
         <span className="sr-only">0 items in cart</span>
       )}
-    </Link>
+    </div>
   );
 };

@@ -16,7 +16,7 @@ export default function SearchBlock() {
     setError(null);
     try {
       const res = await fetch(
-        `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}${query ? `?search_term=${query}&paginate=0&limit=12` : ""}`,
+        `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}${query ? `?search_term=${query}&paginate=0&limit=12` : "?paginate=0&popular=1&limit=8"}`,
       );
 
       if (!res.ok) {
