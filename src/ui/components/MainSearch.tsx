@@ -8,10 +8,10 @@ import { apiRoutes } from "@/app/api/config";
 import { useRouter } from "next/navigation";
 
 interface popularExcursions {
-  withounLabel?: boolean
-  placeholder?: string
+  withounLabel?: boolean;
+  placeholder?: string;
 }
-const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder}) => {
+const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState<Excursion[]>([]);
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -37,7 +37,7 @@ const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder}) => {
       fetchData(searchQuery);
       setDropdownVisible(true);
     } else {
-      fetchData('');
+      fetchData("");
     }
   }, [searchQuery]);
 
@@ -70,14 +70,16 @@ const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder}) => {
       onClick={() => {
         setDropdownVisible(false);
         setSearchQuery("");
-        fetchData('');
+        fetchData("");
       }}
     />
   );
 
   return (
     <div className="relative">
-      {!withounLabel && <label className="text-small text-textColor">Что есть рядом</label>}
+      {!withounLabel && (
+        <label className="text-small text-textColor">Что есть рядом</label>
+      )}
 
       <Input
         type="text"

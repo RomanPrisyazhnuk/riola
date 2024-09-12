@@ -31,17 +31,8 @@ const SearchTabs: FC<SearchTabsProps> = ({ popularExcursions }) => {
       </div>
       <div className="max-w-7xl mx-auto p-4 shadow-lg bg-white w-full rounded-b-md sm:rounded-md sm:rounded-tl-none ">
         {/* Content */}
-        {activeTab === "transfer" && (
-          <div className="">
-            <TransferSearch />
-          </div>
-        )}
-
-        {activeTab === "excursions" && (
-          <div className="">
-            <MainSearch popularExcursions={popularExcursions} />
-          </div>
-        )}
+        {activeTab === "transfer" && <TransferSearch />}
+        {activeTab === "excursions" && <MainSearch />}
       </div>
     </div>
   );
