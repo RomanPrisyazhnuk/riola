@@ -41,8 +41,6 @@ const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder }) => {
     }
   }, [searchQuery]);
 
-  console.log("results", results);
-
   const imageRoute = (
     <Image
       src={"/icons/routing.svg"}

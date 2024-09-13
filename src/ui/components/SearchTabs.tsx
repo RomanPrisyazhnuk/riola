@@ -9,7 +9,7 @@ interface SearchTabsProps {
   popularExcursions: Excursion[];
 }
 
-const SearchTabs: FC<SearchTabsProps> = ({ popularExcursions }) => {
+const SearchTabs: FC<SearchTabsProps> = () => {
   const [activeTab, setActiveTab] = useState("excursions");
 
   return (

@@ -1,8 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-// import { StaticImageData } from "next/image";
-// import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Interface for image data
 interface ImageData {
@@ -78,31 +76,6 @@ export default function ImageSlider(): JSX.Element {
           className="rounded-lg transition-all duration-400 ease-in-out cursor-pointer"
         />
       </div>
-
-      {/* <button
-        className="absolute left-6 top-1/2 transform h-[40px] rounded-xl hover:bg-[#1a222f] mx-1 -mt-[10px] -translate-y-1/2 bg-[#111927] text-white p-2 group"
-        onClick={prevSlide}
-      >
-        <ChevronLeft className="text-gray-400 group-hover:text-white" />
-      </button>
-      <button
-        className="absolute right-6 top-1/2 transform h-[40px] rounded-xl hover:bg-[#1a222f] mx-1 -mt-[10px] -translate-y-1/2 bg-[#111927] text-white p-2 group"
-        onClick={nextSlide}
-      >
-        <ChevronRight className="text-gray-400 group-hover:text-white" />
-      </button> */}
-      {/* <div className="flex justify-center mt-4">
-        {images.map((_, index) => (
-          <div
-            key={index}
-            className={`h-1 w-10 mx-1 ${
-              index === currentIndex
-                ? "bg-[#beff46] rounded-xl"
-                : "bg-gray-300 rounded-xl"
-            } transition-all duration-500 ease-in-out`}
-          ></div>
-        ))}
-      </div> */}
     </div>
   );
 }

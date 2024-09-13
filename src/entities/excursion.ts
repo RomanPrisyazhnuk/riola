@@ -18,6 +18,14 @@ export interface Excursion {
   type?: string;
   rating: number;
 }
+export interface ExcursionFull extends Excursion {
+  images: Image[];
+  similar: Excursion[];
+  duration_days: number;
+  duration_hours: number;
+  meta_title: string;
+  meta_description: string;
+}
 
 export const mockExcursion1: Excursion = {
   id: "132354",

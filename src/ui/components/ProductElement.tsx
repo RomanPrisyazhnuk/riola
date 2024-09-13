@@ -2,13 +2,14 @@ import Link from "next/link";
 import { ProductImageWrapper } from "@/ui/atoms/ProductImageWrapper";
 import Image from "next/image";
 import { Excursion } from "@/entities/excursion";
+import Rating from "../atoms/Rating";
+import LocationFull from "../atoms/LocationFull";
 
 export function ProductElement({
   product,
   loading,
   priority,
 }: { product: Excursion } & { loading: "eager" | "lazy"; priority?: boolean }) {
-  console.log(product);
 
   return (
     <li
@@ -39,31 +40,15 @@ export function ProductElement({
           />
           <span className="text-[14px] text-textColor">Групповая</span>
         </div>
-        <div className="flex gap-1 p-1 px-2 absolute top-2 right-2 bg-white rounded-md">
-          <Image
-            src={"/icons/like.svg"}
-            alt={"layers"}
-            width={20}
-            height={20}
-            className="h-full object-contain object-center"
-          />
-          <span className="text-[14px] text-textColor">{`${product.rating}/5`}</span>
+        <div className="absolute top-2 right-2 bg-white rounded-md">
+          <Rating rating={product.rating} />
         </div>
         <div className="flex flex-col p-2 w-full h-full justify-between">
           <div>
             <p className="text-textColor font-semibold text-[20px]">
               {product.name}
             </p>
-            <div className="flex items-center">
-              <Image
-                src={"/icons/location.svg"}
-                alt={"layers"}
-                width={20}
-                height={20}
-                className="h-full object-contain object-center"
-              />
-              <p className="text-textColor text-[16px]">{`${product.location?.name || "!!!"}${product.location?.parent ? `, ${product.location.parent.name}` : ""}`}</p>
-            </div>
+            <LocationFull location={product.location} />
           </div>
 
           <div className="flex gap-2 items-center self-end justify-self-end	font-semibold">
