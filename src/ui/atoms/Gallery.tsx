@@ -10,49 +10,53 @@ interface ImageGalleryProps {
 }
 
 const Gallery: FC<ImageGalleryProps> = ({ images, type }) => {
-  const galleryHeight = type === GalleryTypes.Desctop ? 295 : 250;
-  const galleryHeightPx = `${galleryHeight}px`;
+  const galleryHeight =
+    type === GalleryTypes.Desktop ? "h-[450px]" : "h-[250px]";
+  const thumbnailPosition = type === GalleryTypes.Desktop ? "right" : "bottom";
+
   const imagesForGallery = images.map((image) => {
-    if (image.videoId)
+    if (image.videoId) {
       return {
         original: image.large,
         thumbnail: image.thumb,
         renderItem: () => (
-          <div className="video-wrapper">
+          <div className={`w-full ${galleryHeight}`}>
             <YouTube
               videoId={image.videoId}
               opts={{
                 width: "100%",
-                height: galleryHeightPx,
+                height: type === GalleryTypes.Desktop ? "450px" : "250px",
                 playerVars: { autoplay: 0 },
               }}
             />
           </div>
         ),
       };
+    }
     return {
       original: image.large,
       thumbnail: image.thumb,
       renderItem: () => (
-        <div className={`h-[${galleryHeightPx}] object-cover`}>
-          <img
-            src={image.large}
-            className={`max-h-[${galleryHeightPx}] object-cover`}
-          />
+        <div
+          className={`w-full ${galleryHeight} flex items-center justify-center`}
+        >
+          <img src={image.large} className={`h-full w-full`} alt="" />
         </div>
       ),
     };
   });
+
   return (
-    <div className={`rounded-md overflow-hidden h-[${galleryHeightPx}]`}>
+    <div className={`overflow-hidden rounded-md`}>
       <ImageGallery
         items={imagesForGallery}
         lazyLoad={true}
-        thumbnailPosition={type === GalleryTypes.Desctop ? "right" : "bottom"}
+        thumbnailPosition={thumbnailPosition}
         showPlayButton={false}
         showFullscreenButton={false}
       />
     </div>
   );
 };
+
 export default Gallery;

@@ -4,33 +4,13 @@ import { GalleryTypes } from "@/entities/image";
 import Gallery from "@/ui/atoms/Gallery";
 import LocationFull from "@/ui/atoms/LocationFull";
 import Rating from "@/ui/atoms/Rating";
+import ExcursionAccordion from "@/ui/components/excursion/ExcursionAccordion";
 import { ProductList } from "@/ui/components/ProductList";
 
 export const metadata = {
   title: "",
   description: "",
 };
-const images = [
-  {
-    large:
-      "https://www.travelandleisure.com/thmb/pr08VO7qrNu8NtygEVXqDVaSyvU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/phuket-thailand-karst-formation-phuket0327-92bd3ce9266148dba74cba5e36c711e2.jpg",
-    thumb:
-      "https://www.travelandleisure.com/thmb/pr08VO7qrNu8NtygEVXqDVaSyvU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/phuket-thailand-karst-formation-phuket0327-92bd3ce9266148dba74cba5e36c711e2.jpg",
-    videoId: "_HeoxTNiJH8",
-  },
-  {
-    large: "https://picsum.photos/id/1018/1000/600/",
-    thumb: "https://picsum.photos/id/1018/250/150/",
-  },
-  {
-    large: "https://picsum.photos/id/1015/1000/600/",
-    thumb: "https://picsum.photos/id/1015/250/150/",
-  },
-  {
-    large: "https://picsum.photos/id/1019/1000/600/",
-    thumb: "https://picsum.photos/id/1019/250/150/",
-  },
-];
 
 export default async function ExcursionPage({
   params,
@@ -75,21 +55,21 @@ export default async function ExcursionPage({
         </div>
         <div className="flex flex-col md:flex-row gap-4 mb-2">
           <div className="g-1 hidden md:block">
-            <Gallery images={excursion.images} type={GalleryTypes.Desctop} />
+            <Gallery images={excursion.images} type={GalleryTypes.Desktop} />
           </div>
           <div className="g-1 md:hidden">
             <Gallery images={excursion.images} type={GalleryTypes.Mobile} />
           </div>
           <div className="flex flex-col gap-4 g-1 w-full md:w-1/3">
-            <div className="flex gap-2 w-full">
+            <div className="flex gap-2 w-full ">
               {excursion.prices &&
                 excursion.prices.map((price) => {
                   return (
                     <div
                       key={price.amount + price.title}
-                      className="flex flex-col gap-2 w-1/2"
+                      className="flex flex-col gap-2 w-1/2 items-center md:items-start"
                     >
-                      <p className="text-textColor text-[24px] sm:text-[39px]">{`$${price.amount}`}</p>
+                      <p className="text-textColor font-bold text-[24px] sm:text-[39px]">{`$${price.amount}`}</p>
                       <p className="text-textColor text-[18px] sm:text-[20px]">
                         {price.title}
                       </p>
@@ -103,8 +83,9 @@ export default async function ExcursionPage({
             </button>
           </div>
         </div>
-
-        {`Тут будет информация о экскурсии со слагом ${params.excursionSlug}`}
+        <div className="text-textColor text-[18px] font-semibold py-4">
+          <ExcursionAccordion />
+        </div>
         <h2 className="text-textColor text-[24px] font-semibold py-4">
           Могут понравиться
         </h2>

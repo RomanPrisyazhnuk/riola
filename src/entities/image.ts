@@ -5,5 +5,5 @@ export interface Image {
 }
 export enum GalleryTypes {
   Mobile = "mobile",
-  Desctop = "desctop",
+  Desktop = "desctop",
 }

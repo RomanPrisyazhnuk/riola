@@ -10,7 +10,6 @@ export function ProductElement({
   loading,
   priority,
 }: { product: Excursion } & { loading: "eager" | "lazy"; priority?: boolean }) {
-
   return (
     <li
       data-testid="ProductElement"
