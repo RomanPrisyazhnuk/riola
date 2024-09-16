@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Input } from "@nextui-org/react";
 import { apiRoutes } from "@/app/api/config";
 import { ProductList } from "@/ui/components/ProductList";
-import { Excursion, mockExcursions } from "@/entities/excursion";
-import Image from "next/image";
+import { Excursion } from "@/entities/excursion/excursion";
 
 export default function SearchBlock() {
   const [searchValue, setSearchValue] = useState("");

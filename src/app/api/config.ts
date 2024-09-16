@@ -5,6 +5,7 @@ export const apiRoutes = {
 
   //GET
   currentExcursion: "excursions",
+  currentLocation: "locations",
   excursions: "excursions/search",
   excursionLocations: "excursions/locations",
   transferRoutes: "transfers/routes",

@@ -1,5 +1,5 @@
 "use client";
-import { Excursion } from "@/entities/excursion";
+import { Excursion } from "@/entities/excursion/excursion";
 import type { FC } from "react";
 import { useState } from "react";
 import MainSearch from "./MainSearch";

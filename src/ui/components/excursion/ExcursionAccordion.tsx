@@ -2,116 +2,57 @@
 import type { FC } from "react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { SelectArrow } from "@/ui/atoms/SelectArrow";
+import { ExcursionFull } from "@/entities/excursion/excursion";
 
-interface ExcursionAccordionProps {}
+interface ExcursionAccordionProps {
+  excursion: ExcursionFull;
+}
 
-const ExcursionAccordion: FC<ExcursionAccordionProps> = ({}) => {
-  const defaultContent =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-
-  return (
-    <Accordion defaultExpandedKeys={[]} variant="splitted">
+const ExcursionAccordion: FC<ExcursionAccordionProps> = ({ excursion }) => {
+  const accordionItems = [
+    excursion.summary && (
       <AccordionItem
         key="1"
         aria-label="Что вас ждет на экскурсии"
         title="Что вас ждет на экскурсии"
-        indicator={SelectArrow}
+        indicator={<SelectArrow />}
         className="shadow-md shadow-cyan-100"
       >
-        <ol>
-          <li className="mb-2">
-            <b>Пляж Майя Бэй</b> — настоящая визитная карточка Таиланда, где
-            разворачивалось действие фильма «Пляж» с неотразимым Леонардо
-            ДиКаприо в главной роли. Шелковый песок, яркие кораллы, тропические
-            рыбки и настоящий голливудский пейзаж — все это предстанет перед
-            вами на экскурсии «Пхи Пхи: 5 островов».
-          </li>
-          <li className="mb-2">
-            <b>Пещера Викингов</b> — одна из самых таинственных
-            достопримечательностей острова Пхи Пхи Лей: говорят, что в пещере до
-            сих пор живет дикое племя, которое не пускает сюда чужаков. Пещера
-            знаменита также своими ласточкиными гнездами, и местные жители
-            приплывают сюда, чтобы собрать эти азиатские деликатесы с помощью
-            бамбуковых шестов.
-          </li>
-          <li className="mb-2">
-            <b>Бухта Ло Самах</b> — волшебный пляж, окруженный со стороны моря
-            отвесными скалами, является популярным местом для плавания с маской
-            и трубкой из-за обилия разнообразной морской живности. Если вы
-            хотели попасть в сказочный мир тропиков и посетить место, которое
-            еще не так популярно среди туристов — вы точно приехали по адресу!
-          </li>
-          <li className="mb-2">
-            <b>Лагуна Пиле</b> — тайцы называют это место «лагуной омоложения» и
-            считают, что вода в этой самой глубокой в Таиланде лагуне обогащена
-            полезными микроэлементами и минералами, что позволяет человеку
-            сохранять молодость и бодрость на долгие годы. А мы предлагаем вам
-            нырнуть в лагуну, окруженную скалами, чтобы ощутить на себе её
-            чудодейственные свойства.
-          </li>
-          <li className="mb-2">
-            <b>Остров Кхай Нок</b> — длинная песчаная коса с идеально
-            белоснежным песком и водой оттенка бирюзы, пологий вход в воду, что
-            делает отдых на этом острове подходящим для туристов разных
-            возрастов, даже маленьких детей. Отдохните на потрясающем пляже и
-            устройте классную фотосессию на фоне разбросанных по пляжу больших и
-            очень живописных валунов!
-          </li>
-          <li className="mb-2">
-            <b>Остров Кхай Нуй</b> — известный своим уникальным коралловым
-            песком, этот маленький остров манит поклонников снорклинга, ведь
-            здесь находится крупный и очень яркий коралловый риф с сотнями
-            проворных рыбок, которые совершенно не боятся людей и даже не прочь
-            полакомиться хлебными крошками!
-          </li>
-          <li className="mb-2">
-            <b>Снорклинг на Зеленом острове</b> — голубые морские звезды,
-            рыба-носорог, кефаль и множество диковинных экзотических обитателей
-            ждут любителей поплавать с маской и трубкой у берегов Зеленого
-            острова, крохотного кусочка суши посреди водной глади Андаманского
-            моря.
-          </li>
-          <li className="mb-2">
-            <b>Остров Пхи Пхи Дон</b> — единственный обитаемый остров архипелага
-            Пхи Пхи, где вы сможете предаться неге на белоснежном пляже под
-            лучами тропического солнца. Чистейшее море непередаваемого
-            бирюзово-изумрудного цвета, умопомрачительная природа и райское
-            уединение — вот чем так знаменит Пхи Пхи Дон, на который вы
-            обязательно заглянете в ходе нашей экскурсии, а также насладитесь
-            обедом в уютном пляжном ресторанчике.
-          </li>
-          <li className="mb-2">
-            <b>Пляж обезьян</b> — бухта Йонг Касем или Манки Бэй порадует вас
-            знакомством с милыми обезьянками, которых можно покормить фруктами,
-            а также сделать массу забавных фотографий на память.
-          </li>
-        </ol>
+        <p dangerouslySetInnerHTML={{ __html: excursion.summary }} />
       </AccordionItem>
+    ),
+    excursion.itinerary && (
       <AccordionItem
         key="2"
         aria-label="Программа"
         title="Программа"
-        indicator={SelectArrow}
+        indicator={<SelectArrow />}
         className="shadow-md shadow-cyan-100"
       >
-        {defaultContent}
+        <p dangerouslySetInnerHTML={{ __html: excursion.itinerary }} />
       </AccordionItem>
+    ),
+    excursion.included && (
       <AccordionItem
         key="3"
         aria-label="Что входит"
         title="Что входит"
-        indicator={SelectArrow}
+        indicator={<SelectArrow />}
         className="shadow-md shadow-cyan-100"
       >
-        <ol>
-          <li>- Вход на пляжи</li>
-          <li>- Маска и трубка для снорклинга</li>
-          <li>- Обед, фрукты и прохладительные напитки</li>
-          <li>- Трансферы</li>
-          <li>- Услуги сопровождающего гида</li>
-        </ol>
+        <p dangerouslySetInnerHTML={{ __html: excursion.included }} />
       </AccordionItem>
+    ),
+  ];
+
+  // Убираем undefined или пустые элементы
+  const filteredItems = accordionItems.filter(Boolean) as JSX.Element[];
+
+  return filteredItems.length > 0 ? (
+    <Accordion variant="splitted">
+      {filteredItems}
     </Accordion>
-  );
+  ) : null;
 };
+
 export default ExcursionAccordion;

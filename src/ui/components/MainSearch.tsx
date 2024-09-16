@@ -1,11 +1,11 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { FC, useState, useEffect } from "react";
-import { Input } from "@nextui-org/react";
-import Image from "next/image";
-import { Excursion } from "@/entities/excursion";
-import { apiRoutes } from "@/app/api/config";
 import { useRouter } from "next/navigation";
+import { Input } from "@nextui-org/react";
+import { Excursion } from "@/entities/excursion/excursion";
+import { apiRoutes } from "@/app/api/config";
 
 interface popularExcursions {
   withounLabel?: boolean;

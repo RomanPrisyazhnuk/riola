@@ -1,6 +1,6 @@
-import { Image } from "./image";
-import { LocationObj, mockLocationObjs } from "./location";
-import { mockPrices, PriceOption } from "./price";
+import { Image } from "../image";
+import { LocationObj, mockLocationObjs } from "../location";
+import { mockPrices, PriceOption } from "../price";
 
 export interface Excursion {
   id: string;
@@ -25,6 +25,10 @@ export interface ExcursionFull extends Excursion {
   duration_hours: number;
   meta_title: string;
   meta_description: string;
+  summary?: string;
+  itinerary?: string;
+  included?: string;
+  similarExcursions?: Excursion[];
 }
 
 export const mockExcursion1: Excursion = {

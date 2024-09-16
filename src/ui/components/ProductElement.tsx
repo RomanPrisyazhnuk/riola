@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ProductImageWrapper } from "@/ui/atoms/ProductImageWrapper";
 import Image from "next/image";
-import { Excursion } from "@/entities/excursion";
-import Rating from "../atoms/Rating";
-import LocationFull from "../atoms/LocationFull";
+import { ProductImageWrapper } from "@/ui/atoms/ProductImageWrapper";
+import { Excursion } from "@/entities/excursion/excursion";
+import Rating from "@/ui/atoms/Rating";
+import LocationFull from "@/ui/atoms/LocationFull";
 
 export function ProductElement({
   product,

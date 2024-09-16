@@ -1,11 +1,13 @@
-import { mockPlaces } from "@/entities/place";
+import { getPopularExcursions } from "@/entities/excursion/actions";
+import { Excursion } from "@/entities/excursion/excursion";
+import { getAvailablePlaces } from "@/entities/place/actions";
+import { mockPlaces, Place } from "@/entities/place/place";
 import ImageSlider from "@/ui/atoms/ImageSlider";
 import BonusBlock from "@/ui/components/bonus/BonusBlock";
 import { Places } from "@/ui/components/Places";
 import { ProductList } from "@/ui/components/ProductList";
 import ProsBlock from "@/ui/components/pros/ProsBlock";
 import SearchTabs from "@/ui/components/SearchTabs";
-import { apiRoutes } from "../api/config";
 
 export const metadata = {
   title: "",
@@ -13,26 +15,9 @@ export const metadata = {
 };
 
 export default async function Page() {
-  let popularExcursions;
-
-  try {
-    const res = await fetch(
-      `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}?paginate=0&popular=1&limit=8`,
-      {
-        cache: "force-cache",
-        next: { revalidate: 180 },
-      },
-    );
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch");
-    }
-
-    const respData = await res.json();
-    popularExcursions = respData.data;
-  } catch (error) {
-    console.log(error);
-  }
+  let popularExcursions: Excursion[] = (await getPopularExcursions(0, 8)) || [];
+  let availablePlaces: Place[] = (await getAvailablePlaces()) || [];
+  console.log(availablePlaces);
 
   return (
     <div className="mx-auto max-w-7xl">
@@ -51,7 +36,7 @@ export default async function Page() {
         <h2 className="text-textColor text-[24px] font-semibold pb-2">
           Выберите направление
         </h2>
-        <Places places={mockPlaces} />
+        <Places places={availablePlaces} />
       </section>
       <ProsBlock />
       <section className="my-6">

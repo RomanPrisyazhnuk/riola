@@ -1,4 +1,4 @@
-import { Excursion } from "@/entities/excursion";
+import { Excursion } from "@/entities/excursion/excursion";
 import { ProductElement } from "./ProductElement";
 
 export const ProductList = ({

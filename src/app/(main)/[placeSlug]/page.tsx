@@ -1,6 +1,7 @@
-import { apiRoutes } from "@/app/api/config";
-import { Excursion } from "@/entities/excursion";
+import { Excursion } from "@/entities/excursion/excursion";
 import { GalleryTypes } from "@/entities/image";
+import { getPlaceData, getPlaceExcursions } from "@/entities/place/actions";
+import { Place } from "@/entities/place/place";
 import Gallery from "@/ui/atoms/Gallery";
 import { ProductList } from "@/ui/components/ProductList";
 
@@ -34,28 +35,19 @@ export default async function PlacePage({
 }: {
   params: { placeSlug: string };
 }) {
+  let placeData: Place | null = null;
   let excursionsForLocation: Excursion[] = [];
 
-  try {
-    const res = await fetch(
-      `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}${`?search_term=${params.placeSlug}&paginate=0&limit=30`}`,
-      {
-        cache: "force-cache",
-        next: { revalidate: 180 },
-      },
-    );
-    if (!res.ok) {
-      throw new Error("Failed to fetch excursionsForLocation");
-    }
-    const respData = await res.json();
-    if (respData) excursionsForLocation = respData.data;
-  } catch (err) {
-    console.error(err);
-  }
+  if (params.placeSlug) placeData = await getPlaceData(params.placeSlug);
+  if (placeData)
+    excursionsForLocation = await getPlaceExcursions(placeData.name, 0, 16);
 
   return (
     <section className="mx-auto max-w-7xl pb-16">
       <div className="mt-6 mx-auto">
+        <h1 className="text-textColor font-semibold text-[24px] sm:text-[39px]">
+          {placeData?.name || "!!!"}
+        </h1>
         <div className="flex flex-col md:flex-row gap-4 mb-2">
           <div className="g-1 hidden md:block w-full">
             <Gallery images={images} type={GalleryTypes.Desktop} />
@@ -65,8 +57,10 @@ export default async function PlacePage({
           </div>
           <div className="flex flex-col gap-4 g-1 w-full md:w-1/3"></div>
         </div>
-        {`Тут будет информация о локации со слагом ${params.placeSlug}`}
       </div>
+      <h2 className="text-textColor text-[24px] font-semibold py-4">
+        Экскурсии
+      </h2>
       <ProductList products={excursionsForLocation} />
     </section>
   );

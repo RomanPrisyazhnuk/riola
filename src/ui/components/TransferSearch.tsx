@@ -113,7 +113,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
             className="h-full object-contain object-center"
           />
         }
-        selectorIcon={SelectArrow}
+        selectorIcon={<SelectArrow />}
       >
         {locationFromOptions.map((item) => (
           <SelectItem key={item.key}>{item.label}</SelectItem>
@@ -135,7 +135,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
             className="h-full object-contain object-center"
           />
         }
-        selectorIcon={SelectArrow}
+        selectorIcon={<SelectArrow />}
       >
         {locationToOptions.map((item) => (
           <SelectItem key={item.key}>{item.label}</SelectItem>

@@ -18,7 +18,7 @@ export const СurrencySelect = () => {
           // onSelectFromChange(item.currentKey);
         }}
         className=""
-        selectorIcon={SelectArrow}
+        selectorIcon={<SelectArrow/>}
       >
         {currencies.map((item) => (
           <SelectItem key={item}>{item}</SelectItem>

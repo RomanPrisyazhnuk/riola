@@ -1,6 +1,7 @@
-import { apiRoutes } from "@/app/api/config";
-import { Excursion, ExcursionFull } from "@/entities/excursion";
+import { ExcursionFull } from "@/entities/excursion/excursion";
+import { getExcursionData } from "@/entities/excursion/actions";
 import { GalleryTypes } from "@/entities/image";
+import { PriceOption } from "@/entities/price";
 import Gallery from "@/ui/atoms/Gallery";
 import LocationFull from "@/ui/atoms/LocationFull";
 import Rating from "@/ui/atoms/Rating";
@@ -17,27 +18,9 @@ export default async function ExcursionPage({
 }: {
   params: { placeSlug: string; excursionSlug: string };
 }) {
-  let excursion: ExcursionFull | null = null;
-  let similarExcursions: Excursion[] = [];
-  try {
-    const res = await fetch(
-      `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.currentExcursion}/${params.excursionSlug}`,
-      // {
-      //   cache: "force-cache",
-      //   next: { revalidate: 180 },
-      // },
-    );
-    if (!res.ok) {
-      throw new Error("Failed to fetch excursion");
-    }
-    const respData = await res.json();
-    if (respData) {
-      excursion = respData.data;
-      similarExcursions = respData.silimar;
-    }
-  } catch (err) {
-    console.error(err);
-  }
+  let excursion: ExcursionFull | null = await getExcursionData(
+    params.excursionSlug,
+  );
 
   if (!excursion?.name) {
     return null;
@@ -63,7 +46,7 @@ export default async function ExcursionPage({
           <div className="flex flex-col gap-4 g-1 w-full md:w-1/3">
             <div className="flex gap-2 w-full ">
               {excursion.prices &&
-                excursion.prices.map((price) => {
+                excursion.prices.map((price: PriceOption) => {
                   return (
                     <div
                       key={price.amount + price.title}
@@ -77,19 +60,25 @@ export default async function ExcursionPage({
                   );
                 })}
             </div>
-            <p>{excursion.description || "!!!"}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: excursion.description || "!!!",
+              }}
+            />
             <button className="px-4 py-2 text-white bg-orange-400 rounded-md hover:bg-orange-300 w-full sm:w-auto">
               Забронировать
             </button>
           </div>
         </div>
         <div className="text-textColor text-[18px] font-semibold py-4">
-          <ExcursionAccordion />
+          <ExcursionAccordion excursion={excursion} />
         </div>
         <h2 className="text-textColor text-[24px] font-semibold py-4">
           Могут понравиться
         </h2>
-        {similarExcursions && <ProductList products={similarExcursions} />}
+        {excursion.similarExcursions && (
+          <ProductList products={excursion.similarExcursions} />
+        )}
       </div>
     </section>
   );

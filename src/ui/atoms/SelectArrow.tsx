@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const SelectArrow = (
+export const SelectArrow = () => (
   <Image
     src={"/icons/arrow.svg"}
     alt={"Arrow"}
