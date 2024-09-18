@@ -84,6 +84,7 @@ export default function SearchBlock() {
           className="mx-auto md:max-w-[600px]"
           endContent={imageSearch}
           startContent={imageRoute}
+          aria-label="Введите название или город"
         />
       </div>
       <div className="mt-8">

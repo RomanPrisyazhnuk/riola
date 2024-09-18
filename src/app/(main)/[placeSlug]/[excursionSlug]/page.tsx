@@ -7,6 +7,7 @@ import LocationFull from "@/ui/atoms/LocationFull";
 import Rating from "@/ui/atoms/Rating";
 import ExcursionAccordion from "@/ui/components/excursion/ExcursionAccordion";
 import { ProductList } from "@/ui/components/ProductList";
+import Price from "@/ui/atoms/Price";
 
 export const metadata = {
   title: "",
@@ -52,7 +53,9 @@ export default async function ExcursionPage({
                       key={price.amount + price.title}
                       className="flex flex-col gap-2 w-1/2 items-center md:items-start"
                     >
-                      <p className="text-textColor font-bold text-[24px] sm:text-[39px]">{`$${price.amount}`}</p>
+                      <p className="text-textColor font-bold text-[24px] sm:text-[39px]">
+                        <Price priceInUSD={price.amount} />
+                      </p>
                       <p className="text-textColor text-[18px] sm:text-[20px]">
                         {price.title}
                       </p>

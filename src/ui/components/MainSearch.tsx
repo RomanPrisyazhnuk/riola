@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Input } from "@nextui-org/react";
 import { Excursion } from "@/entities/excursion/excursion";
 import { apiRoutes } from "@/app/api/config";
+import Price from "../atoms/Price";
 
 interface popularExcursions {
   withounLabel?: boolean;
@@ -80,6 +81,7 @@ const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder }) => {
       )}
 
       <Input
+        id="excursion"
         type="text"
         variant="bordered"
         placeholder={placeholder || "Поиск экскурсий"}
@@ -89,6 +91,7 @@ const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder }) => {
         className={`hidden md:block ${!withounLabel && "mt-[4px]"}`}
         endContent={imageSearch}
         startContent={imageRoute}
+        aria-label="excursion"
       />
       <Input
         type="text"
@@ -98,6 +101,7 @@ const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder }) => {
         className="block md:hidden"
         endContent={imageSearch}
         startContent={imageRoute}
+        aria-label="Поиск экскурсий"
       />
       {/* Выпадающий список результатов */}
       {isDropdownVisible && (
@@ -128,38 +132,16 @@ const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder }) => {
                     {`${item.location?.name ? item.location.name : "!!!"}${item.location?.parent ? `, ${item.location.parent.name}` : ""}`}
                   </p>
                   <p className="text-sm font-bold self-end ">
-                    {`От: ${item.prices && item.prices[0] ? "$" + item.prices[0].amount : "!!!"}`}
-                  </p>{" "}
+                    {`От: `}
+                    {item.prices[0] ? (
+                      <Price priceInUSD={item.prices[0].amount} />
+                    ) : (
+                      "!!!"
+                    )}
+                  </p>
                 </div>
               </Link>
             ))}
-            {/* Правая колонка */}
-            {/* <div>
-              <h4 className="font-bold mb-2">Рекомендуем</h4>
-              {results.map((item) => (
-                <div key={item.id} className="mb-4 flex items-center">
-                  <Image
-                    src={item.image?.thumb || "/b-2-520-820-90.webp"}
-                    alt={item.name || "image"}
-                    width={60}
-                    height={60}
-                    objectFit="cover"
-                    className="rounded-md"
-                  />
-                  <div className="ml-4">
-                    <h5 className="font-semibold">{item.name}</h5>
-                    <p className="text-sm text-gray-500">
-                      {item.location?.name ? item.location.name : ""},{" "}
-                      {item.location.parent.name}
-                    </p>
-                    <p className="text-sm font-bold">
-                      От:
-                      {`От: ${item.prices && item.prices[0] ? item.prices[0].amount : "!!!"}`}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div> */}
           </div>
         </div>
       )}

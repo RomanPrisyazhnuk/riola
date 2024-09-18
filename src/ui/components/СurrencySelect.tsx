@@ -1,27 +1,42 @@
 "use client";
-import { useState } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
 import { SelectArrow } from "../atoms/SelectArrow";
-const currencies = ["USD", "BAT", "RUB"];
+import { useEffect, useState } from "react";
+import { Currency } from "@/entities/currency/currency";
+import { getAvailableCurrencies } from "@/entities/currency/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentCurrency, setCurrency } from "@/store/slices/currencySlice";
 
 export const СurrencySelect = () => {
-  const [activeCurrency, setActiveCurrency] = useState("USD");
+  const [currencies, setCurrencies] = useState<Currency[]>([]);
+  const currentCurrency = useSelector(getCurrentCurrency);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getCurrencies = async () => {
+      const currencies = await getAvailableCurrencies();
+      setCurrencies(currencies || []);
+    };
+    getCurrencies();
+  }, []);
 
   return (
     <div className="w-[82px] relative inline-block">
       <Select
-        placeholder="Выберите место"
         variant="bordered"
-        defaultSelectedKeys={[currencies[0]]}
+        defaultSelectedKeys={[currentCurrency.id]}
         //@ts-ignore
         onSelectionChange={(item: { currentKey: string }) => {
-          // onSelectFromChange(item.currentKey);
+          const currencyFull = currencies.find(
+            (currency) => currency.id === item.currentKey,
+          );
+          currencyFull && dispatch(setCurrency(currencyFull));
         }}
         className=""
-        selectorIcon={<SelectArrow/>}
+        selectorIcon={<SelectArrow />}
       >
-        {currencies.map((item) => (
-          <SelectItem key={item}>{item}</SelectItem>
+        {currencies.map((currency: Currency) => (
+          <SelectItem key={currency.id}>{currency.id}</SelectItem>
         ))}
       </Select>
     </div>

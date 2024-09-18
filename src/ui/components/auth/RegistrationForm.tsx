@@ -22,6 +22,7 @@ const PhoneInput = ({
     onChange={onChange}
     variant="bordered"
     placeholder={placeholder}
+    aria-label="Phone"
     startContent={
       <Image
         src={iconSrc}

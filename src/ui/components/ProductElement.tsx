@@ -4,6 +4,7 @@ import { ProductImageWrapper } from "@/ui/atoms/ProductImageWrapper";
 import { Excursion } from "@/entities/excursion/excursion";
 import Rating from "@/ui/atoms/Rating";
 import LocationFull from "@/ui/atoms/LocationFull";
+import Price from "../atoms/Price";
 
 export function ProductElement({
   product,
@@ -51,13 +52,20 @@ export function ProductElement({
           </div>
 
           <div className="flex gap-2 items-center self-end justify-self-end	font-semibold">
-            {product.prices && product.prices[0] && (
-              <s className="text-textColor text-[16px]">{`От: $${product.prices[0].old_amount}`}</s>
-            )}
+            {product.prices &&
+              product.prices[0] &&
+              product.prices[0].old_amount && (
+                <s className="text-textColor text-[16px]">
+                  {`От: `}
+                  <Price priceInUSD={product.prices[0].old_amount} />
+                </s>
+              )}
             <p className="p-2 border-1 border-red-500 rounded-md text-red-500 text-[16px]">
-              {product.prices && product.prices[0]
-                ? `$${product.prices[0].amount}`
-                : "!!!"}
+              {product.prices && product.prices[0] ? (
+                <Price priceInUSD={product.prices[0].amount} />
+              ) : (
+                "!!!"
+              )}
             </p>
           </div>
         </div>

@@ -33,7 +33,6 @@ const panelSlice = createSlice({
   },
 });
 
-// Селекторы
 export const getPanelData = (state: RootState): PanelData | null =>
   state.panel.panelData;
 export const { openPanel, closePanel } = panelSlice.actions;

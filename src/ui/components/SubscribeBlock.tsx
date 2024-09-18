@@ -94,6 +94,7 @@ export default function SubscribeBlock() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              aria-label="Введите свой Email"
             />
             <button
               className="h-[40px] flex gap-1 justify-center items-center px-6 py-2 text-white bg-white rounded-md hover:bg-gray-200 w-full md:w-auto"

@@ -6,9 +6,8 @@ import StoreProvider from "@/ui/atoms/StoreProvider";
 import MobileNavigation from "@/ui/components/MobileNavigation";
 
 export const metadata = {
-  title: "Saleor Storefront example",
-  description:
-    "Starter pack for building performant e-commerce experiences with Saleor.",
+  title: "Riola Travel",
+  description: "Travel with Riola Travel",
 };
 
 export default function RootLayout(props: { children: ReactNode }) {

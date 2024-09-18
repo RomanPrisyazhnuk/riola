@@ -49,9 +49,7 @@ const ExcursionAccordion: FC<ExcursionAccordionProps> = ({ excursion }) => {
   const filteredItems = accordionItems.filter(Boolean) as JSX.Element[];
 
   return filteredItems.length > 0 ? (
-    <Accordion variant="splitted">
-      {filteredItems}
-    </Accordion>
+    <Accordion variant="splitted">{filteredItems}</Accordion>
   ) : null;
 };
 
