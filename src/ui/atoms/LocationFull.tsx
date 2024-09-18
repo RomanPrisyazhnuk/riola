@@ -1,4 +1,4 @@
-import { LocationObj } from "@/entities/location";
+import { LocationObj } from "@/entities/location/location";
 import type { FC } from "react";
 import Image from "next/image";
 

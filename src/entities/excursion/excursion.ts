@@ -1,5 +1,5 @@
 import { Image } from "../image";
-import { LocationObj, mockLocationObjs } from "../location";
+import { LocationObj, mockLocationObjs } from "../location/location";
 import { mockPrices, PriceOption } from "../price";
 
 export interface Excursion {

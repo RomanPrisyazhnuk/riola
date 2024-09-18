@@ -30,7 +30,16 @@ export default async function Page() {
             <SearchTabs popularExcursions={popularExcursions} />
           </div>
         </div>
-        <ImageSlider />
+        <ImageSlider
+          images={[
+            {
+              src: "/beach.webp",
+            },
+            {
+              src: "/banner1.png",
+            },
+          ]}
+        />
       </section>
       <section className="my-6">
         <h2 className="text-textColor text-[24px] font-semibold pb-2">

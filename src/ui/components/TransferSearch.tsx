@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 import { FC, useEffect, useState } from "react";
 import {
   Select,
@@ -10,34 +10,55 @@ import {
   Button,
 } from "@nextui-org/react";
 import Image from "next/image";
-import { LocationObj } from "@/entities/location";
-import { apiRoutes } from "@/app/api/config";
+import { LocationObj } from "@/entities/location/location";
 import { SelectArrow } from "../atoms/SelectArrow";
+import { useRouter } from "next/navigation";
+import { getAvailableLocations } from "@/entities/location/actions";
+import { useSearchParams } from "next/navigation";
 
-interface TransferSearchProps {}
-export const locationsforSelect = [
-  { key: "Патайя", label: "Патайя" },
-  { key: "Вьетнам", label: "Вьетнам" },
-  { key: "Пхукет", label: "Пхукет" },
-  { key: "Стамбул", label: "Стамбул" },
-  { key: "Бангкок", label: "Бангкок" },
-  { key: "Каппадокия", label: "Каппадокия" },
-];
-const TransferSearch: FC<TransferSearchProps> = ({}) => {
+export interface TransferSearchProps {
+  initialProps?: {
+    locations: LocationObj[];
+    locationsTo: LocationObj[];
+    selectedLocationTo: LocationObj | null;
+    selectedLocationFrom: LocationObj | null;
+  };
+}
+
+const TransferSearch: FC<TransferSearchProps> = ({ initialProps }) => {
+  const searchParams = useSearchParams();
+
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(1);
 
-  const [locations, setLocations] = useState<LocationObj[]>([]);
+  const [locations, setLocations] = useState<LocationObj[]>(
+    initialProps?.locations || [],
+  );
   const [locationFromOptions, setlocationFromOptions] = useState<
     { key: string; label: string }[]
   >([]);
   const [selectedLocationFrom, setSelectedLocationFrom] =
-    useState<LocationObj | null>(null);
+    useState<LocationObj | null>(initialProps?.selectedLocationFrom || null);
+
+  const [locationsTo, setLocationsTo] = useState<LocationObj[]>(
+    initialProps?.locationsTo || [],
+  );
+
   const [locationToOptions, setlocationToOptions] = useState<
     { key: string; label: string }[]
   >([]);
   const [selectedLocationTo, setSelectedLocationTo] =
-    useState<LocationObj | null>(null);
+    useState<LocationObj | null>(initialProps?.selectedLocationTo || null);
+
+  const router = useRouter();
+
+  const handleTransfer = () => {
+    if (selectedLocationFrom && selectedLocationTo) {
+      router.push(
+        `/transfers/${selectedLocationFrom.slug}/${selectedLocationTo.slug}?adults=${adults}&children=${children}`,
+      );
+    }
+  };
 
   const prepareLocationObjsOptions = (LocationObjs: LocationObj[]) => {
     return LocationObjs.map((item) => {
@@ -51,30 +72,35 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
 
   useEffect(() => {
     const fetchLocations = async () => {
-      try {
-        const response = await fetch(
-          `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.transferRoutes}`,
-        );
-        if (!response.ok) {
-          throw new Error("Ошибка при загрузке данных");
-        }
-        const data = await response.json();
-        if (data?.data) {
-          setLocations(data.data);
-        }
-        // console.log(data);
-        // setLocations(mockLocationObjs);
-      } catch (error) {
-        console.log(error);
+      const data = await getAvailableLocations();
+      if (data) {
+        setLocations(data);
       }
     };
+    if (!initialProps) {
+      fetchLocations();
+    }
+  }, []);
 
-    fetchLocations();
+  useEffect(() => {
+    try {
+      const adultsFromUrl = searchParams.get("adults");
+      const childrenFromUrl = searchParams.get("children");
+
+      adultsFromUrl && setAdults(Number(adultsFromUrl));
+      childrenFromUrl && setChildren(Number(childrenFromUrl));
+    } catch {
+      console.log("Unavailable to parse passagers");
+    }
   }, []);
 
   useEffect(() => {
     setlocationFromOptions(prepareLocationObjsOptions(locations));
   }, [locations]);
+
+  useEffect(() => {
+    setlocationToOptions(prepareLocationObjsOptions(locationsTo));
+  }, [locationsTo]);
 
   const onSelectFromChange = (selectedItemSlug: string) => {
     const location = locations.find(
@@ -83,8 +109,17 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
     if (location) {
       setSelectedLocationFrom(location);
       if (location.routes) {
-        setlocationToOptions(prepareLocationObjsOptions(location.routes));
+        setLocationsTo(location.routes);
       }
+    }
+  };
+
+  const onSelectToChange = (selectedItemSlug: string) => {
+    const location = locationsTo.find(
+      (location) => location.slug === selectedItemSlug,
+    );
+    if (location) {
+      setSelectedLocationTo(location);
     }
   };
 
@@ -93,12 +128,17 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 w-full justify-between">
+    <div className="flex flex-col lg:flex-row gap-6 w-full justify-between">
       <Select
         label="Откуда"
         placeholder="Выберите место"
         labelPlacement="outside"
         variant="bordered"
+        defaultSelectedKeys={
+          initialProps?.selectedLocationFrom
+            ? [initialProps.selectedLocationFrom.slug]
+            : []
+        }
         //@ts-ignore
         onSelectionChange={(item: { currentKey: string }) => {
           onSelectFromChange(item.currentKey);
@@ -123,6 +163,11 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
         label="Куда"
         variant="bordered"
         placeholder="Выберите место"
+        defaultSelectedKeys={
+          initialProps?.selectedLocationTo
+            ? [initialProps.selectedLocationTo.slug]
+            : []
+        }
         labelPlacement="outside"
         isDisabled={!selectedLocationFrom}
         className=""
@@ -135,13 +180,17 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
             className="h-full object-contain object-center"
           />
         }
+        //@ts-ignore
+        onSelectionChange={(item: { currentKey: string }) => {
+          onSelectToChange(item.currentKey);
+        }}
         selectorIcon={<SelectArrow />}
       >
         {locationToOptions.map((item) => (
           <SelectItem key={item.key}>{item.label}</SelectItem>
         ))}
       </Select>
-      <div className="mt-[-5px] md:mt-0 min-w-[160px]">
+      <div className="mt-[-5px] lg:mt-0 min-w-[160px]">
         <label className="text-small">Пассажиры</label>
         <Dropdown closeOnSelect={false} disableAnimation>
           <DropdownTrigger>
@@ -170,7 +219,7 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
           <DropdownMenu className="w-full">
             {/* Взрослые */}
             <DropdownItem key="adults" className="w-full">
-              <div className="flex justify-between items-center w-full min-w-[65vw] md:min-w-[160px]">
+              <div className="flex justify-between items-center w-full min-w-[65vw] lg:min-w-[160px]">
                 <div className="flex flex-col ">
                   <p>Взрослые</p>
                   <p>12 лет и старше</p>
@@ -221,7 +270,11 @@ const TransferSearch: FC<TransferSearchProps> = ({}) => {
         </Dropdown>
       </div>
 
-      <button className="px-4 py-2 h-[40px] self-end min-w-fit text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full sm:w-auto">
+      <button
+        disabled={!selectedLocationTo || !selectedLocationFrom}
+        className="px-4 py-2 h-[40px] self-end min-w-fit text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full sm:w-auto"
+        onClick={() => handleTransfer()}
+      >
         Узнать цены
       </button>
     </div>

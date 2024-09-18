@@ -1,6 +1,6 @@
 "use client";
 import { Select, SelectItem } from "@nextui-org/react";
-import { SelectArrow } from "../atoms/SelectArrow";
+import { SelectArrow } from "@/ui/atoms/SelectArrow";
 import { useEffect, useState } from "react";
 import { Currency } from "@/entities/currency/currency";
 import { getAvailableCurrencies } from "@/entities/currency/actions";
