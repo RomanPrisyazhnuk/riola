@@ -25,7 +25,6 @@ export default async function TransferPage({
   const locationTo = locationsTo.find((locationTo) => {
     return locationTo.slug === params.toSlug;
   });
-  console.log("locationTo", locationTo);
 
   const prepareDataForSearch = (): TransferSearchProps => {
     const dataForSearch: TransferSearchProps = {
@@ -48,7 +47,7 @@ export default async function TransferPage({
               Такси & Трансферы из аэропорта
             </h1>
             <div className="h-full w-full flex items-end justify-center">
-              <div className="max-w-7xl mx-auto p-4 shadow-lg bg-white w-full rounded-b-md sm:rounded-md  ">
+              <div className="max-w-7xl mx-auto p-4 shadow-lg bg-white w-full rounded-md sm:rounded-md  ">
                 {locations.length > 0 && (
                   <TransferSearch
                     initialProps={prepareDataForSearch().initialProps}
