@@ -12,7 +12,7 @@ export const Places = ({ places }: { places: Place[] }) => {
       {places.map((place) => (
         <div
           key={place.id}
-          className="h-[230px] basis-[150px] grow shadow-md shadow-cyan-100 rounded-md"
+          className="h-[230px] basis-[150px] min-w-[176px] grow shadow-md shadow-cyan-100 rounded-md"
         >
           <div className="h-[118px] overflow-hidden relative rounded-t-md">
             <Image src={place.image.thumb} alt={place.name} fill className="" />
