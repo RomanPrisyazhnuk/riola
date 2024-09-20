@@ -9,8 +9,9 @@ export const apiRoutes = {
   excursions: "excursions/search",
   excursionLocations: "excursions/locations",
   transferRoutes: "transfers/routes",
+  transfers: "transfers/search",
   currencies: "currencies",
-
+  user: "user",
   //Post
   login: "login",
   register: "register",

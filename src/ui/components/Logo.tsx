@@ -9,6 +9,7 @@ export const Logo = () => {
         <Image
           src={"/riolatravel-gol2-92-270-90.webp"}
           alt={"RiolaLogo"}
+          loading="lazy"
           width={154}
           height={30}
           className="h-full object-contain object-center"

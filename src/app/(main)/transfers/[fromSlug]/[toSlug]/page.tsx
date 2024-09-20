@@ -1,6 +1,10 @@
 import { getAvailableLocations } from "@/entities/location/actions";
 import { LocationObj } from "@/entities/location/location";
+import { getTransfers } from "@/entities/transfer/actions";
+import { Transfer } from "@/entities/transfer/transfer";
 import ImageSlider from "@/ui/atoms/ImageSlider";
+import ProsBlock from "@/ui/components/pros/ProsBlock";
+import TransferDetails from "@/ui/components/TransferDetails";
 import TransferSearch, {
   TransferSearchProps,
 } from "@/ui/components/TransferSearch";
@@ -16,6 +20,9 @@ export default async function TransferPage({
   params: { fromSlug: string; toSlug: string };
 }) {
   const locations: LocationObj[] = (await getAvailableLocations()) || [];
+  const transfers: Transfer[] =
+    (await getTransfers(params.fromSlug, params.toSlug, 0, 16)) || [];
+  console.log(transfers);
 
   const locationFrom = locations.find((locationFrom) => {
     return locationFrom.slug === params.fromSlug;
@@ -40,31 +47,34 @@ export default async function TransferPage({
 
   return (
     <section className="mx-auto max-w-7xl pb-16">
-      <div className="mt-6 mx-auto">
-        <section className="relative w-full ">
-          <div className="absolute z-10 flex flex-col w-full h-full  p-3 md:p-12">
-            <h1 className="text-[28px] sm:text-[32px] md:text-[48px] left-6 top-25 z-10  text-white  p-2 group font-bold max-w-2xl">
-              Такси & Трансферы из аэропорта
-            </h1>
-            <div className="h-full w-full flex items-end justify-center">
-              <div className="max-w-7xl mx-auto p-4 shadow-lg bg-white w-full rounded-md sm:rounded-md  ">
-                {locations.length > 0 && (
-                  <TransferSearch
-                    initialProps={prepareDataForSearch().initialProps}
-                  />
-                )}
-              </div>
+      <section className="relative w-full ">
+        <div className="absolute z-10 flex flex-col w-full h-full  p-3 md:p-12">
+          <h1 className="text-[28px] sm:text-[32px] md:text-[48px] left-6 top-25 z-10  text-white  p-2 group font-bold max-w-2xl">
+            Такси & Трансферы из аэропорта
+          </h1>
+          <div className="h-full w-full flex items-end justify-center">
+            <div className="max-w-7xl mx-auto p-4 shadow-lg bg-white w-full rounded-md sm:rounded-md  ">
+              {locations.length > 0 && (
+                <TransferSearch
+                  initialProps={prepareDataForSearch().initialProps}
+                />
+              )}
             </div>
           </div>
-          <ImageSlider images={[{ src: "/bannerTransfers.png" }]} />
-        </section>
-      </div>
+        </div>
+        <ImageSlider images={[{ src: "/bannerTransfers.png" }]} />
+      </section>
+      <section className="my-6">
+        <ProsBlock />
+      </section>
+
       <section className="my-6">
         <h2 className="text-textColor text-[24px] font-semibold pb-2">
           {`${locationFrom?.name} в ${locationTo?.name}`}
         </h2>
       </section>
       {/* <ProductList products={excursionsForLocation} /> */}
+      <TransferDetails />
     </section>
   );
 }

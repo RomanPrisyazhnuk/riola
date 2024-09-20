@@ -1,9 +1,12 @@
+export type UserPhoneType = "whatsapp" | "telegram";
+
 export interface User {
-  firstName: string;
-  lastName: string;
+  name: string
   email: string;
   phone: string;
+  phone_type: UserPhoneType;
   avatar: string;
+  type: string;
 }
 
 export const mockUser = {

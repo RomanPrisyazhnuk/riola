@@ -143,7 +143,7 @@ const TransferSearch: FC<TransferSearchProps> = ({ initialProps }) => {
         onSelectionChange={(item: { currentKey: string }) => {
           onSelectFromChange(item.currentKey);
         }}
-        className=""
+        className="lg:max-w-[30%]"
         startContent={
           <Image
             src={"/icons/location.svg"}
@@ -170,7 +170,7 @@ const TransferSearch: FC<TransferSearchProps> = ({ initialProps }) => {
         }
         labelPlacement="outside"
         isDisabled={!selectedLocationFrom}
-        className=""
+        className="lg:max-w-[30%]"
         startContent={
           <Image
             src={"/icons/my-location.svg"}

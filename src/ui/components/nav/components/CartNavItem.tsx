@@ -13,6 +13,7 @@ export const CartNavItem = () => {
     <div
       className="min-w-fit cursor-pointer"
       data-testid="CartNavItem"
+      title="Корзина"
       onClick={() => dispatch(openPanel({ type: PanelTypes.Cart }))}
     >
       <Image

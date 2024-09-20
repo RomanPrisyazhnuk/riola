@@ -1,9 +1,10 @@
 import { Suspense } from "react";
-import AuthButton from "../auth/AuthButton";
+import AuthButtonWrap from "../auth/AuthButtonWrap";
 import { CartNavItem } from "./components/CartNavItem";
 import { СurrencySelect } from "../СurrencySelect";
 import StoreProvider from "@/ui/atoms/StoreProvider";
 import { PanelTypes } from "@/store/slices/panelSlice";
+import Image from "next/image";
 
 export const Nav = () => {
   return (
@@ -16,7 +17,25 @@ export const Nav = () => {
         <СurrencySelect />
         <div className="hidden sm:flex items-center  gap-4 ">
           <Suspense fallback={<div className="w-8" />}>
-            <AuthButton type={PanelTypes.Login} buttonChild={"Войти"} />
+            <AuthButtonWrap
+              type={PanelTypes.Login}
+              beforeAuthView={
+                <button className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full sm:w-auto">
+                  Войти
+                </button>
+              }
+              afterAuthView={
+                <Image
+                  title="Аккаунт"
+                  src={"/icons/account-blue.svg"}
+                  alt={"Войти"}
+                  loading="lazy"
+                  width={20}
+                  height={20}
+                  className="h-full object-contain object-center cursor-pointer"
+                />
+              }
+            />
           </Suspense>
           <Suspense fallback={<div className="w-6" />}>
             <CartNavItem />

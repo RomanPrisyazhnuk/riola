@@ -4,11 +4,8 @@ import { Header } from "@/ui/components/Header";
 import SidePanel from "@/ui/components/SidePanel";
 import StoreProvider from "@/ui/atoms/StoreProvider";
 import MobileNavigation from "@/ui/components/MobileNavigation";
+import AuthHandler from "@/ui/components/auth/AuthHandler";
 
-export const metadata = {
-  title: "Riola Travel",
-  description: "Travel with Riola Travel",
-};
 
 export default function RootLayout(props: { children: ReactNode }) {
   return (
@@ -17,6 +14,7 @@ export default function RootLayout(props: { children: ReactNode }) {
       <main className="flex-1">{props.children}</main>
       <Footer />
       <StoreProvider>
+        <AuthHandler />
         <SidePanel />
         <MobileNavigation />
       </StoreProvider>

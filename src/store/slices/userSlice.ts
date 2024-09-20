@@ -1,25 +1,29 @@
+import { User } from "@/entities/user/user";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 interface UserState {
-  name: string | null;
+  user: User | null;
 }
 
 const initialState: UserState = {
-  name: null,
+  user: null,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
+    setUser: (state, action: PayloadAction<User | null>) => {
+      state.user = action.payload;
     },
     clearUser: (state) => {
-      state.name = null;
+      state.user = null;
     },
   },
 });
+
+export const getUserData = (state: RootState): User | null => state.user.user;
 
 export const { setUser, clearUser } = userSlice.actions;
 export default userSlice.reducer;

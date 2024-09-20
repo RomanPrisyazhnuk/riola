@@ -2,6 +2,7 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import { Input, Spacer } from "@nextui-org/react";
 import Image from "next/image";
 import { apiRoutes } from "@/app/api/config";
+import { UserPhoneType } from "@/entities/user/user";
 
 const PhoneInput = ({
   value,
@@ -9,12 +10,14 @@ const PhoneInput = ({
   placeholder,
   iconSrc,
   altText,
+  isDisabled,
 }: {
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   iconSrc: string;
   altText: string;
+  isDisabled: boolean;
 }) => (
   <Input
     type="text"
@@ -23,6 +26,7 @@ const PhoneInput = ({
     variant="bordered"
     placeholder={placeholder}
     aria-label="Phone"
+    isDisabled={isDisabled}
     startContent={
       <Image
         src={iconSrc}
@@ -49,12 +53,18 @@ export function RegistrationForm() {
 
     if (!email || !password || (!userPhones.telegram && !userPhones.whatsapp)) {
       setErrors({
-        form: "Необходимо ввести email, пароль и хотя бы один номер телефона",
+        form: "Необходимо ввести email, пароль и один номер телефона",
       });
       return;
     }
 
     try {
+      let user_phone = userPhones.telegram;
+      let user_phone_type = "telegram";
+      if (userPhones.whatsapp) {
+        user_phone = userPhones.whatsapp;
+        user_phone_type = "whatsapp";
+      }
       const response = await fetch(
         `${apiRoutes.baseUrl}/${apiRoutes.auth}/${apiRoutes.register}`,
         {
@@ -62,13 +72,24 @@ export function RegistrationForm() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, password, ...userPhones }),
+          body: JSON.stringify({
+            user_email: email,
+            password,
+            user_phone,
+            user_name: "!!!",
+            user_phone_type,
+            role: "customer",
+            terms_accepted: 1,
+            is_affiliate: 0,
+            country_id: 4016,
+            city_id: 4016,
+          }),
         },
       );
       if (!response.ok) {
         throw new Error("Ошибка при регистрации");
       }
-      setErrors({}); // Очистка ошибок
+      setErrors({});
     } catch (error: any) {
       setErrors({ form: error.message });
     }
@@ -76,11 +97,9 @@ export function RegistrationForm() {
 
   const handlePhoneChange = (
     e: ChangeEvent<HTMLInputElement>,
-    type: "telegram" | "whatsapp",
+    type: UserPhoneType,
   ) => {
-    // Фильтрация ввода, оставляем только цифры
-    const filteredValue = e.target.value.replace(/\D/g, "");
-    setUserPhones({ ...userPhones, [type]: filteredValue });
+    setUserPhones({ ...userPhones, [type]: e.target.value });
   };
 
   return (
@@ -96,6 +115,7 @@ export function RegistrationForm() {
             placeholder="Telegram"
             iconSrc="/social/telegramm.svg"
             altText="Telegram"
+            isDisabled={!!userPhones.whatsapp}
           />
           <PhoneInput
             value={userPhones.whatsapp}
@@ -103,6 +123,7 @@ export function RegistrationForm() {
             placeholder="WhatsApp"
             iconSrc="/social/watsapp.svg"
             altText="WhatsApp"
+            isDisabled={!!userPhones.telegram}
           />
         </div>
 

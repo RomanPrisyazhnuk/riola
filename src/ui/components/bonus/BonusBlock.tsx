@@ -1,6 +1,5 @@
 import type { FC } from "react";
 import Image from "next/image";
-import AuthButton from "../auth/AuthButton";
 import StoreProvider from "@/ui/atoms/StoreProvider";
 import { PanelTypes } from "@/store/slices/panelSlice";
 
@@ -10,6 +9,7 @@ const BonusBlock: FC = () => {
       <Image
         src={"/lines.png"}
         alt={"bg"}
+        loading="lazy"
         width={350}
         height={63}
         className="absolute left-0 top-0 z-20 max-w-[350px] sm:max-w-[403px] md:max-w-[805px] hidden lg:inline-block"
@@ -17,6 +17,7 @@ const BonusBlock: FC = () => {
       <Image
         src={"/bonus.png"}
         alt={"bg"}
+        loading="lazy"
         width={610}
         height={350}
         className="absolute right-0 z-20 h-[300px] sm:h-[350px]"
@@ -38,9 +39,9 @@ const BonusBlock: FC = () => {
           Зарегистрируйтесь и получите гайд:  “43 приложения для экономии в
           отпуске”
         </p>
-        <StoreProvider>
-          <AuthButton type={PanelTypes.Register} buttonChild={"Забрать"} />
-        </StoreProvider>
+        <button className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full sm:w-auto">
+          Забрать
+        </button>
       </div>
     </section>
   );

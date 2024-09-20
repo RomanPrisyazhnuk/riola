@@ -23,6 +23,7 @@ const SocialLinks: FC = () => {
             key={item.name}
             src={`/${item.image}`}
             alt={item.name}
+            loading="lazy"
             title={item.name}
             width={40}
             height={40}

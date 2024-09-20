@@ -16,6 +16,7 @@ const PMethods: FC = () => {
           key={item.name}
           src={`/${item.image}`}
           alt={item.name}
+          loading="lazy"
           title={item.name}
           width={38}
           height={24}

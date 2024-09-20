@@ -34,6 +34,7 @@ export function ProductElement({
           <Image
             src={"/icons/layers.svg"}
             alt={"layers"}
+            loading="lazy"
             width={20}
             height={20}
             className="h-full object-contain object-center"
