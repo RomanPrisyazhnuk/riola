@@ -48,7 +48,7 @@ const ImageSlider: FC<ImageSliderProps> = ({ images }) => {
         <Image
           src={images[currentIndex].src}
           alt={`Slider Image ${currentIndex + 1}`}
-          loading="lazy"
+          priority={true}
           layout="fill"
           objectFit="cover"
           className="rounded-lg transition-all duration-400 ease-in-out cursor-pointer"
