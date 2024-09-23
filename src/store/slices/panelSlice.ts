@@ -1,3 +1,5 @@
+import { Excursion } from "@/entities/excursion/excursion";
+import { Transfer } from "@/entities/transfer/transfer";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
@@ -6,10 +8,13 @@ export enum PanelTypes {
   Login = "login",
   Register = "registration",
   Cart = "cart",
+  PreExcursion = "pre-excursion",
+  PreTransfer = "pre-transfer",
 }
 
 interface PanelData {
   type: PanelTypes;
+  data?: Excursion | Transfer;
 }
 
 interface PanelState {

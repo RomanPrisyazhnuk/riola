@@ -3,6 +3,7 @@ import { getPanelData, PanelTypes } from "@/store/slices/panelSlice";
 import { useSelector } from "react-redux";
 import AuthForm from "./auth/AuthForm";
 import Cart from "./cart/Cart";
+import PreBlock from "./preBlock/PreBlock";
 
 export default function SidePanel() {
   const panelData = useSelector(getPanelData);
@@ -16,6 +17,10 @@ export default function SidePanel() {
       }
       case PanelTypes.Cart: {
         return <Cart />;
+      }
+      case PanelTypes.PreExcursion:
+      case PanelTypes.PreTransfer: {
+        return <PreBlock panelData={panelData} />;
       }
       default: {
         return null;

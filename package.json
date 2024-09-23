@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@headlessui/react": "1.7.18",
+    "@internationalized/date": "^3.5.5",
     "@nextui-org/react": "^2.4.6",
     "@reduxjs/toolkit": "^2.2.7",
     "@tailwindcss/container-queries": "0.1.1",
@@ -29,11 +30,11 @@
   "devDependencies": {
     "@tailwindcss/forms": "0.5.7",
     "@tailwindcss/typography": "0.5.10",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-image-gallery": "^1.2.4",
-    "@types/js-cookie": "^3.0.6",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",

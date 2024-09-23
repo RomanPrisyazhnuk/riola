@@ -3,7 +3,7 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import { Input, Spacer } from "@nextui-org/react";
 import Image from "next/image";
 import { apiRoutes } from "@/app/api/config";
-import { isTokenInCookies, setAuthCookies } from "@/lib/helpers/headers";
+import { setAuthCookies } from "@/lib/helpers/headers";
 import { setUser } from "@/store/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { getAuthUserData } from "@/entities/user/actions";
@@ -52,9 +52,7 @@ export function LoginForm() {
           console.error("Error fetching user data:", error);
         }
       };
-      if (isTokenInCookies) {
-        fetchUser();
-      }
+      fetchUser();
       setErrors([]);
     } catch (error: any) {
       setErrors([error.message]);

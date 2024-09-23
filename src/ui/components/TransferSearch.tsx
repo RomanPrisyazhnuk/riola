@@ -15,6 +15,7 @@ import { SelectArrow } from "../atoms/SelectArrow";
 import { useRouter } from "next/navigation";
 import { getAvailableLocations } from "@/entities/location/actions";
 import { useSearchParams } from "next/navigation";
+import Counter from "../atoms/Counter";
 
 export interface TransferSearchProps {
   initialProps?: {
@@ -219,64 +220,33 @@ const TransferSearch: FC<TransferSearchProps> = ({ initialProps }) => {
           <DropdownMenu className="w-full">
             {/* Взрослые */}
             <DropdownItem key="adults" className="w-full">
-              <div className="flex justify-between items-center w-full min-w-[65vw] lg:min-w-[160px]">
-                <div className="flex flex-col ">
-                  <p>Взрослые</p>
-                  <p>12 лет и старше</p>
-                </div>
-                <div className="flex items-center justify-between min-w-[107px]">
-                  <button
-                    className="bg-gray-200 rounded-md w-8 h-8 flex justify-center items-center text-xl text-blue-500"
-                    onClick={() => setAdults(Math.max(1, adults - 1))}
-                  >
-                    <span>-</span>
-                  </button>
-                  <p className="mx-4 text-lg font-semibold">{adults}</p>
-                  <button
-                    className="bg-cyan-500 rounded-md w-8 h-8 flex justify-center items-center text-xl text-white"
-                    onClick={() => setAdults(adults + 1)}
-                  >
-                    <span>+</span>
-                  </button>
-                </div>
-              </div>
+              <Counter
+                title="Взрослые"
+                description="12 лет и старше"
+                setCounter={setAdults}
+                value={adults}
+              />
             </DropdownItem>
-
             {/* Дети */}
             <DropdownItem key="children">
-              <div className="flex justify-between items-center gap-8">
-                <div className="flex flex-col ">
-                  <p>Дети</p>
-                  <p>От 2 до 11 лет</p>
-                </div>
-                <div className="flex items-center justify-between min-w-[107px]">
-                  <button
-                    className="bg-gray-200 rounded-md w-8 h-8 flex justify-center items-center text-xl text-blue-500"
-                    onClick={() => setChildren(Math.max(0, children - 1))}
-                  >
-                    <span>-</span>
-                  </button>
-                  <p className="mx-4 text-lg font-semibold">{children}</p>
-                  <button
-                    className="bg-cyan-500 rounded-md w-8 h-8 flex justify-center items-center text-xl text-white"
-                    onClick={() => setChildren(children + 1)}
-                  >
-                    <span>+</span>
-                  </button>
-                </div>
-              </div>
+              <Counter
+                title="Дети"
+                description="От 2 до 11 лет"
+                setCounter={setChildren}
+                value={children}
+              />
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </div>
 
-      <button
-        disabled={!selectedLocationTo || !selectedLocationFrom}
+      <Button
+        isDisabled={!selectedLocationTo || !selectedLocationFrom}
         className="px-4 py-2 h-[40px] self-end min-w-fit text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full sm:w-auto"
         onClick={() => handleTransfer()}
       >
         Узнать цены
-      </button>
+      </Button>
     </div>
   );
 };

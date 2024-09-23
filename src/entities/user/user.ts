@@ -1,7 +1,7 @@
 export type UserPhoneType = "whatsapp" | "telegram";
 
 export interface User {
-  name: string
+  name: string;
   email: string;
   phone: string;
   phone_type: UserPhoneType;

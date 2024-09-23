@@ -7,10 +7,16 @@ body {
   overflow-x: hidden;
 }
 
-input {
+input,
+textarea {
   border: none;
 }
 
 .bordered-input {
   border: 2px red;
+}
+
+[data-filled-within="true"] {
+  box-shadow: none !important;
+  border: none !important;
 }

@@ -6,7 +6,6 @@ import StoreProvider from "@/ui/atoms/StoreProvider";
 import MobileNavigation from "@/ui/components/MobileNavigation";
 import AuthHandler from "@/ui/components/auth/AuthHandler";
 
-
 export default function RootLayout(props: { children: ReactNode }) {
   return (
     <div className="flex min-h-[calc(100dvh-64px)] flex-col px-3">

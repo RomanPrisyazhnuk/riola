@@ -10,7 +10,7 @@ import ProsBlock from "@/ui/components/pros/ProsBlock";
 import SearchTabs from "@/ui/components/SearchTabs";
 import type { Metadata } from "next";
 
-export const metadata: Metadata  = {
+export const metadata: Metadata = {
   title: "Riola Travel",
   description: "Откройте Азию с RIOLA – ваш отдых с комфортом и выгодой!",
 };

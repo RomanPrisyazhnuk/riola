@@ -26,7 +26,7 @@ const ProsBlock: FC = () => {
       {prosContent.map((item) => (
         <div
           key={item.text}
-          className="flex flex-col md:flex-row items-center gap-3 relative"
+          className="flex flex-col md:flex-row items-center gap-3 relative z-10"
         >
           <Image
             src={item.image}
