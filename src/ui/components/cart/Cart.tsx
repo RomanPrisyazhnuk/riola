@@ -3,6 +3,8 @@ import { FC, useState } from "react";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { closePanel } from "@/store/slices/panelSlice";
+import { Button } from "@nextui-org/react";
+
 import {
   CartItem,
   mocCartItem,
@@ -82,12 +84,17 @@ const Cart: FC = () => {
         <div className="flex font-semibold gap-2 items-center">
           <p>Итого:</p> <Price priceInUSD={totalSum} />
         </div>
-        <button
+        <Button
+        isDisabled={!totalSum}
+        className="px-4 py-2 h-[40px] self-end w-1/2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 sm:w-auto"
+      >
+        Забронировать
+      </Button>
+        {/* <button
           className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-1/2"
-          type="submit"
         >
           Забронировать
-        </button>
+        </button> */}
       </div>
     </div>
   );
