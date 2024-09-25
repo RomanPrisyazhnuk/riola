@@ -4,6 +4,7 @@ import { getTransfers } from "@/entities/transfer/actions";
 import { Transfer } from "@/entities/transfer/transfer";
 import ImageSlider from "@/ui/atoms/ImageSlider";
 import ProsBlock from "@/ui/components/pros/ProsBlock";
+import { TransferList } from "@/ui/components/transfer/TransferList";
 import TransferDetails from "@/ui/components/TransferDetails";
 import TransferSearch, {
   TransferSearchProps,
@@ -21,8 +22,7 @@ export default async function TransferPage({
 }) {
   const locations: LocationObj[] = (await getAvailableLocations()) || [];
   const transfers: Transfer[] =
-    (await getTransfers(params.fromSlug, params.toSlug, 0, 16)) || [];
-  console.log(transfers);
+    (await getTransfers(params.fromSlug, params.toSlug)) || [];
 
   const locationFrom = locations.find((locationFrom) => {
     return locationFrom.slug === params.fromSlug;
@@ -46,7 +46,7 @@ export default async function TransferPage({
   };
 
   return (
-    <section className="mx-auto max-w-7xl pb-16">
+    <div className="mx-auto max-w-7xl pb-16">
       <section className="relative w-full ">
         <div className="absolute z-10 flex flex-col w-full h-full  p-3 md:p-12">
           <h1 className="text-[28px] sm:text-[32px] md:text-[48px] left-6 top-25 z-10  text-white  p-2 group font-bold max-w-2xl">
@@ -69,12 +69,15 @@ export default async function TransferPage({
       </section>
 
       <section className="my-6">
-        <h2 className="text-textColor text-[24px] font-semibold pb-2">
+        <h2 className="text-textColor text-[24px] font-semibold">
           {`${locationFrom?.name} в ${locationTo?.name}`}
         </h2>
       </section>
-      {/* <ProductList products={excursionsForLocation} /> */}
-      <TransferDetails />
-    </section>
+
+      <TransferList products={transfers} />
+      <section className="my-6">
+        <TransferDetails />
+      </section>
+    </div>
   );
 }

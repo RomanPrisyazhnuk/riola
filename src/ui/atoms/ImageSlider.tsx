@@ -14,12 +14,11 @@ const ImageSlider: FC<ImageSliderProps> = ({ images }) => {
 
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const nextSlide = (): void => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
   useEffect(() => {
     if (!isHovered) {
+      const nextSlide = (): void => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      };
       const interval = setInterval(() => {
         nextSlide();
       }, 3000);

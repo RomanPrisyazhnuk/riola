@@ -5,9 +5,9 @@ import Gallery from "@/ui/atoms/Gallery";
 import LocationFull from "@/ui/atoms/LocationFull";
 import Rating from "@/ui/atoms/Rating";
 import ExcursionAccordion from "@/ui/components/excursion/ExcursionAccordion";
-import { ProductList } from "@/ui/components/ProductList";
 import ExcursionDescription from "@/ui/components/excursion/ExcursionDescription";
 import StoreProvider from "@/ui/atoms/StoreProvider";
+import { ExcursionList } from "@/ui/components/excursion/ExcursionList";
 
 export const metadata = {
   title: "",
@@ -56,7 +56,7 @@ export default async function ExcursionPage({
           Могут понравиться
         </h2>
         {excursion.similarExcursions && (
-          <ProductList products={excursion.similarExcursions} />
+          <ExcursionList products={excursion.similarExcursions} />
         )}
       </div>
     </section>

@@ -12,7 +12,7 @@ const PriceText: FC<PriceProps> = ({ priceInUSD }) => {
   const currentCurrency: Currency = useSelector(getCurrentCurrency);
 
   return (
-    <>{`${(priceInUSD * currentCurrency.rate).toFixed(2)}${currentCurrency.symbol}`}</>
+    <>{`${(priceInUSD * currentCurrency.rate).toFixed(0)}${currentCurrency.symbol}`}</>
   );
 };
 export default PriceText;

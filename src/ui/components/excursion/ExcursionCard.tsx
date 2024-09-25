@@ -4,16 +4,16 @@ import { ProductImageWrapper } from "@/ui/atoms/ProductImageWrapper";
 import { Excursion } from "@/entities/excursion/excursion";
 import Rating from "@/ui/atoms/Rating";
 import LocationFull from "@/ui/atoms/LocationFull";
-import Price from "../atoms/Price";
+import Price from "../../atoms/Price";
 
-export function ProductElement({
+export function ExcursionCard({
   product,
   loading,
   priority,
 }: { product: Excursion } & { loading: "eager" | "lazy"; priority?: boolean }) {
   return (
     <li
-      data-testid="ProductElement"
+      data-testid="ExcursionCard"
       className="relative rounded-md overflow-hidden shadow-md shadow-cyan-100"
     >
       <Link

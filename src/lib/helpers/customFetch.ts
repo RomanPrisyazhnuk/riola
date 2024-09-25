@@ -16,7 +16,10 @@ interface CustomFetchOptions {
   params?: Record<string, string>;
   headers?: Record<string, string>;
 }
-
+export const defaultHeaders = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+};
 export async function fetchWithAuth<T>({
   route,
   method,
@@ -32,8 +35,8 @@ export async function fetchWithAuth<T>({
     );
   }
 
-  const defaultHeaders = {
-    "Content-Type": "application/json",
+  const defaultHeadersWithAuth = {
+    ...defaultHeaders,
     Authorization: `Bearer ${Cookies.get(authHeadersKey)}`,
     ...headers,
   };
@@ -41,7 +44,7 @@ export async function fetchWithAuth<T>({
   try {
     const response = await fetch(url.toString(), {
       method,
-      headers: defaultHeaders,
+      headers: defaultHeadersWithAuth,
       body: body ? JSON.stringify(body) : undefined,
     });
 

@@ -1,10 +1,10 @@
 import { Image } from "../image";
-import { LocationObj, mockLocationObjs } from "../location/location";
-import { mockPrices, PriceOption } from "../price";
+import { PriceOption } from "../price";
 
 export interface Transfer {
   id: number;
   price: PriceOption;
+  image: Image;
   currency: string;
   service_type: string;
   vehicle_type: string;
@@ -14,10 +14,7 @@ export interface Transfer {
   possible_models: any;
   distance: number;
   duration: number;
-
-  free_cancel: boolean;
-  waiting_included: boolean;
-  meet_with_table: boolean;
+  opportunities: [];
 }
 
 // export const mocktransfer1: Excursion = {

@@ -2,7 +2,11 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import { Input, Spacer } from "@nextui-org/react";
 import Image from "next/image";
 import { apiRoutes } from "@/app/api/config";
-import { UserPhoneType } from "@/entities/user/user";
+import { User, UserPhoneType } from "@/entities/user/user";
+import { setAuthCookies } from "@/lib/helpers/headers";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/store/slices/userSlice";
+import { closePanel } from "@/store/slices/panelSlice";
 
 const PhoneInput = ({
   value,
@@ -47,6 +51,7 @@ export function RegistrationForm() {
     whatsapp: "",
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -71,24 +76,26 @@ export function RegistrationForm() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json",
           },
           body: JSON.stringify({
             user_email: email,
             password,
             user_phone,
             user_name: "!!!",
-            user_phone_type,
             role: "customer",
+            user_phone_type,
             terms_accepted: 1,
-            is_affiliate: 0,
-            country_id: 4016,
-            city_id: 4016,
           }),
         },
       );
       if (!response.ok) {
         throw new Error("Ошибка при регистрации");
       }
+      const respData = await response.json();
+      setAuthCookies(respData.token);
+      dispatch(setUser(respData.user as User));
+      dispatch(closePanel());
       setErrors({});
     } catch (error: any) {
       setErrors({ form: error.message });

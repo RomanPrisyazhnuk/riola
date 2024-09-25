@@ -6,7 +6,7 @@ export const Places = ({ places }: { places: Place[] }) => {
   return (
     <ul
       role="list"
-      data-testid="ProductList"
+      data-testid="PlacesList"
       className="flex flex-wrap justify-between w-full gap-2"
     >
       {places.map((place) => (

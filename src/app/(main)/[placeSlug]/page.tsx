@@ -3,7 +3,7 @@ import { GalleryTypes } from "@/entities/image";
 import { getPlaceData, getPlaceExcursions } from "@/entities/place/actions";
 import { Place } from "@/entities/place/place";
 import Gallery from "@/ui/atoms/Gallery";
-import { ProductList } from "@/ui/components/ProductList";
+import { ExcursionList } from "@/ui/components/excursion/ExcursionList";
 
 export const metadata = {
   title: "",
@@ -61,7 +61,7 @@ export default async function PlacePage({
       <h2 className="text-textColor text-[24px] font-semibold py-4">
         Экскурсии
       </h2>
-      <ProductList products={excursionsForLocation} />
+      <ExcursionList products={excursionsForLocation} />
     </section>
   );
 }

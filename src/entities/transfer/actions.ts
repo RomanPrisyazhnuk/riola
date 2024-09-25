@@ -1,17 +1,16 @@
 import { apiRoutes } from "@/app/api/config";
+import { defaultHeaders } from "@/lib/helpers/customFetch";
 
-export const getTransfers = async (
-  from: string,
-  to: string,
-  paginate: number,
-  limit: number,
-) => {
+export const getTransfers = async (from: string, to: string) => {
   try {
-    const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.transfers}?from=${from}&to=${to}&paginate=${paginate}&popular=1&limit=${limit}`;
+    const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.transfers}?from=${from}&to=${to}&adults=2&children=3`;
     console.log(url);
 
     const res = await fetch(
       url,
+      {
+        headers: defaultHeaders,
+      },
       // {
       //   cache: "force-cache",
       //   next: { revalidate: 180 },
@@ -21,7 +20,7 @@ export const getTransfers = async (
       throw new Error("Failed to fetch excursionsForLocation");
     }
     const respData = await res.json();
-    return respData ? respData : null;
+    return respData ? respData.transfers : null;
   } catch (err) {
     console.error(err);
     return null;

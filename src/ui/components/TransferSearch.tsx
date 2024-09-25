@@ -81,7 +81,7 @@ const TransferSearch: FC<TransferSearchProps> = ({ initialProps }) => {
     if (!initialProps) {
       fetchLocations();
     }
-  }, []);
+  }, [initialProps]);
 
   useEffect(() => {
     try {
@@ -93,7 +93,7 @@ const TransferSearch: FC<TransferSearchProps> = ({ initialProps }) => {
     } catch {
       console.log("Unavailable to parse passagers");
     }
-  }, []);
+  }, [searchParams]);
 
   useEffect(() => {
     setlocationFromOptions(prepareLocationObjsOptions(locations));

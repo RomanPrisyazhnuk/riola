@@ -2,9 +2,7 @@
 import type { FC } from "react";
 import { useDispatch } from "react-redux";
 import { useState, FormEvent } from "react";
-import {
-  parseAbsoluteToLocal,
-} from "@internationalized/date";
+import { parseAbsoluteToLocal } from "@internationalized/date";
 
 // import { closePanel, PanelTypes } from "@/store/slices/panelSlice";
 import { Excursion } from "@/entities/excursion/excursion";

@@ -4,8 +4,8 @@ import { getAvailablePlaces } from "@/entities/place/actions";
 import { Place } from "@/entities/place/place";
 import ImageSlider from "@/ui/atoms/ImageSlider";
 import BonusBlock from "@/ui/components/bonus/BonusBlock";
+import { ExcursionList } from "@/ui/components/excursion/ExcursionList";
 import { Places } from "@/ui/components/Places";
-import { ProductList } from "@/ui/components/ProductList";
 import ProsBlock from "@/ui/components/pros/ProsBlock";
 import SearchTabs from "@/ui/components/SearchTabs";
 import type { Metadata } from "next";
@@ -52,7 +52,7 @@ export default async function Page() {
         <h2 className="text-textColor text-[24px] font-semibold pb-2">
           Популярные
         </h2>
-        <ProductList products={popularExcursions} />
+        <ExcursionList products={popularExcursions} />
       </section>
       <section className="my-6">
         <BonusBlock />

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Input } from "@nextui-org/react";
 import { apiRoutes } from "@/app/api/config";
-import { ProductList } from "@/ui/components/ProductList";
 import { Excursion } from "@/entities/excursion/excursion";
+import { ExcursionList } from "./excursion/ExcursionList";
 
 export default function SearchBlock() {
   const [searchValue, setSearchValue] = useState("");
@@ -93,7 +93,7 @@ export default function SearchBlock() {
         ) : error ? (
           <div className="text-center text-red-500">{error}</div>
         ) : (
-          <ProductList products={products} />
+          <ExcursionList products={products} />
         )}
       </div>
     </>
