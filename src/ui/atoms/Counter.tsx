@@ -14,15 +14,15 @@ const Counter: FC<CounterProps> = ({
   value,
 }) => {
   return (
-    <div className="flex justify-between items-center gap-8">
-      <div className="flex flex-col ">
+    <div className="flex justify-between items-center gap-8 text-textColor bg-gray-100  p-2 rounded-md">
+      <div className="flex flex-col">
         <p>{title}</p>
         {description && <p>{description}</p>}
       </div>
       <div className="flex items-center justify-between min-w-[107px]">
         <button
           type="button"
-          className="bg-gray-200 rounded-md w-8 h-8 flex justify-center items-center text-xl text-blue-500"
+          className="rounded-md w-8 h-8 flex justify-center items-center text-xl text-cyan-500 border-1 border-cyan-500"
           onClick={() => setCounter(Math.max(0, value - 1))}
         >
           <span>-</span>

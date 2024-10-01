@@ -20,6 +20,7 @@ export default function SidePanel() {
       }
       case PanelTypes.PreExcursion:
       case PanelTypes.PreTransfer: {
+        //@ts-ignore
         return <PreBlock panelData={panelData} />;
       }
       default: {

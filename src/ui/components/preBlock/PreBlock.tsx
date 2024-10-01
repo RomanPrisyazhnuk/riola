@@ -3,7 +3,7 @@ import type { FC } from "react";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { closePanel, PanelTypes } from "@/store/slices/panelSlice";
-import { Excursion } from "@/entities/excursion/excursion";
+import { ExcursionFull } from "@/entities/excursion/excursion";
 import PreExcursion from "./PreExcursion";
 import PreTransfer from "./PreTransfer";
 import { Transfer } from "@/entities/transfer/transfer";
@@ -11,7 +11,7 @@ import { Transfer } from "@/entities/transfer/transfer";
 interface PreBlockProps {
   panelData: {
     type: PanelTypes;
-    data?: Excursion | Transfer;
+    data?: ExcursionFull | Transfer;
   };
 }
 const PreBlock: FC<PreBlockProps> = ({ panelData }) => {
@@ -31,7 +31,7 @@ const PreBlock: FC<PreBlockProps> = ({ panelData }) => {
       </div>
       <div>
         {panelData.type === PanelTypes.PreExcursion ? (
-          <PreExcursion data={panelData.data as Excursion} />
+          <PreExcursion data={panelData.data as ExcursionFull} />
         ) : (
           <PreTransfer data={panelData.data as Transfer} />
         )}

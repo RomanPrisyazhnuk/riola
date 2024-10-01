@@ -6,17 +6,18 @@ import { closePanel } from "@/store/slices/panelSlice";
 import { Button } from "@nextui-org/react";
 
 import {
-  CartItem,
-  mocCartItem,
-  mocCartItem1,
+  CartItem
 } from "@/entities/cartItem/cartItem";
 import CartCard from "./CartCard";
 import { PriceOption } from "@/entities/price";
 import Price from "@/ui/atoms/Price";
+import { useSelector } from "react-redux";
+import { getCart } from "@/store/slices/cartSlice";
 
 const Cart: FC = () => {
   const dispatch = useDispatch();
-  const mockCartItems = [mocCartItem, mocCartItem1];
+  const cart: CartItem[] = useSelector(getCart)
+  // const mockCartItems = [mocCartItem, mocCartItem1];
   const [activeCartItems, setActiveCartItems] = useState<(number | string)[]>(
     [],
   );
@@ -78,7 +79,7 @@ const Cart: FC = () => {
       </div>
 
       <div className="flex flex-col w-full">
-        {mockCartItems.map((cartItem) => getCartItem(cartItem))}
+        {cart.map((cartItem) => getCartItem(cartItem))}
       </div>
       <div className="w-full py-4 px-3 flex justify-between gap-3 items-center">
         <div className="flex font-semibold gap-2 items-center">
@@ -90,11 +91,7 @@ const Cart: FC = () => {
       >
         Забронировать
       </Button>
-        {/* <button
-          className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-1/2"
-        >
-          Забронировать
-        </button> */}
+
       </div>
     </div>
   );

@@ -5,13 +5,17 @@ import { useState, FormEvent } from "react";
 import { parseAbsoluteToLocal } from "@internationalized/date";
 
 // import { closePanel, PanelTypes } from "@/store/slices/panelSlice";
-import { Excursion } from "@/entities/excursion/excursion";
+import { Excursion, ExcursionFull } from "@/entities/excursion/excursion";
 import { Spacer, DatePicker, Textarea } from "@nextui-org/react";
 import Counter from "@/ui/atoms/Counter";
 import PriceText from "@/ui/atoms/PriceText";
+import { addItemToCart } from "@/store/slices/cartSlice";
+import { closePanel } from "@/store/slices/panelSlice";
+import { ProductImageWrapper } from "@/ui/atoms/ProductImageWrapper";
+import LocationFull from "@/ui/atoms/LocationFull";
 
 interface PreExcursionProps {
-  data: Excursion;
+  data: ExcursionFull;
 }
 const PreExcursion: FC<PreExcursionProps> = ({ data }) => {
   const [counters, setCounters] = useState<{ [key: number]: number }>({});
@@ -19,7 +23,6 @@ const PreExcursion: FC<PreExcursionProps> = ({ data }) => {
     parseAbsoluteToLocal(new Date().toISOString()),
   );
 
-  // Инициализируем счетчики на основе переданных данных
   const setOption = (optionId: number, count: number) => {
     setCounters((prev) => ({
       ...prev,
@@ -27,7 +30,6 @@ const PreExcursion: FC<PreExcursionProps> = ({ data }) => {
     }));
   };
 
-  // Рассчитываем общую сумму по всем счетчикам
   const totalAmount = data.prices.reduce((total, price) => {
     const count = counters[price.id] || 0;
     return total + price.amount * count;
@@ -36,13 +38,36 @@ const PreExcursion: FC<PreExcursionProps> = ({ data }) => {
   const dispatch = useDispatch();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    alert(`Выбранная дата: ${date}`); // Дата в ISO формате
+    dispatch(addItemToCart({
+      item: data,
+      starts_at: `${date.year}-${String(date.month).padStart(2, '0')}-${String(date.day).padStart(2, '0')}`,
+      options: Object.entries(counters).map(([key, value]) => ({
+        id: Number(key),
+        amount: value,
+      }))
+    }))
+    dispatch(closePanel())
   };
 
   return (
-    <div className="w-full max-w-lg p-3">
-      <p className="font-bold pb-3">{data.name}</p>
+    <div className="w-full h-full p-3 relative flex flex-col justify-between ">
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+      <div className="rounded-t-md overflow-hidden ">
+        <ProductImageWrapper
+          src={data.images[0].thumb || "/b-2-520-820-90.webp"}
+          alt={data.name}
+          width={300}
+          height={260}
+          sizes={"260px"}
+          priority={false}
+        />
+        </div>
+        <div>
+            <p className="text-textColor font-semibold text-[20px]">
+              {data.name}
+            </p>
+            <LocationFull location={data.location} />
+          </div>
         {data.prices.map((price) => {
           return (
             <Counter
@@ -53,10 +78,7 @@ const PreExcursion: FC<PreExcursionProps> = ({ data }) => {
             />
           );
         })}
-        <div className="mt-4 text-lg font-bold flex gap-3">
-          <span>Общая сумма:</span>
-          <PriceText priceInUSD={totalAmount} />
-        </div>
+     
         <DatePicker
           label="Дата"
           granularity="day"
@@ -67,21 +89,19 @@ const PreExcursion: FC<PreExcursionProps> = ({ data }) => {
           onChange={setDate}
         />
 
-        <Textarea
-          variant="bordered"
-          label="Комментарий"
-          labelPlacement="outside"
-          placeholder="Добавьте комментарий если необходимо"
-          className="col-span-12 md:col-span-6 mb-6 md:mb-0"
-        />
-
         <Spacer y={1.5} />
-        <button
-          className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full"
+        <div className="w-full flex gap-3 justify-between items-center">
+          <p className="flex items-center text-textColor font-bold text-[22px]">
+            <PriceText priceInUSD={totalAmount} />
+          </p>
+          <button
+          className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-fit"
           type="submit"
-        >
+          >
           Добавить в корзину
-        </button>
+          </button>
+        </div>
+
       </form>
     </div>
   );

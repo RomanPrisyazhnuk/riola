@@ -50,7 +50,8 @@ const CartCard: FC<CartCardProps> = ({
           <div className="flex">
             <div className="h-[60px] w-[60px] overflow-hidden relative rounded-md flex">
               <Image
-                src={cartItem.item.image?.thumb || "/b-2-520-820-90.webp"}
+              //@ts-ignore
+                src={cartItem.item.images?.thumb || "/b-2-520-820-90.webp"}
                 alt={cartItem.item.name}
                 fill
                 loading="lazy"
