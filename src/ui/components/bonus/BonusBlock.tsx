@@ -57,7 +57,7 @@ const BonusBlock: FC = () => {
         </p>
         <button className="px-6 py-2 text-textColor bg-white rounded-md hover:bg-gray-200 w-full sm:w-auto">
           <div
-            className="flex gap-2"
+            className="flex gap-2 justify-center"
             onClick={() => dispatch(openPanel({ type: PanelTypes.Register }))}
           >
             Забрать 🎁
