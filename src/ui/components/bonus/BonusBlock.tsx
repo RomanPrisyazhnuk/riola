@@ -31,7 +31,7 @@ const BonusBlock: FC = () => {
         loading="lazy"
         width={610}
         height={350}
-        className="absolute right-0 z-20 h-[300px] sm:h-[350px]"
+        className="absolute right-0 z-20 h-[301px] sm:h-[352px]"
       />
       <div className="relative z-30 p-6 mt-[300px] sm:mt-0 text-white ">
         <div className="text-[32px] sm:text-[48px] font-bold sm:leading-[56px]">
