@@ -3,11 +3,9 @@ import { Transfer } from "@/entities/transfer/transfer";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-// Определение типов панелей с использованием перечисления
 export enum PanelTypes {
   Login = "login",
   Register = "registration",
-  Cart = "cart",
   PreExcursion = "pre-excursion",
   PreTransfer = "pre-transfer",
 }
@@ -29,10 +27,10 @@ const panelSlice = createSlice({
   name: "panel",
   initialState,
   reducers: {
-    openPanel: (state, action: PayloadAction<PanelData>) => {
+    openPanel: (state: PanelState, action: PayloadAction<PanelData>) => {
       state.panelData = action.payload;
     },
-    closePanel: (state) => {
+    closePanel: (state: PanelState) => {
       state.panelData = null;
     },
   },

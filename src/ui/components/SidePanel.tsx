@@ -15,9 +15,6 @@ export default function SidePanel() {
       case PanelTypes.Register: {
         return <AuthForm activeTab={panelData.type} />;
       }
-      case PanelTypes.Cart: {
-        return <Cart />;
-      }
       case PanelTypes.PreExcursion:
       case PanelTypes.PreTransfer: {
         //@ts-ignore

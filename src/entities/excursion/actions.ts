@@ -4,13 +4,10 @@ export const getPopularExcursions = async (paginate: number, limit: number) => {
   try {
     const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}?paginate=${paginate}&popular=1&limit=${limit}`;
 
-    const res = await fetch(
-      url,
-      // {
-      //   cache: "force-cache",
-      //   next: { revalidate: 180 },
-      // },
-    );
+    const res = await fetch(url, {
+      cache: "force-cache",
+      next: { revalidate: 180 },
+    });
     if (!res.ok) {
       throw new Error("Failed to fetch excursionsForLocation");
     }
@@ -25,13 +22,10 @@ export const getPopularExcursions = async (paginate: number, limit: number) => {
 export const getExcursionData = async (excursionSlug: string) => {
   try {
     const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.currentExcursion}/${excursionSlug}`;
-    const res = await fetch(
-      url,
-      // {
-      //   cache: "force-cache",
-      //   next: { revalidate: 180 },
-      // },
-    );
+    const res = await fetch(url, {
+      cache: "force-cache",
+      next: { revalidate: 180 },
+    });
     if (!res.ok) {
       throw new Error("Failed to fetch excursion");
     }

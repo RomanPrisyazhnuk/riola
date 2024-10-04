@@ -1,16 +1,11 @@
 import SearchBlock from "@/ui/components/SearchBlock";
 
 export const metadata = {
-  title: "",
-  description: "",
+  title: "Поиск",
+  description: "Найти экскурсию",
 };
 
-export default async function PlacePage() {
-  const data = { collection: { products: { edges: [] } } };
-  if (!data.collection?.products) {
-    return null;
-  }
-
+export default async function SearchPage() {
   return (
     <section className="mx-auto max-w-7xl pb-16">
       <SearchBlock />

@@ -3,6 +3,7 @@ import { LocationObj } from "@/entities/location/location";
 import { getTransfers } from "@/entities/transfer/actions";
 import { Transfer } from "@/entities/transfer/transfer";
 import ImageSlider from "@/ui/atoms/ImageSlider";
+import StoreProvider from "@/ui/atoms/StoreProvider";
 import ProsBlock from "@/ui/components/pros/ProsBlock";
 import { TransferList } from "@/ui/components/transfer/TransferList";
 import TransferDetails from "@/ui/components/TransferDetails";
@@ -12,7 +13,7 @@ import TransferSearch, {
 
 export const metadata = {
   title: "Трансферы",
-  description: "",
+  description: "Поиск трансферов",
 };
 
 export default async function TransferPage({
@@ -73,8 +74,11 @@ export default async function TransferPage({
           {`${locationFrom?.name} в ${locationTo?.name}`}
         </h2>
       </section>
+      <StoreProvider>
 
       <TransferList products={transfers} />
+      </StoreProvider>
+
       <section className="my-6">
         <TransferDetails />
       </section>

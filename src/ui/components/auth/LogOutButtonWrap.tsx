@@ -1,8 +1,9 @@
 "use client";
 import { useDispatch } from "react-redux";
 import { FC, ReactNode } from "react";
-import { setUser } from "@/store/slices/userSlice";
+import { clearUser } from "@/store/slices/userSlice";
 import { deleteAuthCookies } from "@/lib/helpers/headers";
+import { clearCart } from "@/entities/cartItem/cartSlice";
 
 interface AuthButtonProps {
   children: ReactNode;
@@ -14,7 +15,8 @@ const LogOutButtonWrap: FC<AuthButtonProps> = ({ children }) => {
   return (
     <div
       onClick={() => {
-        dispatch(setUser(null));
+        dispatch(clearUser());
+        dispatch(clearCart());
         deleteAuthCookies();
       }}
     >

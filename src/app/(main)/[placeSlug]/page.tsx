@@ -6,8 +6,8 @@ import Gallery from "@/ui/atoms/Gallery";
 import { ExcursionList } from "@/ui/components/excursion/ExcursionList";
 
 export const metadata = {
-  title: "",
-  description: "",
+  title: "Направление",
+  description: "Популярные направления",
 };
 const images = [
   {
@@ -39,6 +39,8 @@ export default async function PlacePage({
   let excursionsForLocation: Excursion[] = [];
 
   if (params.placeSlug) placeData = await getPlaceData(params.placeSlug);
+  console.log(placeData);
+  
   if (placeData)
     excursionsForLocation = await getPlaceExcursions(placeData.name, 0, 16);
 

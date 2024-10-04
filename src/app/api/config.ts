@@ -12,6 +12,7 @@ export const apiRoutes = {
   transfers: "transfers/search",
   currencies: "currencies",
   user: "user",
+  cart: "cart",
   //Post
   login: "login",
   register: "register",

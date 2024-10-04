@@ -13,7 +13,9 @@ export const getAvailableLocations = async () => {
     if (!res.ok) {
       throw new Error("Failed to fetch locations");
     }
+    
     const respData = await res.json();
+
 
     return respData?.data ? respData.data : null;
   } catch (err) {

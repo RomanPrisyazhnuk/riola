@@ -1,15 +1,30 @@
 "use client";
 import type { FC } from "react";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openPanel, PanelTypes } from "@/store/slices/panelSlice";
 import Link from "next/link";
 import AuthButtonWrap from "./auth/AuthButtonWrap";
+import { isUserAuthorized } from "@/store/slices/userSlice";
+import { useRouter } from "next/navigation";
+import { Badge } from "@nextui-org/react";
+import { getCartItemsAmount } from "@/entities/cartItem/cartSlice";
 
 interface MobileNavigationProps {}
 
 const MobileNavigation: FC<MobileNavigationProps> = ({}) => {
   const dispatch = useDispatch();
+  const isAuthorized = useSelector(isUserAuthorized);
+  const router = useRouter();
+  const cartItemsAmount: number = useSelector(getCartItemsAmount);
+
+  const handleCartClick = () => {
+    if (isAuthorized) {
+      router.push("/cart");
+    } else {
+      dispatch(openPanel({ type: PanelTypes.Login }));
+    }
+  };
   const accountBlock = (
     <div className="flex flex-col items-center justify-between">
       <Image
@@ -45,15 +60,22 @@ const MobileNavigation: FC<MobileNavigationProps> = ({}) => {
       <div
         className="flex flex-col items-center justify-between"
         title="Корзина"
-        onClick={() => dispatch(openPanel({ type: PanelTypes.Cart }))}
+        onClick={() => handleCartClick()}
       >
-        <Image
-          src="/icons/bag-white.svg"
-          width={24}
-          height={24}
-          aria-hidden="true"
-          alt="Cart Icon"
-        />
+        <Badge
+          content={cartItemsAmount}
+          color="danger"
+          isInvisible={!cartItemsAmount}
+        >
+          <Image
+            src="/icons/bag-white.svg"
+            width={24}
+            height={24}
+            aria-hidden="true"
+            alt="Cart Icon"
+          />
+        </Badge>
+
         <p className="text-white">Корзина</p>
       </div>
     </div>

@@ -7,12 +7,12 @@ export const Places = ({ places }: { places: Place[] }) => {
     <ul
       role="list"
       data-testid="PlacesList"
-      className="flex flex-wrap justify-between w-full gap-2"
+      className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 w-full"
     >
       {places.map((place) => (
         <div
           key={place.id}
-          className="h-[230px] basis-[150px] min-w-[176px] grow shadow-md shadow-cyan-100 rounded-md"
+          className="h-[230px] shadow-md shadow-cyan-100 rounded-md"
         >
           <div className="h-[118px] overflow-hidden relative rounded-t-md">
             <Image
@@ -20,6 +20,7 @@ export const Places = ({ places }: { places: Place[] }) => {
               alt={place.name}
               fill
               loading="lazy"
+              className="object-cover object-center"
             />
           </div>
           <div className="flex flex-col px-2">
@@ -28,7 +29,7 @@ export const Places = ({ places }: { places: Place[] }) => {
             </p>
             <p className="text-textColor text-[16px]">{`${place.excursions} экскурсий`}</p>
             <Link className="" aria-label="homepage" href={`/${place.slug}`}>
-              <button className="mt-1 w-full border-2 border-cyan-500 rounded-md px-4 py-2 text-cyan-500 hover:border-cyan-400 ">
+              <button className="mt-1 w-full border-2 border-cyan-500 rounded-md px-4 py-2 text-cyan-500 hover:border-cyan-400">
                 Перейти
               </button>
             </Link>

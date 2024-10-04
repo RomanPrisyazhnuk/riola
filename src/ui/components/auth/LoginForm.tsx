@@ -4,17 +4,18 @@ import { Input, Spacer } from "@nextui-org/react";
 import Image from "next/image";
 import { apiRoutes } from "@/app/api/config";
 import { setAuthCookies } from "@/lib/helpers/headers";
-import { setUser } from "@/store/slices/userSlice";
+import { fetchUser, setUser } from "@/store/slices/userSlice";
 import { useDispatch } from "react-redux";
 import { getAuthUserData } from "@/entities/user/actions";
 import { User } from "@/entities/user/user";
 import { closePanel } from "@/store/slices/panelSlice";
+import { AppDispatch } from "@/store/store";
 
 export function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -41,19 +42,7 @@ export function LoginForm() {
       }
       const respData = await response.json();
       setAuthCookies(respData.token);
-      const fetchUser = async () => {
-        try {
-          const user = await getAuthUserData();
-          if (user) {
-            //@ts-ignore
-            dispatch(setUser(user.data as User));
-            dispatch(closePanel());
-          }
-        } catch (error) {
-          console.error("Error fetching user data:", error);
-        }
-      };
-      fetchUser();
+      dispatch(fetchUser());
       setErrors([]);
     } catch (error: any) {
       setErrors([error.message]);

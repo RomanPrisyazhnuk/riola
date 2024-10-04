@@ -2,13 +2,13 @@ import { combineReducers } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 import panelReducer from "./panelSlice";
 import currencyReducer from "./currencySlice";
-import cartReducer from "./cartSlice";
+import cartReducer from "../../entities/cartItem/cartSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,
   panel: panelReducer,
   currency: currencyReducer,
-  cart: cartReducer
+  cart: cartReducer,
 });
 
 export default rootReducer;

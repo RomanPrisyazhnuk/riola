@@ -1,14 +1,18 @@
+"use client"
 import { ProductImageWrapper } from "@/ui/atoms/ProductImageWrapper";
 import { Transfer } from "@/entities/transfer/transfer";
 import Price from "../../atoms/Price";
 import Image from "next/image";
+import { AppDispatch } from "@/store/store";
+import { useDispatch } from "react-redux";
+import { openPanel, PanelTypes } from "@/store/slices/panelSlice";
 
 export function TransferCard({
   product,
   loading,
   priority,
 }: { product: Transfer } & { loading: "eager" | "lazy"; priority?: boolean }) {
-  console.log(product.price);
+  const dispatch: AppDispatch = useDispatch();
 
   return (
     <li
@@ -69,8 +73,10 @@ export function TransferCard({
         </div>
         <button
           className=" px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full"
-          type="submit"
-        >
+          onClick={()=>{
+            dispatch(openPanel({ type: PanelTypes.PreTransfer, data: product }))
+          }}
+          >
           Выбрать
         </button>
       </div>

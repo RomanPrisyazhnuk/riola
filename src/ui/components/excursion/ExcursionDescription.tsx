@@ -2,9 +2,10 @@
 import { ExcursionFull } from "@/entities/excursion/excursion";
 import { PriceOption } from "@/entities/price";
 import { openPanel, PanelTypes } from "@/store/slices/panelSlice";
+import { isUserAuthorized } from "@/store/slices/userSlice";
 import Price from "@/ui/atoms/Price";
 import type { FC } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 interface ExcursionDescriptionProps {
   excursion: ExcursionFull;
@@ -12,9 +13,14 @@ interface ExcursionDescriptionProps {
 
 const ExcursionDescription: FC<ExcursionDescriptionProps> = ({ excursion }) => {
   const dispatch = useDispatch();
+  const isAuthorized = useSelector(isUserAuthorized);
 
   const handleBook = () => {
-    dispatch(openPanel({ type: PanelTypes.PreExcursion, data: excursion }));
+    if (isAuthorized) {
+      dispatch(openPanel({ type: PanelTypes.PreExcursion, data: excursion }));
+    } else {
+      dispatch(openPanel({ type: PanelTypes.Login }));
+    }
   };
   return (
     <>

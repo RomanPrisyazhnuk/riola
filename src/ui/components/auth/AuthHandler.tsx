@@ -1,32 +1,21 @@
 "use client";
-import { User } from "@/entities/user/user";
-import { setUser } from "@/store/slices/userSlice";
-// import { IUser } from "@/entities/user/types";
-// import { setUser } from "@/entities/user/userSlice";
-// import { ApiRoutes } from "@/lib/api/config";
-// import { fetchWithAuth, RequestMethod } from "@/lib/helpers/customFetch";
-import { isTokenInCookies, setAuthCookies } from "@/lib/helpers/headers";
+import { clearUser, fetchUser } from "@/store/slices/userSlice";
+import { isTokenInCookies } from "@/lib/helpers/headers";
 import { FC, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getAuthUserData } from "@/entities/user/actions";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store/store";
+import { clearCart } from "@/entities/cartItem/cartSlice";
 
 const AuthHandler: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch(); // Типизируем диспетчер
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const user = await getAuthUserData();
-        if (user) {
-          //@ts-ignore
-          dispatch(setUser(user.data as User));
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
     if (isTokenInCookies) {
-      fetchUser();
+      // убедитесь, что isTokenInCookies вызывается
+      dispatch(fetchUser());
+    } else {
+      dispatch(clearUser());
+      dispatch(clearCart());
     }
   }, [dispatch]);
 
