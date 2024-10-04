@@ -3,6 +3,7 @@ import { Excursion } from "@/entities/excursion/excursion";
 import { getAvailablePlaces } from "@/entities/place/actions";
 import { Place } from "@/entities/place/place";
 import ImageSlider from "@/ui/atoms/ImageSlider";
+import StoreProvider from "@/ui/atoms/StoreProvider";
 import BonusBlock from "@/ui/components/bonus/BonusBlock";
 import { ExcursionList } from "@/ui/components/excursion/ExcursionList";
 import { Places } from "@/ui/components/Places";
@@ -55,7 +56,9 @@ export default async function Page() {
         <ExcursionList products={popularExcursions} />
       </section>
       <section className="my-6">
-        <BonusBlock />
+        <StoreProvider>
+          <BonusBlock />
+        </StoreProvider>
       </section>
     </div>
   );

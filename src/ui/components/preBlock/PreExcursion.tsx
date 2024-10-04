@@ -18,10 +18,12 @@ interface PreExcursionProps {
 }
 const PreExcursion: FC<PreExcursionProps> = ({ data }) => {
   const [counters, setCounters] = useState<{ [key: number]: number }>({});
-  const today = new Date()
+  const today = new Date();
   const [date, setDate] = useState(
-    parseAbsoluteToLocal(new Date(today.setDate(today.getDate() + 1)).toISOString())
-    );
+    parseAbsoluteToLocal(
+      new Date(today.setDate(today.getDate() + 1)).toISOString(),
+    ),
+  );
 
   const setOption = (optionId: number, count: number) => {
     setCounters((prev) => ({

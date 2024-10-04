@@ -15,7 +15,7 @@ export default async function PaymentPage() {
   return (
     <section className="mx-auto max-w-7xl pb-16">
       <Suspense>
-      <PaymentBlock />
+        <PaymentBlock />
       </Suspense>
     </section>
   );

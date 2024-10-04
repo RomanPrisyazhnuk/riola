@@ -40,7 +40,7 @@ export default async function PlacePage({
 
   if (params.placeSlug) placeData = await getPlaceData(params.placeSlug);
   console.log(placeData);
-  
+
   if (placeData)
     excursionsForLocation = await getPlaceExcursions(placeData.name, 0, 16);
 

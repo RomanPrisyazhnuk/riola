@@ -26,7 +26,7 @@ export const fetchUserCart = createAsyncThunk<CartItem[], void>(
 
 export interface AddItemToCartData {
   product_id: number;
-  address: string
+  address: string;
   starts_at: string;
   options: CartItemOption[];
 }
@@ -54,7 +54,7 @@ export interface UpdateItemCartData extends AddItemToCartData {}
 // Асинхронное действие для обновления товара в корзине
 export const updateItemCart = createAsyncThunk<CartItem, UpdateItemCartData>(
   "cart/updateItemCart",
-    //@ts-ignore
+  //@ts-ignore
   async (data: UpdateItemCartData, { rejectWithValue }) => {
     try {
       const cartData = await updateCartItem(data);
@@ -79,7 +79,7 @@ export const removeItemFromCart = createAsyncThunk<
   RemoveItemFromCartData
 >(
   "cart/removeItemFromCart",
-    //@ts-ignore
+  //@ts-ignore
   async (data: RemoveItemFromCartData, { rejectWithValue }) => {
     try {
       await removeCartItem(data);

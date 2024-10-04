@@ -75,8 +75,7 @@ export default async function TransferPage({
         </h2>
       </section>
       <StoreProvider>
-
-      <TransferList products={transfers} />
+        <TransferList products={transfers} />
       </StoreProvider>
 
       <section className="my-6">

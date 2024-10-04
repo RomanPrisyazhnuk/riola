@@ -46,7 +46,7 @@ const Cart: FC = () => {
     const optionsToShow = cartItem.options.map((cartItemOption, index) => {
       //@ts-ignore
       let optionFromPrice: PriceOption = cartItem.item.prices[index];
-           
+
       return {
         ...optionFromPrice,
         ...cartItemOption,

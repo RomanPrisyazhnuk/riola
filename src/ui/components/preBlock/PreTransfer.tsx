@@ -17,12 +17,14 @@ interface PreTransferProps {
   data: Transfer;
 }
 const PreTransfer: FC<PreTransferProps> = ({ data }) => {
-  const today = new Date()
+  const today = new Date();
   const [date, setDate] = useState(
-    parseAbsoluteToLocal(new Date(today.setDate(today.getDate() + 1)).toISOString())
-    );
+    parseAbsoluteToLocal(
+      new Date(today.setDate(today.getDate() + 1)).toISOString(),
+    ),
+  );
 
-  const totalAmount = data.price.amount
+  const totalAmount = data.price.amount;
 
   const dispatch: AppDispatch = useDispatch();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -50,7 +52,7 @@ const PreTransfer: FC<PreTransferProps> = ({ data }) => {
         starts_at: `${date.year}-${String(date.month).padStart(2, "0")}-${String(date.day).padStart(2, "0")}`,
         options: {
           //@ts-ignore
-          id: data.price.id
+          id: data.price.id,
         },
       }),
     );

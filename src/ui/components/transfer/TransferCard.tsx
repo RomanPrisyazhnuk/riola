@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ProductImageWrapper } from "@/ui/atoms/ProductImageWrapper";
 import { Transfer } from "@/entities/transfer/transfer";
 import Price from "../../atoms/Price";
@@ -73,10 +73,12 @@ export function TransferCard({
         </div>
         <button
           className=" px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full"
-          onClick={()=>{
-            dispatch(openPanel({ type: PanelTypes.PreTransfer, data: product }))
+          onClick={() => {
+            dispatch(
+              openPanel({ type: PanelTypes.PreTransfer, data: product }),
+            );
           }}
-          >
+        >
           Выбрать
         </button>
       </div>
