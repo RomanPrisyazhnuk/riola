@@ -5,10 +5,10 @@ export const getAvailableLocations = async () => {
     const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.transferRoutes}`;
     const res = await fetch(
       url,
-      // {
-      //   cache: "force-cache",
-      //   next: { revalidate: 180 },
-      // },
+      {
+        cache: "force-cache",
+        next: { revalidate: 180 },
+      },
     );
     if (!res.ok) {
       throw new Error("Failed to fetch locations");

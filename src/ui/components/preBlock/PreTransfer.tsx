@@ -64,7 +64,7 @@ const PreTransfer: FC<PreTransferProps> = ({ data }) => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div className="rounded-t-md overflow-hidden ">
           <ProductImageWrapper
-            src={data.image.thumb || "/b-2-520-820-90.webp"}
+            src={data.image?.thumb || "/b-2-520-820-90.webp"}
             alt={data.name}
             width={300}
             height={260}

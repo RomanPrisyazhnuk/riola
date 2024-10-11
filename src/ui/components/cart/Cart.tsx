@@ -11,6 +11,7 @@ import { getCart } from "@/entities/cartItem/cartSlice";
 import { isUserAuthorized, isUserLoading } from "@/store/slices/userSlice";
 import { useRouter } from "next/navigation";
 import { AppDispatch } from "@/store/store";
+import CartTransferCard from "./CartTransferCard";
 
 const Cart: FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -41,8 +42,7 @@ const Cart: FC = () => {
   };
 
   let totalSum = 0;
-
-  const getCartItem = (cartItem: CartItem) => {
+  const getExcursionItem = (cartItem: CartItem) =>{
     const optionsToShow = cartItem.options.map((cartItemOption, index) => {
       //@ts-ignore
       let optionFromPrice: PriceOption = cartItem.item.prices[index];
@@ -68,6 +68,27 @@ const Cart: FC = () => {
         isSelected={activeCartItems.includes(cartItem.id)}
       />
     );
+  }
+  const getTransferItem = (cartItem: CartItem) =>{
+    //@ts-ignore
+    const itemPrice = cartItem.item.price.amount
+    if (activeCartItems.includes(cartItem.id)) totalSum += itemPrice;
+
+    return (
+      <CartTransferCard
+        cartItem={cartItem}
+        //@ts-ignore
+        optionsToShow={[]}
+        itemPrice={itemPrice}
+        toggleActiveCartItem={toggleActiveCartItem}
+        isSelected={activeCartItems.includes(cartItem.id)}
+      />
+    );
+  }
+  const getCartItem = (cartItem: CartItem) => {
+    //@ts-ignore
+    if(cartItem.item?.price) return getTransferItem(cartItem)
+    return getExcursionItem(cartItem)
   };
   const handlePayment = () => {
     router.push(`/payment?price=${totalSum}&items=${activeCartItems.length}`);

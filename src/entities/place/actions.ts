@@ -5,17 +5,17 @@ export const getAvailablePlaces = async () => {
     const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursionLocations}`;
     const res = await fetch(
       url,
-      // {
-      //   cache: "force-cache",
-      //   next: { revalidate: 180 },
-      // },
+      {
+        cache: "force-cache",
+        next: { revalidate: 180 },
+      },
     );
     if (!res.ok) {
       throw new Error("Failed to fetch places");
     }
     const respData = await res.json();
 
-    return respData ? respData : null;
+    return respData ? respData.data : null;
   } catch (err) {
     console.error(err);
     return null;
@@ -26,10 +26,10 @@ export const getPlaceData = async (placeSlug: string) => {
     const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.currentLocation}/${placeSlug}`;
     const res = await fetch(
       url,
-      // {
-      //   cache: "force-cache",
-      //   next: { revalidate: 180 },
-      // },
+      {
+        cache: "force-cache",
+        next: { revalidate: 180 },
+      },
     );
     if (!res.ok) {
       throw new Error("Failed to fetch locationData");

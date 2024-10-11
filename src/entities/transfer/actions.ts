@@ -10,11 +10,9 @@ export const getTransfers = async (from: string, to: string) => {
       url,
       {
         headers: defaultHeaders,
+        cache: "force-cache",
+        next: { revalidate: 180 },
       },
-      // {
-      //   cache: "force-cache",
-      //   next: { revalidate: 180 },
-      // },
     );
     if (!res.ok) {
       throw new Error("Failed to fetch excursionsForLocation");
