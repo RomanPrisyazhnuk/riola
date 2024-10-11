@@ -22,7 +22,7 @@ const Counter: FC<CounterProps> = ({
       <div className="flex items-center justify-between min-w-[107px]">
         <button
           type="button"
-          className="rounded-md w-8 h-8 flex justify-center items-center text-xl text-cyan-500 border-1 border-cyan-500"
+          className="rounded-md w-8 h-8 flex justify-center items-center text-xl text-primary border-1 border-primary"
           onClick={() => setCounter(Math.max(0, value - 1))}
         >
           <span>-</span>
@@ -30,7 +30,7 @@ const Counter: FC<CounterProps> = ({
         <p className="mx-4 text-lg font-semibold">{value}</p>
         <button
           type="button"
-          className="bg-cyan-500 rounded-md w-8 h-8 flex justify-center items-center text-xl text-white"
+          className="bg-primary rounded-md w-8 h-8 flex justify-center items-center text-xl text-white"
           onClick={() => setCounter(value + 1)}
         >
           <span>+</span>

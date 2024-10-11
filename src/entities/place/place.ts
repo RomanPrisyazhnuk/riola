@@ -7,7 +7,7 @@ export interface Place {
   description: string;
   image: Image;
   excursions_count: number;
-  images?:Image[]
+  images?: Image[];
 }
 
 export const mockPlace1: Place = {

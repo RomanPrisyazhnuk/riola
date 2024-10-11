@@ -242,7 +242,7 @@ const TransferSearch: FC<TransferSearchProps> = ({ initialProps }) => {
 
       <Button
         isDisabled={!selectedLocationTo || !selectedLocationFrom}
-        className="px-4 py-2 h-[40px] self-end min-w-fit text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full sm:w-auto"
+        className="px-4 py-2 h-[40px] self-end min-w-fit text-white bg-primary rounded-md hover:bg-cyan-400 w-full sm:w-auto"
         onClick={() => handleTransfer()}
       >
         Узнать цены

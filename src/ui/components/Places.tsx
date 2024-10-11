@@ -29,7 +29,7 @@ export const Places = ({ places }: { places: Place[] }) => {
             </p>
             <p className="text-textColor text-[16px]">{`${place.excursions_count} экскурсий`}</p>
             <Link className="" aria-label="homepage" href={`/${place.slug}`}>
-              <button className="mt-1 w-full border-2 border-cyan-500 rounded-md px-4 py-2 text-cyan-500 hover:border-cyan-400">
+              <button className="mt-1 w-full border-2 border-primary rounded-md px-4 py-2 text-primary hover:border-cyan-400">
                 Перейти
               </button>
             </Link>

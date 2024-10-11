@@ -32,19 +32,25 @@ export default async function PlacePage({
         </h1>
         <div className="flex flex-col md:flex-row gap-4 mb-2">
           <div className="g-1 hidden md:block w-full">
-            {/* @ts-ignore */}
-            <Gallery images={placeData?.images || [placeData?.image]} type={GalleryTypes.Desktop} />
+            <Gallery
+              //@ts-ignore       
+              images={placeData?.images || [placeData?.image]}
+              type={GalleryTypes.Desktop}
+            />
           </div>
           <div className="g-1 md:hidden">
-            {/* @ts-ignore */}
-            <Gallery images={placeData?.images || [placeData?.image]} type={GalleryTypes.Mobile} />
+            <Gallery
+              //@ts-ignore       
+              images={placeData?.images || [placeData?.image]}
+              type={GalleryTypes.Mobile}
+            />
           </div>
           <div className="flex flex-col gap-4 g-1 w-full md:w-1/3">
-          <p
-        dangerouslySetInnerHTML={{
-          __html: placeData?.description || "!!!",
-        }}
-      />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: placeData?.description || "!!!",
+              }}
+            />
           </div>
         </div>
       </div>

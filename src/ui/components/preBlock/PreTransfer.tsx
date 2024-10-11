@@ -94,12 +94,12 @@ const PreTransfer: FC<PreTransferProps> = ({ data }) => {
           </p>
           <Button
             type="submit"
-            className="px-4 py-2 h-[40px] self-end w-1/2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 sm:w-auto"
+            className="px-4 py-2 h-[40px] self-end w-1/2 text-white bg-primary rounded-md hover:bg-cyan-400 sm:w-auto"
           >
             Добавить в корзину
           </Button>
           {/* <button
-            className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-fit"
+            className="px-4 py-2 text-white bg-primary rounded-md hover:bg-cyan-400 w-fit"
             type="submit"
           >
             Добавить в корзину

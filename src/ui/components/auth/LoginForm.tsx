@@ -93,7 +93,7 @@ export function LoginForm() {
         />
         <Spacer y={1.5} />
         <button
-          className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full"
+          className="px-4 py-2 text-white bg-primary rounded-md hover:bg-cyan-400 w-full"
           type="submit"
         >
           Войти

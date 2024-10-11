@@ -75,7 +75,7 @@ export default function SearchBlock() {
   );
   return (
     <>
-      <div className="fixed left-0 top-[64px] w-[100vw] bg-cyan-500 p-3 z-50 ">
+      <div className="fixed left-0 top-[64px] w-[100vw] bg-primary p-3 z-50 ">
         <Input
           placeholder="Введите название или город"
           autoFocus={true}

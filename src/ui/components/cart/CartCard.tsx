@@ -90,14 +90,14 @@ const CartCard: FC<CartCardProps> = ({
           <div>
             <div className="flex flex-col gap-3 py-3  border-y border-y-cyan-100">
               <div className="p-3 bg-gray-100 rounded-md p-2 ">
-                <div className=" text-cyan-500 cursor-pointer hover:text-cyan-400">
+                <div className=" text-primary cursor-pointer hover:text-cyan-400">
                   Добавить адрес или отель
                 </div>
                 <span>Адрес</span>
               </div>
               <div className="p-3 bg-gray-100 rounded-md p-2 flex justify-between">
                 <div>
-                  <span className="text-cyan-500 cursor-pointer hover:text-cyan-400">
+                  <span className="text-primary cursor-pointer hover:text-cyan-400">
                     Добавить инфо
                   </span>
                   <p>Участники</p>
@@ -117,7 +117,7 @@ const CartCard: FC<CartCardProps> = ({
               <div className="flex gap-3 justify-between">
                 <div className="w-1/2 bg-gray-100 rounded-md p-3">
                   <div className="text-textColor text-[16px]">
-                    <span className="text-cyan-500 cursor-pointer hover:text-cyan-400">
+                    <span className="text-primary cursor-pointer hover:text-cyan-400">
                       {getFormatedDate(cartItem.starts_at)}
                     </span>
                     <p>Дата</p>

@@ -16,7 +16,7 @@ const footerSocialLinks = [
 
 const SocialLinks: FC = () => {
   return (
-    <div className="flex justify-center items-center gap-[16px]">
+    <div className="flex gap-[16px]">
       {footerSocialLinks.map((item) => (
         <a href={item.href} target="_blank" key={item.name}>
           <Image
@@ -27,7 +27,7 @@ const SocialLinks: FC = () => {
             title={item.name}
             width={40}
             height={40}
-            className="h-full object-contain object-center"
+            className=""
           />
         </a>
       ))}

@@ -8,7 +8,7 @@ const footerMenuItems = [
 
 const FooterMenu: FC = () => {
   return (
-    <div className="flex flex-col sm:flex-row justify-center items-center gap-[16px]">
+    <div className="flex flex-col gap-2">
       {footerMenuItems.map((item) => (
         <Link key={item.name} href={item.link} className="text-textColor">
           {item.name}

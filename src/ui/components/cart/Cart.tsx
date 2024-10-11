@@ -42,7 +42,7 @@ const Cart: FC = () => {
   };
 
   let totalSum = 0;
-  const getExcursionItem = (cartItem: CartItem) =>{
+  const getExcursionItem = (cartItem: CartItem) => {
     const optionsToShow = cartItem.options.map((cartItemOption, index) => {
       //@ts-ignore
       let optionFromPrice: PriceOption = cartItem.item.prices[index];
@@ -68,10 +68,10 @@ const Cart: FC = () => {
         isSelected={activeCartItems.includes(cartItem.id)}
       />
     );
-  }
-  const getTransferItem = (cartItem: CartItem) =>{
+  };
+  const getTransferItem = (cartItem: CartItem) => {
     //@ts-ignore
-    const itemPrice = cartItem.item.price.amount
+    const itemPrice = cartItem.item.price.amount;
     if (activeCartItems.includes(cartItem.id)) totalSum += itemPrice;
 
     return (
@@ -84,11 +84,11 @@ const Cart: FC = () => {
         isSelected={activeCartItems.includes(cartItem.id)}
       />
     );
-  }
+  };
   const getCartItem = (cartItem: CartItem) => {
     //@ts-ignore
-    if(cartItem.item?.price) return getTransferItem(cartItem)
-    return getExcursionItem(cartItem)
+    if (cartItem.item?.price) return getTransferItem(cartItem);
+    return getExcursionItem(cartItem);
   };
   const handlePayment = () => {
     router.push(`/payment?price=${totalSum}&items=${activeCartItems.length}`);
@@ -113,7 +113,7 @@ const Cart: FC = () => {
             </div>
             <Button
               isDisabled={!totalSum}
-              className="px-4 py-2 h-[40px] self-end w-1/2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 sm:w-auto"
+              className="px-4 py-2 h-[40px] self-end w-1/2 text-white bg-primary rounded-md hover:bg-cyan-400 sm:w-auto"
               onClick={() => handlePayment()}
             >
               Перейти к оплате
@@ -127,7 +127,7 @@ const Cart: FC = () => {
             onClick={() => {
               router.push("/");
             }}
-            className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-fit sm:w-auto"
+            className="px-4 py-2 text-white bg-primary rounded-md hover:bg-cyan-400 w-fit sm:w-auto"
           >
             Посмотреть предложения
           </button>

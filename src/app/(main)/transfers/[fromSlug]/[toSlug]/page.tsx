@@ -46,7 +46,7 @@ export default async function TransferPage({
     return dataForSearch;
   };
   console.log(transfers);
-  
+
   return (
     <div className="mx-auto max-w-7xl pb-16">
       <section className="relative w-full ">

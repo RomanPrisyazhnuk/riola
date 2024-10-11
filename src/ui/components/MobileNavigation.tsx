@@ -38,7 +38,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({}) => {
     </div>
   );
   return (
-    <div className="text-[14px] sm:hidden rounded-lg px-6 fixed z-30 bottom-0 w-[calc(100%-1.5rem)] bg-cyan-500 h-[76px] mb-3 flex items-center justify-between">
+    <div className="text-[14px] sm:hidden rounded-lg px-6 fixed z-30 bottom-0 w-[calc(100%-1.5rem)] bg-primary h-[76px] mb-3 flex items-center justify-between">
       <Link
         href="/search"
         className="flex flex-col items-center justify-between "

@@ -3,13 +3,10 @@ import { apiRoutes } from "@/app/api/config";
 export const getAvailablePlaces = async () => {
   try {
     const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursionLocations}`;
-    const res = await fetch(
-      url,
-      {
-        cache: "force-cache",
-        next: { revalidate: 180 },
-      },
-    );
+    const res = await fetch(url, {
+      cache: "force-cache",
+      next: { revalidate: 180 },
+    });
     if (!res.ok) {
       throw new Error("Failed to fetch places");
     }
@@ -24,13 +21,10 @@ export const getAvailablePlaces = async () => {
 export const getPlaceData = async (placeSlug: string) => {
   try {
     const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.currentLocation}/${placeSlug}`;
-    const res = await fetch(
-      url,
-      {
-        cache: "force-cache",
-        next: { revalidate: 180 },
-      },
-    );
+    const res = await fetch(url, {
+      cache: "force-cache",
+      next: { revalidate: 180 },
+    });
     if (!res.ok) {
       throw new Error("Failed to fetch locationData");
     }

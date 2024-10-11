@@ -20,7 +20,7 @@ export const Nav = () => {
             <AuthButtonWrap
               type={PanelTypes.Login}
               beforeAuthView={
-                <button className="px-4 py-2 text-white bg-cyan-500 rounded-md hover:bg-cyan-400 w-full sm:w-auto">
+                <button className="px-4 py-2 text-white bg-primary rounded-md hover:bg-cyan-400 w-full sm:w-auto">
                   Войти
                 </button>
               }

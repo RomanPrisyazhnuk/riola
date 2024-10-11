@@ -9,13 +9,13 @@ const prosContent = [
 const ProsBlock: FC = () => {
   return (
     <section className="relative rounded-lg flex items-center justify-center min-h-36 gap-6 bg-cyan-100/50 overflow-hidden flex-wrap	p-6">
-      <Image
+      {/* <Image
         src={"/prosBg1.png"}
         alt={"bg"}
         width={740}
         height={63}
         className="absolute z-10 left-0 top-0 max-w-[350px] sm:max-w-[403px] md:max-w-[805px]"
-      />
+      /> */}
       <Image
         src={"/prosBg2.webp"}
         alt={"bg"}

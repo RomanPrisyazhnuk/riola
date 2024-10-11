@@ -26,7 +26,7 @@ export default async function ExcursionPage({
   if (!excursion?.name) {
     return null;
   }
-  
+
   return (
     <section className="mx-auto max-w-7xl pb-16">
       <div className="mt-6 mx-auto">

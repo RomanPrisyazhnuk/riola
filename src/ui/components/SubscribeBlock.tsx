@@ -60,13 +60,13 @@ export default function SubscribeBlock() {
   if (!isVisible) return null;
 
   return (
-    <div className="relative cursor-pointer w-[100vw] ml-[-12px] bg-cyan-500 mb-[-8px] p-3">
+    <div className="relative cursor-pointer w-[100vw] ml-[-12px] bg-primary mb-[-8px] p-3">
       {!isOpened ? (
         <div className="mx-auto max-w-7xl" onClick={() => setIsOpened(true)}>
           <div className="flex gap-1 justify-center items-center relative">
             {bellIcon}
             <span className="text-white text-[14px]">
-              Подпишись на горящие предложения
+              Подпишитесь и получите 5% скидку
             </span>
             <Image
               src={"/icons/x-white.svg"}
