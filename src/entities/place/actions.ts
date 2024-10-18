@@ -44,10 +44,10 @@ export const getPlaceExcursions = async (
   try {
     const res = await fetch(
       `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.excursions}${`?search_term=${name}&paginate=${paginate}&limit=${limit}`}`,
-      // {
-      //   cache: "force-cache",
-      //   next: { revalidate: 180 },
-      // },
+      {
+        cache: "force-cache",
+        next: { revalidate: 180 },
+      },
     );
     if (!res.ok) {
       throw new Error("Failed to fetch excursionsForLocation");

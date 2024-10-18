@@ -29,6 +29,15 @@ export interface AddItemToCartData {
   address: string;
   starts_at: string;
   options: CartItemOption[];
+  flight?: string
+  transfer_time?: string
+  contact:{
+    full_name: string,
+    email: string,
+    phone: string,
+    phone_type: "whatsapp",
+    country_code: "th",
+  },
 }
 
 // Асинхронное действие для добавления товара в корзину

@@ -13,6 +13,7 @@ export const apiRoutes = {
   currencies: "currencies",
   user: "user",
   cart: "cart",
+  checkoutSingleItem: "checkout-single-item",
   //Post
   login: "login",
   register: "register",

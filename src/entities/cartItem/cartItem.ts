@@ -19,11 +19,13 @@ export const mockCartItemOptionMember1: CartItemOptionMember = {
 
 export interface CartItemOption {
   id: number;
+  count: number;
   customers?: CartItemOptionMember[];
 }
 
 export const mockCartItemOption1: CartItemOption = {
   id: 321123123,
+  count: 1,
   customers: [mockCartItemOptionMember1, { id: 23432235 }],
 };
 

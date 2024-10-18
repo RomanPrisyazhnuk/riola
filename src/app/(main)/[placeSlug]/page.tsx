@@ -33,14 +33,14 @@ export default async function PlacePage({
         <div className="flex flex-col md:flex-row gap-4 mb-2">
           <div className="g-1 hidden md:block w-full">
             <Gallery
-              //@ts-ignore       
+              //@ts-ignore
               images={placeData?.images || [placeData?.image]}
               type={GalleryTypes.Desktop}
             />
           </div>
           <div className="g-1 md:hidden">
             <Gallery
-              //@ts-ignore       
+              //@ts-ignore
               images={placeData?.images || [placeData?.image]}
               type={GalleryTypes.Mobile}
             />

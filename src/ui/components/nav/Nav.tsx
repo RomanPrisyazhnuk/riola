@@ -15,7 +15,7 @@ export const Nav = () => {
       {" "}
       <StoreProvider>
         <СurrencySelect />
-        <div className="hidden sm:flex items-center  gap-4 ">
+        {/* <div className="hidden sm:flex items-center  gap-4 ">
           <Suspense fallback={<div className="w-8" />}>
             <AuthButtonWrap
               type={PanelTypes.Login}
@@ -40,7 +40,7 @@ export const Nav = () => {
           <Suspense fallback={<div className="w-6" />}>
             <CartNavItem />
           </Suspense>
-        </div>
+        </div> */}
       </StoreProvider>
     </nav>
   );

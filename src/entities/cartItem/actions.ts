@@ -79,3 +79,22 @@ export const removeCartItem = async (itemData: RemoveItemFromCartData) => {
     return null;
   }
 };
+export const checkoutCartItem = async (cartId: string) => {
+  try {
+    const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.cart}/${apiRoutes.checkoutSingleItem}/${cartId}`;
+    const respData = await fetch(url);
+    if (respData) {
+      console.log(url);
+
+      console.log("aaaaaaaaaaaaaaaaaaaa");
+
+      console.log(respData);
+
+      return respData;
+    }
+    return null;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};

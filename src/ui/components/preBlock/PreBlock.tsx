@@ -17,9 +17,9 @@ interface PreBlockProps {
 const PreBlock: FC<PreBlockProps> = ({ panelData }) => {
   const dispatch = useDispatch();
   return (
-    <div className="w-full">
+    <div className="w-full h-[100vh] overflow-y-scroll">
       <div className="p-4 bg-cyan-100/50 flex items-center justify-between">
-        <p>Детали</p>
+        <p>Бронирование</p>
         <Image
           src={"/icons/x-black.svg"}
           alt={"Close"}
