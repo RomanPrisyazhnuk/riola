@@ -5,10 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { openPanel, PanelTypes } from "@/store/slices/panelSlice";
 import { isUserAuthorized } from "@/store/slices/userSlice";
+import { useRouter } from "next/navigation";
 
 const BonusBlock: FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const isAuthorized = useSelector(isUserAuthorized);
+  const router = useRouter();
+
   return !isAuthorized ? (
     <section
       className="relative rounded-lg b min-h-[344px] gap-6 
@@ -58,7 +61,7 @@ const BonusBlock: FC = () => {
         <button className="px-6 py-2 text-textColor bg-white rounded-md hover:bg-gray-200 w-full sm:w-auto">
           <div
             className="flex gap-2 justify-center"
-            onClick={() => dispatch(openPanel({ type: PanelTypes.Register }))}
+            onClick={() => router.push('https://t.me/MILAizRIOLA_bot')}
           >
             Забрать 🎁
           </div>
