@@ -38,7 +38,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({}) => {
     </div>
   );
   return (
-    <div className="text-[14px] sm:hidden rounded-lg px-6 fixed z-30 bottom-0 w-[calc(100%-1.5rem)] bg-primary h-[76px] mb-3 flex items-center justify-between">
+    <div className="text-[14px] sm:hidden rounded-lg px-6 fixed z-30 bottom-0 right-3 w-fit bg-primary h-[76px] mb-3 flex items-center justify-between">
       <Link
         href="/search"
         className="flex flex-col items-center justify-between "
@@ -52,7 +52,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({}) => {
         />
         <p className="text-white">Поиск</p>
       </Link>
-      <AuthButtonWrap
+      {/* <AuthButtonWrap
         type={PanelTypes.Login}
         beforeAuthView={accountBlock}
         afterAuthView={accountBlock}
@@ -77,7 +77,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({}) => {
         </Badge>
 
         <p className="text-white">Корзина</p>
-      </div>
+      </div> */}
     </div>
   );
 };
