@@ -1,6 +1,6 @@
 import { checkoutCartItem } from "@/entities/cartItem/actions";
-import PaymentBlock from "@/ui/components/payment/PaymentBlock";
-import { Suspense } from "react";
+import { PaymentData } from "@/entities/payment/payment";
+import { PaymentDetails } from "@/ui/components/payments/PaymentDetails";
 
 export const metadata = {
   title: "Оплата",
@@ -12,11 +12,7 @@ export default async function SinglePaymentPage({
 }: {
   params: { cartId: string };
 }) {
-  const checkoutData = await checkoutCartItem(params.cartId);
+  const checkoutData: PaymentData = await checkoutCartItem(params.cartId);
 
-  return (
-    <section className="mx-auto max-w-7xl pb-16">
-      <Suspense>ТУТ БУДУТ ДАННЫЕ ОПЛАТ</Suspense>
-    </section>
-  );
+  return <PaymentDetails checkoutData={checkoutData} />;
 }

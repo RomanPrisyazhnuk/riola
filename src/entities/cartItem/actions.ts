@@ -10,8 +10,6 @@ export const getAuthUserCart = async () => {
       method: RequestMethod.GET,
     });
     if (respData) {
-      console.log(respData);
-
       return respData;
     }
     return null;
@@ -30,8 +28,6 @@ export const addCartItem = async (itemData: AddItemToCartData) => {
       body: itemData,
     });
     if (respData) {
-      console.log(respData);
-
       return respData;
     }
     return null;
@@ -50,8 +46,6 @@ export const updateCartItem = async (itemData: AddItemToCartData) => {
       body: itemData,
     });
     if (respData) {
-      console.log(respData);
-
       return respData;
     }
     return null;
@@ -69,8 +63,6 @@ export const removeCartItem = async (itemData: RemoveItemFromCartData) => {
       method: RequestMethod.DELETE,
     });
     if (respData) {
-      console.log(respData);
-
       return respData;
     }
     return null;
@@ -82,15 +74,12 @@ export const removeCartItem = async (itemData: RemoveItemFromCartData) => {
 export const checkoutCartItem = async (cartId: string) => {
   try {
     const url = `${apiRoutes.baseUrl}/${apiRoutes.public}/${apiRoutes.cart}/${apiRoutes.checkoutSingleItem}/${cartId}`;
-    const respData = await fetch(url);
+    const respData = await fetch(url, {
+      cache: "force-cache",
+      next: { revalidate: 10 },
+    });
     if (respData) {
-      console.log(url);
-
-      console.log("aaaaaaaaaaaaaaaaaaaa");
-
-      console.log(respData);
-
-      return respData;
+      return await respData.json();
     }
     return null;
   } catch (err) {

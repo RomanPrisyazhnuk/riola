@@ -19,8 +19,6 @@ export const metadata: Metadata = {
 export default async function Page() {
   let popularExcursions: Excursion[] = (await getPopularExcursions(0, 8)) || [];
   let availablePlaces: Place[] = (await getAvailablePlaces()) || [];
-  console.log(availablePlaces);
-
   return (
     <div className="mx-auto max-w-7xl">
       <section className="relative w-full my-6">

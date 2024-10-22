@@ -36,8 +36,8 @@ const MobileNavigation: FC<MobileNavigationProps> = ({}) => {
       />
       <p className="text-white">Аккаунт</p>
     </div>
-  )
-  
+  );
+
   return (
     <div className="text-[14px] sm:hidden rounded-lg px-6 fixed z-30 bottom-0 right-3 w-fit bg-primary h-[76px] mb-3 flex items-center justify-between">
       <Link

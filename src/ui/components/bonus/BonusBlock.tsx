@@ -61,7 +61,7 @@ const BonusBlock: FC = () => {
         <button className="px-6 py-2 text-textColor bg-white rounded-md hover:bg-gray-200 w-full sm:w-auto">
           <div
             className="flex gap-2 justify-center"
-            onClick={() => router.push('https://t.me/MILAizRIOLA_bot')}
+            onClick={() => router.push("https://t.me/MILAizRIOLA_bot")}
           >
             Забрать 🎁
           </div>

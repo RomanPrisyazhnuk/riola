@@ -44,9 +44,11 @@ const PreTransfer: FC<PreTransferProps> = ({ data }) => {
   const [email, setEmail] = useState<string>("");
   const [hotel, setHotel] = useState<string>("");
   const [flight, setFlight] = useState<string>("");
-  const [shippingTime, setShippingTime] = useState<{hour: number, minute: number}>({hour: 0, minute: 0});
- console.log(shippingTime);
- 
+  const [shippingTime, setShippingTime] = useState<{
+    hour: number;
+    minute: number;
+  }>({ hour: 0, minute: 0 });
+
   useEffect(() => {
     if (cart && cart[0] && cart[0].id) {
       router.push(`/payment/${cart[0].id}`);
