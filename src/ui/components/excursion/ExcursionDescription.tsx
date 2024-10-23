@@ -35,7 +35,7 @@ const ExcursionDescription: FC<ExcursionDescriptionProps> = ({ excursion }) => {
                 <p className="text-textColor font-bold text-[24px] sm:text-[39px]">
                   <Price priceInUSD={price.amount} />
                 </p>
-                <p className="text-textColor text-[18px] sm:text-[20px]">
+                <p className="font-medium text-textColor text-[18px] sm:text-[20px]">
                   {price.title}
                 </p>
               </div>
@@ -43,6 +43,7 @@ const ExcursionDescription: FC<ExcursionDescriptionProps> = ({ excursion }) => {
           })}
       </div>
       <p
+        className="font-medium text-textColor"
         dangerouslySetInnerHTML={{
           __html: excursion.description || "!!!",
         }}

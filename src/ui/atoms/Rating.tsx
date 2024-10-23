@@ -15,7 +15,7 @@ const Rating: FC<RatingProps> = ({ rating }) => {
         height={20}
         className="h-full object-contain object-center"
       />
-      <span className="text-[14px] text-textColor">{`${rating}/5`}</span>
+      <span className="text-[14px] text-textColor font-medium">{`${rating}/5`}</span>
     </div>
   );
 };

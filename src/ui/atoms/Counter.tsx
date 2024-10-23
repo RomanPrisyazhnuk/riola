@@ -14,7 +14,7 @@ const Counter: FC<CounterProps> = ({
   value,
 }) => {
   return (
-    <div className="flex justify-between items-center gap-8 text-textColor bg-gray-100  p-2 rounded-md">
+    <div className="flex justify-between items-center gap-8 text-textColor font-medium bg-gray-100  p-2 rounded-md">
       <div className="flex flex-col">
         <p>{title}</p>
         {description && <p>{description}</p>}

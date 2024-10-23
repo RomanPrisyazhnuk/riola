@@ -36,7 +36,7 @@ const TransferDetails: FC = () => {
             />
             <p className="text-textColor font-bold">{details.title}</p>
           </div>
-          <p className="text-textColor">{details.text}</p>
+          <p className="text-textColor font-medium">{details.text}</p>
         </div>
       ))}
     </div>

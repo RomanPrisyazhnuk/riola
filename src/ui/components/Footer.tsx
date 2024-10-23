@@ -12,7 +12,7 @@ export function Footer() {
         <div className="flex  w-full border-b border-b-cyan-100/50 p-3">
           <Logo />
         </div>
-        <div className="border-b border-b-cyan-100/50 p-3 text-textColor flex flex-col gap-2">
+        <div className="border-b border-b-cyan-100/50 p-3 text-textColor flex flex-col gap-2 font-medium">
           <h3 className="font-bold">Контакты:</h3>
           <p>Телефон: +66 64 696 8947</p>
           <p>E-mail: info@riolatravel.com</p>

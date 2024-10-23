@@ -113,7 +113,7 @@ export function RegistrationForm() {
     <div className="w-full max-w-lg p-3 ">
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 mb-1">
-          <label className="text-small text-textColor">
+          <label className="text-small text-textColor font-medium">
             Номер телефона (На выбор)
           </label>
           <PhoneInput

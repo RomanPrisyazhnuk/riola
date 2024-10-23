@@ -35,7 +35,9 @@ const ProsBlock: FC = () => {
             height={56}
             className="h-full object-contain object-center"
           />
-          <p className="max-w-60 text-center text-textColor">{item.text}</p>
+          <p className="max-w-60 text-center text-textColor font-medium">
+            {item.text}
+          </p>
         </div>
       ))}
     </section>

@@ -77,7 +77,9 @@ const MainSearch: FC<popularExcursions> = ({ withounLabel, placeholder }) => {
   return (
     <div className="relative">
       {!withounLabel && (
-        <label className="text-small text-textColor">Что есть рядом</label>
+        <label className="text-small text-textColor font-medium">
+          Что есть рядом
+        </label>
       )}
 
       <Input

@@ -107,7 +107,7 @@ const CartCard: FC<CartCardProps> = ({
                   {optionsToShow.slice(0, 2).map((item) => (
                     <span
                       key={`${item.id} x ${item.title}`}
-                      className="text-textColor text-[16px] "
+                      className="text-textColor font-medium text-[16px] "
                     >
                       {`${item.title}: ${item.customers.length}`}
                     </span>
@@ -116,7 +116,7 @@ const CartCard: FC<CartCardProps> = ({
               </div>
               <div className="flex gap-3 justify-between">
                 <div className="w-1/2 bg-gray-100 rounded-md p-3">
-                  <div className="text-textColor text-[16px]">
+                  <div className="text-textColor font-medium text-[16px]">
                     <span className="text-primary cursor-pointer hover:text-cyan-400">
                       {getFormatedDate(cartItem.starts_at)}
                     </span>
@@ -129,7 +129,7 @@ const CartCard: FC<CartCardProps> = ({
                 </div>
               </div>
             </div>
-            <div className="flex font-bold gap-2 text-[24px] items-center text-textColor mt-1">
+            <div className="flex font-bold gap-2 text-[24px] items-center text-textColor font-medium mt-1">
               <span>Итого:</span> <Price priceInUSD={itemPrice} />
             </div>
             <div className="flex font-bold gap-2 text-[18px] items-center text-[#4FAD50]">

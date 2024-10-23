@@ -30,13 +30,13 @@ const AuthForm: FC<AuthFormProps> = ({ activeTab }) => {
       <div className="flex bg-gray-100 rounded-t-md w-full m-3">
         <button
           onClick={() => dispatch(openPanel({ type: PanelTypes.Register }))}
-          className={`p-2 px-8 text-textColor w-1/2 ${activeTab === "registration" ? "rounded-t-md bg-white" : ""}`}
+          className={`p-2 px-8 text-textColor font-medium w-1/2 ${activeTab === "registration" ? "rounded-t-md bg-white" : ""}`}
         >
           Регистрация
         </button>
         <button
           onClick={() => dispatch(openPanel({ type: PanelTypes.Login }))}
-          className={`p-2 px-8 text-textColor w-1/2  ${activeTab === "login" ? "rounded-t-md bg-white" : ""}`}
+          className={`p-2 px-8 text-textColor font-medium w-1/2  ${activeTab === "login" ? "rounded-t-md bg-white" : ""}`}
         >
           Войти
         </button>

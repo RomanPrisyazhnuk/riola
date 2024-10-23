@@ -21,7 +21,7 @@ export const СurrencySelect = () => {
   }, []);
 
   return (
-    <div className="w-[82px] relative inline-block">
+    <div className="w-[84px] relative inline-block">
       <Select
         variant="bordered"
         defaultSelectedKeys={[currentCurrency.id]}

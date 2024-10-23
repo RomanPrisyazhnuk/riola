@@ -33,11 +33,16 @@ export function PaymentDetails({
           if (method.icons) method.images = method.icons;
           return (
             <div key={method.type}>
-              <p className="text-center text-textColor pb-2">{method.title}</p>
+              <p className="font-medium text-center font-medium text-textColor pb-2">
+                {method.title}
+              </p>
               <div className="flex gap-3 flex-wrap items-center justify-between">
                 {method.images &&
                   method.images.map((image) => (
-                    <a href={method.url} target="_blank" key={image + method.title}
+                    <a
+                      href={method.url}
+                      target="_blank"
+                      key={image + method.title}
                     >
                       <Image
                         src={image}

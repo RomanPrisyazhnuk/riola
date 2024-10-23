@@ -122,7 +122,9 @@ const Cart: FC = () => {
         </>
       ) : (
         <div className="flex flex-col justify-center items-center gap-3 mt-[100px]">
-          <div className="text-textColor text-[30px]">Ваша корзина пуста</div>
+          <div className="text-textColor font-medium text-[30px]">
+            Ваша корзина пуста
+          </div>
           <button
             onClick={() => {
               router.push("/");

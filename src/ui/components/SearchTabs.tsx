@@ -18,13 +18,13 @@ const SearchTabs: FC<SearchTabsProps> = () => {
       <div className="flex bg-gray-100 rounded-t-md w-full sm:w-fit">
         <button
           onClick={() => setActiveTab("excursions")}
-          className={`p-2 px-8 text-textColor w-1/2 sm:w-auto ${activeTab === "excursions" ? "rounded-t-md bg-white" : ""}`}
+          className={`font-medium p-2 px-8 text-textColor w-1/2 sm:w-auto ${activeTab === "excursions" ? "rounded-t-md bg-white" : ""}`}
         >
           Экскурсии
         </button>
         <button
           onClick={() => setActiveTab("transfer")}
-          className={`p-2 px-8 text-textColor w-1/2 sm:w-auto ${activeTab === "transfer" ? "rounded-t-md bg-white" : ""}`}
+          className={`font-medium p-2 px-8 text-textColor w-1/2 sm:w-auto ${activeTab === "transfer" ? "rounded-t-md bg-white" : ""}`}
         >
           Трансфер
         </button>

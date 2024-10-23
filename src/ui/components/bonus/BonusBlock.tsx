@@ -34,9 +34,17 @@ const BonusBlock: FC = () => {
         loading="lazy"
         width={610}
         height={350}
-        className="absolute right-0 z-20 h-[301px] sm:h-[352px]"
+        className="absolute hidden sm:block right-0 z-20 h-[301px] sm:h-[352px]"
       />
-      <div className="relative z-30 p-6 mt-[300px] sm:mt-0 text-white ">
+      <Image
+        src={"/gift-mobile.svg"}
+        alt={"bg"}
+        loading="lazy"
+        width={610}
+        height={350}
+        className="absolute right-0 z-20 h-[301px] sm:h-[352px] sm:hidden"
+      />
+      <div className="relative z-30 p-6 mt-[250px] sm:mt-0 text-white ">
         <div className="text-[32px] sm:text-[48px] font-bold sm:leading-[56px]">
           КАК СЭКОНОМИТЬ{" "}
           <div className="flex gap-2">
@@ -46,7 +54,7 @@ const BonusBlock: FC = () => {
             </p>
             <p
               className="mt-1 p-1 bg-yellow-500 rounded-md font-semibold  
-          sm:mt-1 text-[20px] sm:px-2 sm: py-0 h-[38px] sm:h-[52px] sm:text-[32px] "
+          sm:mt-1 text-[20px] sm:px-2 sm:py-0 h-[38px] sm:h-[52px] sm:text-[32px] "
             >
               {`100 000₽`}
             </p>
@@ -54,13 +62,13 @@ const BonusBlock: FC = () => {
           В ОТПУСКЕ
         </div>
 
-        <p className="text-[20px] sm:text-[24px] text-white max-w-[548px] mb-6">
+        <p className="text-[20px] sm:text-[24px] text-white max-w-[548px] hidden sm:block ">
           Зарегистрируйтесь и получите гайд: <br />
           “43 приложения для экономии в отпуске”
         </p>
-        <button className="px-6 py-2 text-textColor bg-white rounded-md hover:bg-gray-200 w-full sm:w-auto">
+        <button className="px-6  mt-6 py-2 text-textColor bg-white rounded-md hover:bg-gray-200 w-full sm:w-auto">
           <div
-            className="flex gap-2 justify-center"
+            className="flex gap-2 justify-center font-medium"
             onClick={() => router.push("https://t.me/MILAizRIOLA_bot")}
           >
             Забрать 🎁

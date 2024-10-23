@@ -46,6 +46,7 @@ export default async function PlacePage({
           </div>
           <div className="flex flex-col gap-4 g-1 w-full md:w-1/3">
             <p
+              className="text-textColor"
               dangerouslySetInnerHTML={{
                 __html: placeData?.description || "!!!",
               }}

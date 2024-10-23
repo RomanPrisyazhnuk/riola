@@ -34,6 +34,8 @@ const PreTransfer: FC<PreTransferProps> = ({ data }) => {
   const cart: CartItem[] = useSelector(getCart);
 
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   const [date, setDate] = useState(
     parseAbsoluteToLocal(
       new Date(today.setDate(today.getDate() + 1)).toISOString(),
@@ -93,7 +95,7 @@ const PreTransfer: FC<PreTransferProps> = ({ data }) => {
     return false;
   };
   return (
-    <div className="w-full h-full p-3 relative flex flex-col justify-between ">
+    <div className="font-medium w-full h-full p-3 relative flex flex-col justify-between ">
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         {/* <div className="rounded-t-md overflow-hidden ">
           <ProductImageWrapper
@@ -218,6 +220,9 @@ const PreTransfer: FC<PreTransferProps> = ({ data }) => {
           defaultValue={date}
           labelPlacement="outside"
           onChange={setDate}
+          minValue={parseAbsoluteToLocal(
+            new Date(today.setDate(today.getDate())).toISOString(),
+          )}
         />
         <TimeInput
           variant="bordered"
@@ -236,7 +241,7 @@ const PreTransfer: FC<PreTransferProps> = ({ data }) => {
           <Button
             type="submit"
             isDisabled={isSubmitButtonDisabled()}
-            className="px-4 py-2 h-[40px] self-end w-1/2 text-white bg-primary rounded-md hover:bg-cyan-400 sm:w-auto"
+            className="font-medium px-4 py-2 h-[40px] self-end w-1/2 text-white bg-primary rounded-md hover:bg-cyan-400 sm:w-auto"
           >
             Оплатить
           </Button>

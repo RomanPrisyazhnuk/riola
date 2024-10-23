@@ -20,3 +20,7 @@ textarea {
   box-shadow: none !important;
   border: none !important;
 }
+
+body {
+  @apply font-sans;
+}

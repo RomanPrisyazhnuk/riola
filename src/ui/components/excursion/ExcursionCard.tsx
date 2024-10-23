@@ -39,7 +39,9 @@ export function ExcursionCard({
             height={20}
             className="h-full object-contain object-center"
           />
-          <span className="text-[14px] text-textColor">Групповая</span>
+          <span className="text-[14px] font-medium text-textColor">
+            Групповая
+          </span>
         </div>
         <div className="absolute top-2 right-2 bg-white rounded-md">
           <Rating rating={product.rating} />
@@ -55,19 +57,26 @@ export function ExcursionCard({
           <div className="flex gap-2 items-center self-end justify-self-end	font-semibold">
             {product.prices &&
               product.prices[0] &&
-              product.prices[0].old_amount && (
-                <s className="text-textColor text-[16px]">
+              !!product.prices[0].old_amount && (
+                <s className="font-medium text-textColor text-[16px]">
                   {`От: `}
                   <Price priceInUSD={product.prices[0].old_amount} />
                 </s>
               )}
-            <p className="p-2 border-1 border-red-500 rounded-md text-red-500 text-[16px]">
-              {product.prices && product.prices[0] ? (
+            {!!product.prices[0].old_amount ? (
+              <p className="p-2 border-1 border-red-500 rounded-md text-red-500 text-[16px]">
+                {product.prices && product.prices[0] ? (
+                  <Price priceInUSD={product.prices[0].amount} />
+                ) : (
+                  "!!!"
+                )}
+              </p>
+            ) : (
+              <p className="font-medium text-textColor p-2 text-[16px]">
+                {`От: `}
                 <Price priceInUSD={product.prices[0].amount} />
-              ) : (
-                "!!!"
-              )}
-            </p>
+              </p>
+            )}
           </div>
         </div>
       </Link>

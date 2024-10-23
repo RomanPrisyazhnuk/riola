@@ -20,8 +20,11 @@ const config: Config = {
       full: "9999px",
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-montserrat)", "sans-serif"],
+      },
       colors: {
-        textColor: "#0B2629",
+        textColor: "#123C42",
         primary: "#4fafbb",
       },
     },

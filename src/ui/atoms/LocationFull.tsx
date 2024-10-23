@@ -16,7 +16,7 @@ const LocationFull: FC<LocationFullProps> = ({ location }) => {
         height={20}
         className="h-full object-contain object-center"
       />
-      <p className="text-textColor text-[16px]">{`${location?.name || "!!!"}${location?.parent ? `, ${location.parent.name}` : ""}`}</p>
+      <p className="text-textColor font-medium text-[16px]">{`${location?.name || "!!!"}${location?.parent ? `, ${location.parent.name}` : ""}`}</p>
     </div>
   );
 };
